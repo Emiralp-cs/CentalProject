@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cental.EntityLayer.Entities
+namespace Cental.DTOLayer.AboutDtos
 {
-    public class About : BaseEntity
+    public class ToListAboutDto
     {
         public int AboutId { get; set; }
         public string Vision { get; set; }
@@ -23,8 +23,5 @@ namespace Cental.EntityLayer.Entities
         public string NameSurname { get; set; }
         public string JobTitle { get; set; }
         public string ProfilePicture { get; set; }
-
-
-
     }
 }
