@@ -1,8 +1,8 @@
-﻿
-@model List<ToListBannerDto>
+﻿@model List<ToListBannerDto>
 @{
     ViewData["Title"] = "Index";
     int count = 0;
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 
 <h3>Öne Çıkan Alan</h3>
@@ -23,7 +23,7 @@
         count++;
         <tr>
             <td>@count</td>
-            <td><img src="@item.ImageUrl" style="width:75px;height:75px"/></td>
+            <td><img src="@item.ImageUrl" style="width:75px;height:75px" /></td>
             <td>@item.Title</td>
             <td>@item.Description</td>
             <td><a asp-action="DeleteBanner" asp-route-id="@item.BannerId" class="btn btn-danger">Sil</a></td>
