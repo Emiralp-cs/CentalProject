@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mappings\" />
+    <Folder Include="ViewComponents\AdminLayout\" />
   </ItemGroup>
 
 </Project>
