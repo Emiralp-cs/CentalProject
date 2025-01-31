@@ -20,6 +20,9 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<IAboutDal, EfAboutDal>();
 builder.Services.AddScoped<IAboutService, AboutManager>();
 
+builder.Services.AddScoped<IFeatureDal, EfFeatureDal>();
+builder.Services.AddScoped<IFeatureService, FeatureManager>();
+
 
 builder.Services.AddScoped<IBannerDal, EfBannerDal>();
 builder.Services.AddScoped<IBannerService, BannerManager>();

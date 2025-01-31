@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Cental.BusinessLayer.Abstract;
+using Cental.DTOLayer.FeatureDtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cental.WebUI.ViewComponents.UILayout
@@ -18,8 +19,11 @@ namespace Cental.WebUI.ViewComponents.UILayout
 
         public IViewComponentResult Invoke()
         {
+            var values = _featureService.TGetAll();
 
-            return View();
+            var result = _mapper.Map<List<ToListFeatureDTO>>(values);
+
+            return View(result);
         }
 
 
