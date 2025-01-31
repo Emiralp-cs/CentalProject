@@ -19,7 +19,7 @@ namespace Cental.WebUI.Controllers
             var values = _aboutService.TGetAll();
 
             var result = values.Select(about => new ToListAboutDto
-            {
+            {   
                 AboutId = about.AboutId,
                 Description1 = about.Description1,
                 Description2 = about.Description2,
@@ -42,12 +42,28 @@ namespace Cental.WebUI.Controllers
         [HttpGet]
         public IActionResult CreateAbout()
         {
-            return View();
+            var check = _aboutService.TGetAll().Count;
+
+            if (check == 1)
+            {
+                TempData["CountError"] = "En Fazla 1 tane hakkımda bulunabilir.";
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                return View();
+            }
+
+
+            
         }
 
         [HttpPost]
         public IActionResult CreateAbout(CreateAboutDto newAbout)
         {
+
+
 
             //Manuel olarak object to object mapping
             _aboutService.TCreate(new About

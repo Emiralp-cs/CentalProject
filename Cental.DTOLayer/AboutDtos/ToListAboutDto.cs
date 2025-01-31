@@ -9,6 +9,7 @@ namespace Cental.DTOLayer.AboutDtos
     public class ToListAboutDto
     {
         public int AboutId { get; set; }
+
         public string Vision { get; set; }
         public string Mission { get; set; }
         public string Description1 { get; set; }
