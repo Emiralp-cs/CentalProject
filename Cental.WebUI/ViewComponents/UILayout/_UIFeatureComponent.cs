@@ -21,7 +21,7 @@ namespace Cental.WebUI.ViewComponents.UILayout
         {
             var values = _featureService.TGetAll();
 
-            var result = _mapper.Map<List<ToListFeatureDTO>>(values);
+            var result = _mapper.Map<List<UIFeatureDTO>>(values);
 
             return View(result);
         }

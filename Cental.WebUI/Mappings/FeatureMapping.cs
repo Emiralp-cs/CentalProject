@@ -11,6 +11,7 @@ namespace Cental.WebUI.Mappings
             CreateMap<Feature, ToListFeatureDTO>().ReverseMap();
             CreateMap<Feature, CreateFeatureDTO>().ReverseMap();
             CreateMap<Feature, UpdateFeatureDTO>().ReverseMap();
+            CreateMap<Feature,UIFeatureDTO>().ReverseMap();
         }
     }
 }

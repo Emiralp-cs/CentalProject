@@ -5,9 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cental.BusinessLayer.Abstract
+namespace Cental.DTOLayer.BrandDtos
 {
-    public interface IBrandService:IGenericService<Brand>
+    public class CreateBrandDTO
     {
+
+        public string BrandName { get; set; }
+
+        public List<Car> Cars { get; set; }
     }
 }
