@@ -37,12 +37,19 @@ namespace Cental.WebUI.Controllers
         [HttpGet]
         public IActionResult CreateBrand()
         {
+          
             return View();
         }
 
         [HttpPost]
         public IActionResult CreateBrand(CreateBrandDTO NewBrand)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(NewBrand);
+            }
+
+
             var result = _mapper.Map<Brand>(NewBrand);
 
             _brandService.TCreate(result);

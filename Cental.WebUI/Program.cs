@@ -1,9 +1,12 @@
 using Cental.BusinessLayer.Abstract;
 using Cental.BusinessLayer.Concrete;
+using Cental.BusinessLayer.Validators;
 using Cental.DataAccessLayer.Abstract;
 using Cental.DataAccessLayer.Concrate;
 using Cental.DataAccessLayer.Context;
 using Cental.DataAccessLayer.Repositories;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,7 +34,7 @@ builder.Services.AddScoped<IBannerService, BannerManager>();
 builder.Services.AddScoped<IBrandDal, EfBrandDal>();
 builder.Services.AddScoped<IBrandService, BrandManager>();
 
-
+builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters().AddValidatorsFromAssemblyContaining<BrandValidator>();
 
 
 

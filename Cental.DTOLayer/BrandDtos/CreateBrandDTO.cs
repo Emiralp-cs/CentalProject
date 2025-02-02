@@ -10,8 +10,9 @@ namespace Cental.DTOLayer.BrandDtos
     public class CreateBrandDTO
     {
 
-        public string BrandName { get; set; }
+        public string? BrandName { get; set; }
 
-        public List<Car> Cars { get; set; }
+
+
     }
 }
