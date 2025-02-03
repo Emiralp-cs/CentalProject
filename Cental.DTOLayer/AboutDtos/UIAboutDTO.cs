@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cental.DTOLayer.AboutDtos
 {
-    public class UIAboutDTO
+    public class UIAboutDTO : BaseDto
     {
         public string Vision { get; set; }
         public string Mission { get; set; }

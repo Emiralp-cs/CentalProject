@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cental.DTOLayer.AboutDtos
 {
-    public class ToListAboutDto
+    public class ToListAboutDto : BaseDto
     {
         public int AboutId { get; set; }
 

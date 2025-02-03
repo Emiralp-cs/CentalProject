@@ -1,6 +1,6 @@
 using Cental.BusinessLayer.Abstract;
 using Cental.BusinessLayer.Concrete;
-using Cental.BusinessLayer.Validators;
+using Cental.BusinessLayer.Validators.BrandValidator;
 using Cental.DataAccessLayer.Abstract;
 using Cental.DataAccessLayer.Concrate;
 using Cental.DataAccessLayer.Context;
@@ -26,15 +26,16 @@ builder.Services.AddScoped<IAboutService, AboutManager>();
 builder.Services.AddScoped<IFeatureDal, EfFeatureDal>();
 builder.Services.AddScoped<IFeatureService, FeatureManager>();
 
-
 builder.Services.AddScoped<IBannerDal, EfBannerDal>();
 builder.Services.AddScoped<IBannerService, BannerManager>();
-
 
 builder.Services.AddScoped<IBrandDal, EfBrandDal>();
 builder.Services.AddScoped<IBrandService, BrandManager>();
 
-builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters().AddValidatorsFromAssemblyContaining<BrandValidator>();
+builder.Services.AddScoped<ICarDal, EfCarDal>();
+builder.Services.AddScoped<ICarService, CarManager>();
+
+builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters().AddValidatorsFromAssemblyContaining<CreateBrandValidator>();
 
 
 

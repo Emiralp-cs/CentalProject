@@ -14,5 +14,9 @@ namespace Cental.BusinessLayer.Abstract
         void TDelete(int id);
         void TCreate(T entity);
         void TUpdate(T entity);
+
+        
+
+        
     }
 }

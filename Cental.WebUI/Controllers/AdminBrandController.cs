@@ -3,6 +3,7 @@ using Cental.BusinessLayer.Abstract;
 using Cental.DTOLayer.BrandDtos;
 using Cental.EntityLayer.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace Cental.WebUI.Controllers
 {
@@ -37,7 +38,7 @@ namespace Cental.WebUI.Controllers
         [HttpGet]
         public IActionResult CreateBrand()
         {
-          
+
             return View();
         }
 
@@ -56,5 +57,35 @@ namespace Cental.WebUI.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+        [HttpGet]
+
+        public IActionResult UpdateBrand(int id)
+        {
+
+            var value = _brandService.TGetById(id);
+
+            //Brandi UpdateBrandDtoya mapleme
+            var MappingResult = _mapper.Map<UpdateBrandDTO>(value);
+
+
+            return View(MappingResult);
+        }
+
+        [HttpPost]
+
+        public IActionResult UpdateBrand(UpdateBrandDTO NewBrand)
+        {
+
+            //UpdateBrandDtoyu Brande mapleme
+            var MappingResult = _mapper.Map<Brand>(NewBrand);
+
+            _brandService.TUpdate(MappingResult);
+
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

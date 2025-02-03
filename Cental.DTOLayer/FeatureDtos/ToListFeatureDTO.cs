@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Cental.DTOLayer.FeatureDtos
 {
-    public class ToListFeatureDTO
+    public class ToListFeatureDTO : BaseDto
     {
         public int FeatureId { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Icon { get; set; }
+        public string  Title { get; set; }
+        public string  Description { get; set; }
+        public string  Icon { get; set; }
     }
 }

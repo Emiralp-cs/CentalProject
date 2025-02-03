@@ -20,11 +20,12 @@ namespace Cental.WebUI.Controllers
 
         public IActionResult Index()
         {
+
             var values = _featureService.TGetAll();
 
             var result = _mapper.Map<List<ToListFeatureDTO>>(values);
 
-            return View(result);
+            return View();
         }
 
         public IActionResult DeleteFeature(int id)

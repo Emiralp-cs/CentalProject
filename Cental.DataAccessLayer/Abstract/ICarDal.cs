@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cental.BusinessLayer.Abstract
+namespace Cental.DataAccessLayer.Abstract
 {
-    public interface IAboutService : IGenericService<About>
+    public interface ICarDal : IGenericDal<Car>
     {
-        
-        
+        List<Car> GetCarsWithBrands();
     }
 }

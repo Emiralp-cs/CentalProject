@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Abstract
 {
-    public interface IAboutService : IGenericService<About>
+    public interface ICarService : IGenericService<Car>
     {
-        
-        
+        List<Car> TGetCarsWithBrands();
     }
 }

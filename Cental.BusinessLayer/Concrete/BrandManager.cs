@@ -43,5 +43,7 @@ namespace Cental.BusinessLayer.Concrete
         {
             _brandDal.Update(entity);
         }
+
+       
     }
 }
