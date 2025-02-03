@@ -11,21 +11,16 @@ namespace Cental.WebUI.Controllers
     {
         private readonly IBrandService _brandService;
 
-        private readonly IMapper _mapper;
-
-        public AdminBrandController(IBrandService brandService, IMapper mapper)
+        public AdminBrandController(IBrandService brandService)
         {
             _brandService = brandService;
-            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
-            var values = _brandService.TGetAll();
+           var values = _brandService.TListN;
 
-            var result = _mapper.Map<List<ToListBrandDTO>>(values);
-
-            return View(result);
+            return View(values);
         }
 
 
@@ -51,9 +46,7 @@ namespace Cental.WebUI.Controllers
             }
 
 
-            var result = _mapper.Map<Brand>(NewBrand);
-
-            _brandService.TCreate(result);
+           _brandService.TCreateN(NewBrand);
 
             return RedirectToAction("Index");
         }
@@ -67,10 +60,10 @@ namespace Cental.WebUI.Controllers
             var value = _brandService.TGetById(id);
 
             //Brandi UpdateBrandDtoya mapleme
-            var MappingResult = _mapper.Map<UpdateBrandDTO>(value);
+           var result =  _brandService.TUpdate_GetN;
 
 
-            return View(MappingResult);
+            return View(result);
         }
 
         [HttpPost]
@@ -79,9 +72,7 @@ namespace Cental.WebUI.Controllers
         {
 
             //UpdateBrandDtoyu Brande mapleme
-            var MappingResult = _mapper.Map<Brand>(NewBrand);
-
-            _brandService.TUpdate(MappingResult);
+           _brandService.T_Update_PostN(NewBrand);
 
 
             return RedirectToAction("Index");

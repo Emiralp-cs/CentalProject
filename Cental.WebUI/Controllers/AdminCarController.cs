@@ -20,9 +20,9 @@ namespace Cental.WebUI.Controllers
         {
             var values = _carService.TGetCarsWithBrands();
 
-            var result = _mapper.Map<List<ToListCarDto>>(values);
+           
 
-            return View(result);
+            return View(values);
         }
     }
 }

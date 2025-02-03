@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cental.DataAccessLayer.Abstract
 {
-    public interface IGenericDal<T> where T : BaseEntity
+    public interface IGenericDal<T> where T : class
     {
         List<T> GetAll();
         T GetById(int id);

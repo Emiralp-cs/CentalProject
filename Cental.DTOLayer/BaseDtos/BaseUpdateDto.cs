@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cental.DTOLayer
+namespace Cental.DTOLayer.BaseDtos
 {
-    public abstract class BaseDto
+    public class BaseUpdateDto
     {
     }
 }

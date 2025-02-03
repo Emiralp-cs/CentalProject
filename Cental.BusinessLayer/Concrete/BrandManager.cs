@@ -1,5 +1,7 @@
-﻿using Cental.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Cental.BusinessLayer.Abstract;
 using Cental.DataAccessLayer.Abstract;
+using Cental.DTOLayer.BrandDtos;
 using Cental.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,41 +11,10 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Concrete
 {
-    public class BrandManager : IBrandService
+    public class BrandManager : GenericManager<Brand, ToListBrandDTO, CreateBrandDTO, UpdateBrandDTO>,IBrandService
     {
-
-        private readonly IBrandDal _brandDal;
-
-        public BrandManager(IBrandDal brandDal)
+        public BrandManager(IMapper mapper, IGenericDal<Brand> genericDal) : base(mapper, genericDal)
         {
-            _brandDal = brandDal;
         }
-
-        public void TCreate(Brand entity)
-        {
-            _brandDal.Create(entity);
-        }
-
-        public void TDelete(int id)
-        {
-            _brandDal.Delete(id);
-        }
-
-        public List<Brand> TGetAll()
-        {
-            return _brandDal.GetAll();
-        }
-
-        public Brand TGetById(int id)
-        {
-            return _brandDal.GetById(id);
-        }
-
-        public void TUpdate(Brand entity)
-        {
-            _brandDal.Update(entity);
-        }
-
-       
     }
 }

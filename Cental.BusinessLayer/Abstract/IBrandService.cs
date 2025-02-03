@@ -1,4 +1,5 @@
-﻿using Cental.EntityLayer.Entities;
+﻿using Cental.DTOLayer.BrandDtos;
+using Cental.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Abstract
 {
-    public interface IBrandService:IGenericService<Brand>
+    public interface IBrandService : IGenericService<Brand, ToListBrandDTO, CreateBrandDTO, UpdateBrandDTO>
     {
     }
 }

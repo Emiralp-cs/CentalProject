@@ -1,5 +1,7 @@
-﻿using Cental.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Cental.BusinessLayer.Abstract;
 using Cental.DataAccessLayer.Abstract;
+using Cental.DTOLayer.CarDtos;
 using Cental.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,43 +11,21 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Concrete
 {
-    public class CarManager : ICarService
+    public class CarManager : GenericManager<Car, ToListCarDto, CreateCarDto, UpdateCarDto>,ICarService
     {
-        private readonly ICarDal _carDal;
 
-        public CarManager(ICarDal carDal)
-        {
-            _carDal = carDal;
-        }
+        private readonly ICarDal _cardal;
 
-        public void TCreate(Car entity)
-        {
-            _carDal.Create(entity);
-        }
+       
 
-        public void TDelete(int id)
+        public CarManager(IMapper mapper, IGenericDal<Car> genericDal,ICarDal cardal) : base(mapper, genericDal)
         {
-            _carDal.Delete(id);
-        }
-
-        public List<Car> TGetAll()
-        {
-           return _carDal.GetAll();
-        }
-
-        public Car TGetById(int id)
-        {
-            return _carDal.GetById(id);
+            _cardal = cardal;
         }
 
         public List<Car> TGetCarsWithBrands()
         {
-            return _carDal.GetCarsWithBrands();
-        }
-
-        public void TUpdate(Car entity)
-        {
-             _carDal.Update(entity);
+             return _cardal.GetCarsWithBrands();
         }
     }
 }
