@@ -1,5 +1,7 @@
-﻿using Cental.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Cental.BusinessLayer.Abstract;
 using Cental.DataAccessLayer.Abstract;
+using Cental.DTOLayer.AboutDtos;
 using Cental.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,38 +11,12 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Concrete
 {
-    public class AboutManager : IAboutService
+    public class AboutManager : GenericManager<About,ToListAboutDto,CreateAboutDto,UpdateAboutDto>,IAboutService
     {
-        private readonly IAboutDal _aboutDal;
+       
 
-        public AboutManager(IAboutDal aboutDal)
+        public AboutManager(IMapper mapper, IGenericDal<About> genericDal) : base(mapper, genericDal)
         {
-            _aboutDal = aboutDal;
-        }
-
-        public void TCreate(About entity)
-        {
-            _aboutDal.Create(entity);
-        }
-
-        public void TDelete(int id)
-        {
-            _aboutDal.Delete(id);
-        }
-
-        public List<About> TGetAll()
-        {
-            return _aboutDal.GetAll();
-        }
-
-        public About TGetById(int id)
-        {
-            return _aboutDal.GetById(id);
-        }
-
-        public void TUpdate(About entity)
-        {
-           _aboutDal.Update(entity);
         }
     }
 }

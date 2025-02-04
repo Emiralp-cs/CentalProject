@@ -1,7 +1,6 @@
-﻿@using Cental.DTOLayer.CarDtos
-@model List<ToListCarDto>
+﻿@model List<ToListCarDto>
 @{
-    ViewData["Title"] = "Arabalar";
+    ViewData["Title"] = "Markalar";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
     int count = 0;
 }
@@ -9,10 +8,10 @@
 <table class="table table-bordered">
     <tr>
         <th>#</th>
-        <th>Model Adı</th>
-        <th>Model Yılı</th>
-        <th>Kilometre</th>
         <th>Marka</th>
+        <th>Model</th>
+        <th>Yıl</th>
+        <th>Fiyat</th>
         <th>Sil</th>
         <th>Güncelle</th>
     </tr>
@@ -24,16 +23,17 @@
 
         <tr>
             <td>@count</td>
+            <td>@item.Brand.BrandName</td>
             <td>@item.ModelName</td>
             <td>@item.Year</td>
-            <td>@item.Kilometer</td>
-            <td>@item.Brand.BrandName</td>
+            <td>@item.Price</td>
 
-            <td><a asp-action="DeleteCar" asp-route-id="@item.CarId" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
-            <td><a asp-action="UpdateCar" asp-route-id="@item.CarId " class="btn btn-info"><i class="fa fa-pen"></i></a></td>
+            <td><a asp-action="DeleteBrand" asp-route-id="@item.BrandId" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+            <td><a asp-action="UpdateBrand" asp-route-id="@item.BrandId" class="btn btn-info"><i class="fa fa-pen"></i></a></td>
         </tr>
     }
 </table>
 
-<a href="/AdminCar/CreateCar" class="btn btn-primary"><i class="fa fa-plus-circle"></i></a>
+<a href="/AdminBrand/CreateBrand" class="btn btn-primary"><i class="fa fa-plus-circle"></i></a>
+
 

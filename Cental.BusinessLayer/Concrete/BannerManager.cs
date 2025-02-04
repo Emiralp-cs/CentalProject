@@ -1,5 +1,7 @@
-﻿using Cental.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Cental.BusinessLayer.Abstract;
 using Cental.DataAccessLayer.Abstract;
+using Cental.DTOLayer.BannerDtos;
 using Cental.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,38 +11,10 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Concrete
 {
-    public class BannerManager : IBannerService
+    public class BannerManager : GenericManager<Banner, ToListBannerDto, CreateBannerDto, UpdateBannerDto>, IBannerService
     {
-        private readonly IBannerDal _bannerDal;
-
-        public BannerManager(IBannerDal bannerDal)
+        public BannerManager(IMapper mapper, IGenericDal<Banner> genericDal) : base(mapper, genericDal)
         {
-            _bannerDal = bannerDal;
-        }
-
-        public void TCreate(Banner entity)
-        {
-           _bannerDal.Create(entity);
-        }
-
-        public void TDelete(int id)
-        {
-            _bannerDal.Delete(id);
-        }
-
-        public List<Banner> TGetAll()
-        {
-            return _bannerDal.GetAll(); 
-        }
-
-        public Banner TGetById(int id)
-        {
-            return _bannerDal.GetById(id);
-        }
-
-        public void TUpdate(Banner entity)
-        {
-           _bannerDal.Update(entity);
         }
     }
 }

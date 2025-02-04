@@ -12,70 +12,10 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Concrete
 {
-    public class FeatureManager : IFeatureService
+    public class FeatureManager : GenericManager<Feature, ToListFeatureDTO, CreateFeatureDTO, UpdateFeatureDTO>,IFeatureService
     {
-
-        private readonly IFeatureDal _featureDal;
-
-        private readonly IMapper _mapper;
-
-        public FeatureManager(IFeatureDal featureDal, IMapper mapper)
+        public FeatureManager(IMapper mapper, IGenericDal<Feature> genericDal) : base(mapper, genericDal)
         {
-            _featureDal = featureDal;
-            _mapper = mapper;
-        }
-
-        public void TCreate(Feature entity)
-        {
-            _featureDal.Create(entity);
-        }
-
-      
-
-        public void TDelete(int id)
-        {
-            _featureDal.Delete(id);
-        }
-
-        public List<Feature> TGetAll()
-        {
-            return _featureDal.GetAll();
-        }
-
-        public Feature TGetById(int id)
-        {
-
-            return _featureDal.GetById(id);
-        }
-
-        public void TUpdate(Feature entity)
-        {
-
-            _featureDal.Update(entity);
-        }
-
-
-        public void TCreateN(Feature entity)
-        {
-            _featureDal.Create(_mapper.Map<Feature>(entity));
-        }
-
-        public List<BaseDto> TListN(BaseEntity entity)
-        {
-            
-            return 
-        }
-
-       
-
-        public BaseDto TUpdate_GetN(Feature entity)
-        {
-            
-        }
-
-        public Feature T_Update_PostN(Feature entity)
-        {
-           
         }
     }
 }

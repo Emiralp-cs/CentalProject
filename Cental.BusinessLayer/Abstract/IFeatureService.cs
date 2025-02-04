@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Abstract
 {
-    public interface IFeatureService:IGenericService<Feature>
+    public interface IFeatureService : IGenericService<Feature, ToListFeatureDTO, CreateFeatureDTO, UpdateFeatureDTO>
     {
     }
 }

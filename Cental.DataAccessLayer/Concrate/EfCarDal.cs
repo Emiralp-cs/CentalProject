@@ -12,15 +12,17 @@ using System.Threading.Tasks;
 namespace Cental.DataAccessLayer.Concrate
 {
     public class EfCarDal : GenericRepository<Car>, ICarDal
-    {
+    {   
+        
+
+
         public EfCarDal(CentalContext context) : base(context)
         {
         }
 
         public List<Car> GetCarsWithBrands()
-        {   
-            //Eager Loading 
-           return _context.Cars.Include(x => x.Brand).ToList();
+        {
+          return  _context.Cars.Include(x => x.Brand).ToList();
         }
     }
 }

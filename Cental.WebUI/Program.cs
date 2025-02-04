@@ -5,6 +5,7 @@ using Cental.DataAccessLayer.Abstract;
 using Cental.DataAccessLayer.Concrate;
 using Cental.DataAccessLayer.Context;
 using Cental.DataAccessLayer.Repositories;
+using Cental.EntityLayer.Entities;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using System.Reflection;
@@ -33,7 +34,11 @@ builder.Services.AddScoped<IBrandDal, EfBrandDal>();
 builder.Services.AddScoped<IBrandService, BrandManager>();
 
 builder.Services.AddScoped<ICarDal, EfCarDal>();
-builder.Services.AddScoped<ICarService, CarManager>();
+builder.Services.AddScoped<ICarService,CarManager>();
+
+builder.Services.AddScoped(typeof(IGenericDal<>), typeof(GenericRepository<>));
+
+
 
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters().AddValidatorsFromAssemblyContaining<CreateBrandValidator>();
 

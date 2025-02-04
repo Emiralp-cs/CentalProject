@@ -13,19 +13,16 @@ namespace Cental.BusinessLayer.Concrete
 {
     public class CarManager : GenericManager<Car, ToListCarDto, CreateCarDto, UpdateCarDto>,ICarService
     {
-
         private readonly ICarDal _cardal;
-
-       
-
-        public CarManager(IMapper mapper, IGenericDal<Car> genericDal,ICarDal cardal) : base(mapper, genericDal)
+        
+        public CarManager(IMapper mapper, IGenericDal<Car> genericDal,ICarDal carDal) : base(mapper, genericDal)
         {
-            _cardal = cardal;
+           _cardal = carDal;
         }
 
-        public List<Car> TGetCarsWithBrands()
+        public List<Car> TGetCarWithBrands()
         {
-             return _cardal.GetCarsWithBrands();
+            return _cardal.GetCarsWithBrands();
         }
     }
 }
