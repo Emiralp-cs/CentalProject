@@ -19,7 +19,8 @@ namespace Cental.WebUI.Controllers
             var values = _aboutService.TGetAll();
 
             var result = values.Select(about => new ToListAboutDto
-            {
+            {   
+
                 AboutId = about.AboutId,
                 Description1 = about.Description1,
                 Description2 = about.Description2,
