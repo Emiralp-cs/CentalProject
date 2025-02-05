@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Cental.BusinessLayer.Abstract;
+using Cental.BusinessLayer.Extensions.Enums;
 using Cental.DataAccessLayer.Concrate;
 using Cental.DTOLayer.CarDtos;
 using Cental.DTOLayer.Enums;
+using Cental.EntityLayer.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -10,21 +12,21 @@ namespace Cental.WebUI.Controllers
 {
     public class AdminCarController : Controller
     {
+        private readonly IBrandService _brandService;
 
         private readonly ICarService _carService;
 
         private readonly IMapper _mapper;
-        public AdminCarController(ICarService carService, IMapper mapper)
+        public AdminCarController(ICarService carService, IMapper mapper, IBrandService brandService)
         {
             _carService = carService;
             _mapper = mapper;
+            _brandService = brandService;
         }
 
         public IActionResult Index()
         {
-            var values = _carService.TGetCarWithBrands();
-
-            var result = _mapper.Map<List<ToListCarDto>>(values);
+            var result = _carService.TListN();
 
             return View(result);
         }
@@ -33,20 +35,17 @@ namespace Cental.WebUI.Controllers
         [HttpGet]
         public IActionResult CreateCar()
         {
-            var gasTypes = Enum.GetValues(typeof(GasTypes));
-            
-            var gasTypeSelectList = new List<SelectListItem>();
 
-            foreach (var gasType in gasTypes) 
-            {
-                gasTypeSelectList.Add(new SelectListItem
-                {
-                    Text = gasType.ToString(),
-                    Value = gasType.ToString()
-                });
-            }
+            ViewBag.gasTypes = GetEnumValues.GetEnums<GasTypes>();
+            ViewBag.gearTypes = GetEnumValues.GetEnums<GearTypes>();
+            ViewBag.transmissionTypes = GetEnumValues.GetEnums<TransmissionTypes>();
+            ViewBag.brands = (from x in _brandService.TGetAll()
+                              select new SelectListItem
+                              {
+                                  Text = x.BrandName,
+                                  Value = x.BrandId.ToString()
 
-            ViewBag.gasTypes = gasTypeSelectList;
+                              }).ToList();
 
             return View();
         }
@@ -55,7 +54,13 @@ namespace Cental.WebUI.Controllers
         [HttpPost]
         public IActionResult CreateCar(CreateCarDto NewCar)
         {
+
+
+
+
             _carService.TCreateN(NewCar);
+
+
 
             return RedirectToAction("Index");
         }

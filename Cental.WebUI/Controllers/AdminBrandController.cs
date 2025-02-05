@@ -18,7 +18,7 @@ namespace Cental.WebUI.Controllers
 
         public IActionResult Index()
         {
-           var values = _brandService.TListN;
+            var values = _brandService.TListN();
 
             return View(values);
         }
@@ -46,7 +46,7 @@ namespace Cental.WebUI.Controllers
             }
 
 
-           _brandService.TCreateN(NewBrand);
+            _brandService.TCreateN(NewBrand);
 
             return RedirectToAction("Index");
         }
@@ -60,7 +60,7 @@ namespace Cental.WebUI.Controllers
             var value = _brandService.TGetById(id);
 
             //Brandi UpdateBrandDtoya mapleme
-           var result =  _brandService.TUpdate_GetN;
+            var result = _brandService.TUpdate_GetN;
 
 
             return View(result);
@@ -72,7 +72,7 @@ namespace Cental.WebUI.Controllers
         {
 
             //UpdateBrandDtoyu Brande mapleme
-           _brandService.T_Update_PostN(NewBrand);
+            _brandService.T_Update_PostN(NewBrand);
 
 
             return RedirectToAction("Index");
