@@ -19,6 +19,13 @@ var builder = WebApplication.CreateBuilder(args);
 //about service gördüðün zaman aboutmanager sýnýfýndan bir nesne örneði al ve iþlemi onunla yap 
 builder.Services.AddDbContext<CentalContext>();
 
+//Identity Konfigürasyonu baþlangýç
+
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<CentalContext>();
+
+//Identity Konfigürasyonu bitiþ
+
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddScoped<IAboutDal, EfAboutDal>();
