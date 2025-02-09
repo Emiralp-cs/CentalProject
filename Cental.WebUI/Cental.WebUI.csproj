@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Cental.BusinessLayer\Cental.BusinessLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\adminImage\" />
+  </ItemGroup>
+
 </Project>

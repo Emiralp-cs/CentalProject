@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using Cental.DTOLayer.UserDtos;
 using Cental.EntityLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cental.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class RegisterController : Controller
     {
         private readonly IMapper _mapper;
@@ -42,7 +44,7 @@ namespace Cental.WebUI.Controllers
             {
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(error.Code, error.Description);
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
                 return View(newUser);
             }

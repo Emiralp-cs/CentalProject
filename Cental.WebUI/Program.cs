@@ -1,5 +1,6 @@
 using Cental.BusinessLayer.Abstract;
 using Cental.BusinessLayer.Concrete;
+using Cental.BusinessLayer.Validators;
 using Cental.BusinessLayer.Validators.BrandValidator;
 using Cental.DataAccessLayer.Abstract;
 using Cental.DataAccessLayer.Concrate;
@@ -8,6 +9,7 @@ using Cental.DataAccessLayer.Repositories;
 using Cental.EntityLayer.Entities;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +23,12 @@ builder.Services.AddDbContext<CentalContext>();
 
 //Identity Konfigürasyonu baþlangýç
 
-builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<CentalContext>();
+builder.Services.AddIdentity<AppUser, AppRole>(options =>
+{
+    options.Password.RequiredLength = 8;//Minimum þifre uzunluðu en az 8 karakterden oluþmalýdýr!
+    options.User.RequireUniqueEmail = true;
+}).AddEntityFrameworkStores<CentalContext>()
+  .AddErrorDescriber<CustomErrorDescriber>();
 
 //Identity Konfigürasyonu bitiþ
 
@@ -41,7 +48,9 @@ builder.Services.AddScoped<IBrandDal, EfBrandDal>();
 builder.Services.AddScoped<IBrandService, BrandManager>();
 
 builder.Services.AddScoped<ICarDal, EfCarDal>();
-builder.Services.AddScoped<ICarService,CarManager>();
+builder.Services.AddScoped<ICarService, CarManager>();
+
+builder.Services.AddScoped<IImageService, ImageService>();
 
 builder.Services.AddScoped(typeof(IGenericDal<>), typeof(GenericRepository<>));
 
@@ -51,7 +60,20 @@ builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsi
 
 
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(option =>
+{
+    option.Filters.Add(new AuthorizeFilter());
+});
+
+
+
+
+builder.Services.ConfigureApplicationCookie(cfg =>
+{
+    cfg.LoginPath = "/Login/SignIn";
+    cfg.LogoutPath = "/Login/Logout";
+});
+
 
 var app = builder.Build();
 
@@ -67,8 +89,10 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication(); //sistemde kayýtlý mý deðil mi ? 
+app.UseAuthorization();  //sistemde kayýtlýysa yetkisi var mý ?
 
-app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",

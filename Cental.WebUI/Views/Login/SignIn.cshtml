@@ -1,14 +1,15 @@
-﻿@model UserRegisterDto
+﻿@model UserLoginDto
 @{
     Layout = null;
 }
+
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <title>Cental Kayıt Sayfası</title>
+    <title>Cental Giriş Paneli</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 11]>
@@ -23,7 +24,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="Phoenixcoded" />
     <!-- Favicon icon -->
-    <link rel="icon" href="~/~/flat-able-admin/dist/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/flat-able-admin/dist/assets/images/favicon.ico" type="image/x-icon">
 
     <!-- vendor css -->
     <link rel="stylesheet" href="~/flat-able-admin/dist/assets/css/style.css">
@@ -32,53 +33,44 @@
 
 
 </head>
+
 <body>
-    <!-- [ auth-signup ] start -->
+    <!-- [ auth-signin ] start -->
     <div class="auth-wrapper">
         <div class="auth-content text-center">
             <img src="~/flat-able-admin/dist/assets/images/logo.png" alt="" class="img-fluid mb-4">
             <div class="card borderless">
-                <div class="row align-items-center text-center">
+                <div class="row align-items-center ">
                     <div class="col-md-12">
                         <form method="post">
                             <div class="card-body">
-                                <h4 class="f-w-400">Kayıt Formu</h4>
+                                <h4 class="mb-3 f-w-400">Giriş Sayfası</h4>
                                 <hr>
-                                <div class="form-group mb-3">
-                                    <input type="text" class="form-control" asp-for="FirstName" placeholder="Ad">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input type="text" class="form-control" asp-for="LastName" placeholder="Soyad">
-                                </div>
-
                                 <div class="form-group mb-3">
                                     <input type="text" class="form-control" asp-for="UserName" placeholder="Kullanıcı Adı">
                                 </div>
-                                <div class="form-group mb-3">
-                                    <input required type="email" class="form-control" asp-for="Email" placeholder="E-posta">
-                                </div>
                                 <div class="form-group mb-4">
-                                    <input required type="password" class="form-control" asp-for="Password" placeholder="Şifre">
+                                    <input type="password" class="form-control" asp-for="Password" placeholder="Şifre">
                                 </div>
-                                <div class="form-group mb-4">
-                                    <input required type="password" class="form-control" asp-for="ConfirmPassword" placeholder="Şifreyi Doğrulayın">
-                                </div>
+
+
                                 <p style="color:red">
                                     @Html.ValidationSummary()
                                 </p>
 
-                                <button class="btn btn-primary btn-block mb-4" type="submit">Kayıt Ol</button>
+
+                                <button class="btn btn-block btn-primary mb-4">Giriş Yap</button>
                                 <hr>
-                                <p class="mb-2">Zaten bir hesabın var mı ? <a href="/Login/Index" class="f-w-400">Giriş Yap</a></p>
+
+                                <p class="mb-0 text-muted">Bir hesabın yok mu ?<a href="/Register/SignUp" class="f-w-400">Kayıt Ol</a></p>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- [ auth-signup ] end -->
+    <!-- [ auth-signin ] end -->
     <!-- Required Js -->
     <script src="~/flat-able-admin/dist/assets/js/vendor-all.min.js"></script>
     <script src="~/flat-able-admin/dist/assets/js/plugins/bootstrap.min.js"></script>
