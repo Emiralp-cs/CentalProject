@@ -1,0 +1,18 @@
+﻿@model CreateRoleDto
+@{
+    ViewData["Title"] = "Yeni Rol Ekle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<form method="post">
+
+    <label>Rol Adı</label>
+    <input asp-for="Name" class="form-control"/>
+    <br />
+    <p>
+        @Html.ValidationSummary()
+    </p>
+
+    <button class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+
+</form>

@@ -4,6 +4,7 @@ using Cental.DTOLayer.UserDtos;
 using Cental.EntityLayer.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cental.WebUI.Controllers
 {
@@ -28,7 +29,7 @@ namespace Cental.WebUI.Controllers
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            var profileEditDto = _mapper.Map<ProfileEditDto>(User);
+            var profileEditDto = _mapper.Map<ProfileEditDto>(user);
 
             return View(profileEditDto);
         }
@@ -43,16 +44,29 @@ namespace Cental.WebUI.Controllers
 
             if (IsPassword)
             {
-                if (UpdateAdmin.AdminProfileImageFile != null)
+                if (UpdateAdmin.ImageFile != null)
                 {
-                    UpdateAdmin.AdminProfileImageUrl = await _imageService.SaveImageAsync(UpdateAdmin.AdminProfileImageFile);
+                    try
+                    {
+                        UpdateAdmin.ImageUrl = await _imageService.SaveImageAsync(UpdateAdmin.ImageFile, "adminImage");
+                    }
+                    catch (Exception ex)
+                    {
+
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                        return View(UpdateAdmin);
+                    }
                 }
 
 
-                var updateUser = _mapper.Map<AppUser>(UpdateAdmin);
+                user.FirstName = UpdateAdmin.FirstName;
+                user.LastName = UpdateAdmin.LastName;
+                user.Email = UpdateAdmin.Email;
+                user.PhoneNumber = UpdateAdmin.PhoneNumber;
+                user.ProfilePicture = UpdateAdmin.ImageUrl;
 
 
-                var result = await _userManager.UpdateAsync(updateUser);
+                var result = await _userManager.UpdateAsync(user);
 
 
                 if (result.Succeeded)
@@ -70,9 +84,12 @@ namespace Cental.WebUI.Controllers
                     return View(UpdateAdmin);
                 }
             }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Girdiğiniz şifre hatalı güncelleme yapılamadı!");
+                return View(UpdateAdmin);
+            }
 
-            ModelState.AddModelError(string.Empty, "Girdiğiniz şifre hatalı güncelleme yapılamadı");
-            return View(UpdateAdmin);
 
         }
     }

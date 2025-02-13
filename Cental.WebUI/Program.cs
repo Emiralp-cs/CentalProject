@@ -89,6 +89,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+
 app.UseAuthentication(); //sistemde kayýtlý mý deðil mi ? 
 app.UseAuthorization();  //sistemde kayýtlýysa yetkisi var mý ?
 

@@ -65,5 +65,7 @@ namespace Cental.BusinessLayer.Validators
                 Description = $"{userName} kullanıcı adı daha önce sisteme kayıt olmuş lütfen başka bir kullanıcı adı seçin!"
             };
         }
+
+       
     }
 }

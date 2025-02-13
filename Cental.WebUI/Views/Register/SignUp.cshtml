@@ -37,7 +37,6 @@
     <div class="auth-wrapper">
         <div class="auth-content text-center">
             <img src="~/flat-able-admin/dist/assets/images/logo.png" alt="" class="img-fluid mb-4">
-            <div class="card borderless">
                 <div class="row align-items-center text-center">
                     <div class="col-md-12">
                         <form method="post">
@@ -45,23 +44,29 @@
                                 <h4 class="f-w-400">Kayıt Formu</h4>
                                 <hr>
                                 <div class="form-group mb-3">
+                                    @Html.ValidationMessageFor(x => x.FirstName)
                                     <input type="text" class="form-control" asp-for="FirstName" placeholder="Ad">
                                 </div>
                                 <div class="form-group mb-3">
+                                    @Html.ValidationMessageFor(x => x.LastName)
                                     <input type="text" class="form-control" asp-for="LastName" placeholder="Soyad">
                                 </div>
 
                                 <div class="form-group mb-3">
+                                    @Html.ValidationMessageFor(x => x.UserName)
                                     <input type="text" class="form-control" asp-for="UserName" placeholder="Kullanıcı Adı">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input required type="email" class="form-control" asp-for="Email" placeholder="E-posta">
+                                    @Html.ValidationMessageFor(x => x.Email)
+                                    <input type="email" class="form-control" asp-for="Email" placeholder="E-posta">
                                 </div>
                                 <div class="form-group mb-4">
-                                    <input required type="password" class="form-control" asp-for="Password" placeholder="Şifre">
+                                    @Html.ValidationMessageFor(x => x.Password)
+                                    <input type="password" class="form-control" asp-for="Password" placeholder="Şifre">
                                 </div>
                                 <div class="form-group mb-4">
-                                    <input required type="password" class="form-control" asp-for="ConfirmPassword" placeholder="Şifreyi Doğrulayın">
+                                    @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                                    <input type="password" class="form-control" asp-for="ConfirmPassword" placeholder="Şifreyi Doğrulayın">
                                 </div>
                                 <p style="color:red">
                                     @Html.ValidationSummary()
@@ -75,7 +80,7 @@
 
                     </div>
                 </div>
-            </div>
+           
         </div>
     </div>
     <!-- [ auth-signup ] end -->

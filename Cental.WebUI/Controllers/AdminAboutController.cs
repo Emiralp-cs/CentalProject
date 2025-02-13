@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Cental.WebUI.Controllers
 {
-
+    [Authorize(Roles = "Admin")]
     public class AdminAboutController : Controller
     {
         private readonly IAboutService _aboutService;
@@ -21,7 +21,7 @@ namespace Cental.WebUI.Controllers
             var values = _aboutService.TGetAll();
 
             var result = values.Select(about => new ToListAboutDto
-            {   
+            {
 
                 AboutId = about.AboutId,
                 Description1 = about.Description1,
