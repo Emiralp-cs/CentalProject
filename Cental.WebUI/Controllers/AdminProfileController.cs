@@ -2,12 +2,15 @@
 using Cental.BusinessLayer.Abstract;
 using Cental.DTOLayer.UserDtos;
 using Cental.EntityLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace Cental.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class AdminProfileController : Controller
     {
 

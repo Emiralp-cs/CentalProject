@@ -25,8 +25,9 @@ namespace Cental.WebUI.Controllers
 
 
         [HttpGet]
-        public IActionResult SignIn()
+        public async Task<IActionResult> SignIn()
         {
+            await _signInManager.SignOutAsync();
             return View();
         }
 

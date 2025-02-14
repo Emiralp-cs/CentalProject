@@ -48,7 +48,7 @@ namespace Cental.WebUI.Controllers
                 }
                 return View(newUser);
             }
-            return RedirectToAction("Index", "Login");
+            return RedirectToAction("SignIn", "Login");
 
         }
     }

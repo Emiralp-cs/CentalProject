@@ -2,10 +2,13 @@
 using Cental.BusinessLayer.Abstract;
 using Cental.DTOLayer.BannerDtos;
 using Cental.EntityLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cental.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class AdminBannerController : Controller
     {
         private readonly IBannerService _bannerService;

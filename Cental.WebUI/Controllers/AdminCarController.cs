@@ -5,11 +5,14 @@ using Cental.DataAccessLayer.Concrate;
 using Cental.DTOLayer.CarDtos;
 using Cental.DTOLayer.Enums;
 using Cental.EntityLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Cental.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class AdminCarController : Controller
     {
         private readonly IBrandService _brandService;

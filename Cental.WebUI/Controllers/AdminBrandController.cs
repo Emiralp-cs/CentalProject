@@ -2,11 +2,14 @@
 using Cental.BusinessLayer.Abstract;
 using Cental.DTOLayer.BrandDtos;
 using Cental.EntityLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 
 namespace Cental.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class AdminBrandController : Controller
     {
         private readonly IBrandService _brandService;

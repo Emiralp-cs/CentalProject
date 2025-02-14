@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
 using Cental.DTOLayer.RoleDtos;
 using Cental.EntityLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cental.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class RoleController : Controller
     {
 

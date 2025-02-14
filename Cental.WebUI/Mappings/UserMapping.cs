@@ -12,8 +12,9 @@ namespace Cental.WebUI.Mappings
 
             CreateMap<AppUser, ProfileEditDto>().ReverseMap();
 
-            CreateMap<AppUser,ProfileEditDto>().ForMember(destination => destination.ImageUrl, o => o.MapFrom(source => source.ProfilePicture));
+            CreateMap<AppUser, ProfileEditDto>().ForMember(destination => destination.ImageUrl, o => o.MapFrom(source => source.ProfilePicture));
 
+            CreateMap<AppUser, ResultUserDto>().ReverseMap();
         }
     }
 }
