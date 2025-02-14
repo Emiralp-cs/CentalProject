@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Cental.WebUI.ViewComponents.AdminLayout
 {
     public class _AdminLayoutSideBarComponent : ViewComponent
-    {   
+    {
 
         private readonly UserManager<AppUser> _userManager;
 
@@ -14,7 +14,7 @@ namespace Cental.WebUI.ViewComponents.AdminLayout
             _userManager = userManager;
         }
 
-        public   async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
