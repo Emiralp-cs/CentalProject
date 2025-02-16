@@ -13,6 +13,7 @@ namespace Cental.DTOLayer.UserSocialDtos
         public string Url { get; set; }
         public string Icon { get; set; }
         public string Title { get; set; }
+        public int UserId { get; set; }
         public virtual AppUser User { get; set; }
 
     }
