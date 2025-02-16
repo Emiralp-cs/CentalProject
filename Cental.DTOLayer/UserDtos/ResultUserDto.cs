@@ -15,6 +15,7 @@ namespace Cental.DTOLayer.UserDtos
         public string UserName { get; set; }
         public string Email { get; set; }
         public IList<string> Roles { get; set; }
+        public string ProfilePicture { get; set; }
 
     }
 }

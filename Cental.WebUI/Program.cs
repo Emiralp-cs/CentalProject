@@ -50,6 +50,11 @@ builder.Services.AddScoped<IBrandService, BrandManager>();
 builder.Services.AddScoped<ICarDal, EfCarDal>();
 builder.Services.AddScoped<ICarService, CarManager>();
 
+builder.Services.AddScoped<IUserSocialDal, EfUserSocialDal>();
+builder.Services.AddScoped<IUserSocialService, UserSocialManager>();
+
+
+
 builder.Services.AddScoped<IImageService, ImageService>();
 
 builder.Services.AddScoped(typeof(IGenericDal<>), typeof(GenericRepository<>));
