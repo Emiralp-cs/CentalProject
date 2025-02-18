@@ -18,7 +18,7 @@
                         <label for="email">Your Email</label>
                     </div>
                 </div>
-               z <div class="col-12">
+                 <div class="col-12">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="subject" placeholder="Subject">
                         <label for="subject">Subject</label>
@@ -32,9 +32,30 @@
 
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-light w-100 py-3">Send Message</button>
+                    <button class="btn btn-light w-100 py-3" type="submit" onclick="sendMessage()">Send Message</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+
+    function sendMessage(){
+    Swal.fire({
+      title: "Mesajı Göndermek İstediğinize Emin Misiniz ?",
+      icon: "success",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Evet, Gönder!",
+      cancelButtonText: "İptal Et"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        window.location.href = "/Contact/Index";
+      }
+    });
+    }
+
+</script>

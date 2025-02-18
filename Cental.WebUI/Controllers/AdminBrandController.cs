@@ -5,6 +5,7 @@ using Cental.EntityLayer.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
+using PagedList.Core;
 
 namespace Cental.WebUI.Controllers
 {
@@ -19,9 +20,13 @@ namespace Cental.WebUI.Controllers
             _brandService = brandService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1, int pageSize = 3)
         {
-            var values = _brandService.TListN();
+            var brands = _brandService.TListN().AsQueryable();
+
+            var values = new PagedList<ToListBrandDTO>(brands,page,pageSize);
+
+            TempData["Count"] = 0;
 
             return View(values);
         }

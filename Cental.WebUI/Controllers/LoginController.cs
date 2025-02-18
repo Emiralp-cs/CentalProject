@@ -16,10 +16,13 @@ namespace Cental.WebUI.Controllers
         private readonly IMapper _mapper;
 
 
-        public LoginController(SignInManager<AppUser> signInManager, IMapper mapper)
+        private readonly UserManager<AppUser> _userManager;
+
+        public LoginController(SignInManager<AppUser> signInManager, IMapper mapper, UserManager<AppUser> userManager)
         {
             _signInManager = signInManager;
             _mapper = mapper;
+            _userManager = userManager;
         }
 
 
@@ -32,7 +35,7 @@ namespace Cental.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SignIn(UserLoginDto registeredUser,string? returnUrl)
+        public async Task<IActionResult> SignIn(UserLoginDto registeredUser, string? returnUrl)
         {
             var result = await _signInManager.PasswordSignInAsync(registeredUser.UserName, registeredUser.Password, false, false);
             if (!result.Succeeded)
@@ -41,13 +44,34 @@ namespace Cental.WebUI.Controllers
                 return View(registeredUser);
             }
 
-            if (returnUrl != null) 
+            if (returnUrl != null)
             {
                 return Redirect(returnUrl);
             }
 
 
-            return RedirectToAction("Index", "AdminAbout");
+            var user = await _userManager.FindByNameAsync(registeredUser.UserName);
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            foreach (var role in userRoles)
+            {
+                if (role == "Admin")
+                {
+                    return RedirectToAction("Index", "AdminAbout");
+                }
+
+                if (role == "Manager")
+                {
+                    return RedirectToAction("Index", "MySocial", new { area = "Manager" });
+                }
+
+                if (role == "User")
+                {
+                    return RedirectToAction("Index", "MyProfile", new { area = "User" });
+                }
+            }
+            return RedirectToAction("Index", "Default");
 
         }
 

@@ -1,0 +1,75 @@
+﻿using Cental.BusinessLayer.Abstract;
+using Cental.BusinessLayer.Extensions.Enums;
+using Cental.DataAccessLayer.Context;
+using Cental.DTOLayer.Enums;
+using Cental.EntityLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text.Json.Serialization;
+using System.Text.Json;
+
+namespace Cental.WebUI.Controllers
+{
+    [AllowAnonymous]
+    public class CarsController(ICarService _carService, IBrandService _brandService, CentalContext _context) : Controller
+    {
+        public IActionResult Index()
+        {
+            if (TempData["FilterCars"] != null)
+            {
+                var data = TempData["FilterCars"].ToString();
+                if (data != null)
+                {
+                    var filterCars = JsonSerializer.Deserialize<List<Car>>(data, new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.IgnoreCycles
+                    });
+                    return View(filterCars);
+
+                }
+            }
+            var values = _carService.TGetAll();
+            return View(values);
+
+        }
+
+        [HttpPost]
+        public IActionResult FilterCars(string brand, string gear, string gas, int year)
+        {
+            IQueryable<Car> values = _context.Cars.AsQueryable(); 
+
+            if (!string.IsNullOrEmpty(brand))  
+            {
+                values = values.Where(x => x.Brand.BrandName == brand);
+
+            }
+
+            if (!string.IsNullOrEmpty(gear))
+            {
+                values = values.Where(x => x.GearType == gear);
+
+            }
+
+            if (!string.IsNullOrEmpty(gas))
+            {
+                values = values.Where(x => x.GasType == gas);
+
+            }
+
+            if (year > 0)
+            {
+                values = values.Where(x => x.Year >= year);
+
+            }
+
+            var filterList = values.ToList(); 
+            TempData["FilterCars"] = JsonSerializer.Serialize(filterList, new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles
+            });
+            return RedirectToAction("Index");
+        }
+    }
+}
+

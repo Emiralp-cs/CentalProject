@@ -10,5 +10,11 @@ namespace Cental.WebUI.Controllers
         {
             return View();
         }
+
+
+        public IActionResult SendMessage()
+        {
+            return NoContent();
+        }
     }
 }

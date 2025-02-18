@@ -22,6 +22,7 @@ namespace Cental.BusinessLayer.Extensions.Enums
                 {
                     Text = item.ToString(),
                     Value = item.ToString()
+                    
                 });
             }
 
