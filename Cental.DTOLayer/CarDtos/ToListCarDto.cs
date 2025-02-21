@@ -20,7 +20,7 @@ namespace Cental.DTOLayer.CarDtos
         public string? Transmission { get; set; }
         public int Kilometer { get; set; }
         public int BrandId { get; set; }
-
+        public virtual List<Review> ? Reviews { get; set; }
         public Brand Brand { get; set; } //navigation Property
     }
 }

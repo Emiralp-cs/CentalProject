@@ -4,9 +4,6 @@
     Layout = "~/Views/UILayout/UILayout.cshtml";
 }
 
-
-
-<!-- Car categories Start -->
 <div class="container-fluid categories py-5">
     <div class="container py-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
@@ -16,43 +13,71 @@
             </p>
         </div>
 
-
         @await Component.InvokeAsync("_CarFilterCars")
 
-
         <div class="container">
-            <div class="row">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 @foreach (var item in Model)
                 {
-                    <div class="col-md-4 col-sm-6 mb-4">
-                        <div class="card h-100 shadow-sm">
-                            <img src="@item.ImageUrl" class="card-img-top" alt="@item.Brand.BrandName @item.ModelName">
-                            <div class="card-body">
-                                <h5 class="card-title">@item.Brand.BrandName @item.ModelName</h5>
-                                <p class="text-muted">Puanı: @(item.Reviews.Any() ? item.Reviews.Average(x => x.Rating) : "Değerlendirilmedi")</p>
+                    <div class="col">
+                        <form method="post" action="/Cars/Tasiyici">
+                            <input type="hidden" name="ImageUrl" value="@item.ImageUrl" />
+                            <input type="hidden" name="Price" value="@item.Price" />
+                            <input type="hidden" name="SeatCount" value="@item.SeatCount" />
+                            <input type="hidden" name="GearType" value="@item.GearType" />
+                            <input type="hidden" name="GasType" value="@item.GasType" />
+                            <input type="hidden" name="Year" value="@item.Year" />
+                            <input type="hidden" name="Kilometer" value="@item.Kilometer" />
+                            <input type="hidden" name="BrandAndModel" value="@string.Join(" ",item.Brand.BrandName,item.ModelName)" />
+                            <input type="hidden" name="Review" value="@(item.Reviews.Any() ? item.Reviews.Average(x => x.Rating): -1)" />
+                            <input type="hidden" name="Transmission" value="@item.Transmission" />
 
-                                <h4 class="text-primary">@item.Price ₺ / Günlük</h4>
-
-                                <div class="d-flex justify-content-between text-secondary my-3">
-                                    <span><i class="fa fa-users"></i> @item.SeatCount Koltuk</span>
-                                    <span><i class="fa fa-car"></i> @item.Transmission</span>
-                                    <span><i class="fa fa-gas-pump"></i> @item.GasType</span>
+                            <div class="card h-100 shadow-sm">
+                                <img src="@item.ImageUrl" class="card-img-top" alt="@item.Brand.BrandName @item.ModelName">
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.Brand.BrandName @item.ModelName</h5>
+                                    <p class="text-muted">Puanı: @(item.Reviews.Any() ? item.Reviews.Average(x => x.Rating) : "Değerlendirilmedi")</p>
+                                    <h4 class="text-primary">@item.Price ₺ / Günlük</h4>
+                                    <div class="d-flex justify-content-between text-secondary my-3">
+                                        <span><i class="fa fa-users"></i> @item.SeatCount Koltuk</span>
+                                        <span><i class="fa fa-car"></i> @item.Transmission</span>
+                                        <span><i class="fa fa-gas-pump"></i> @item.GasType</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between text-secondary">
+                                        <span><i class="fa fa-calendar"></i> @item.Year</span>
+                                        <span><i class="fa fa-cogs"></i> @item.GearType</span>
+                                        <span><i class="fa fa-road"></i> @item.Kilometer km</span>
+                                    </div>
                                 </div>
-
-                                <div class="d-flex justify-content-between text-secondary">
-                                    <span><i class="fa fa-calendar"></i> @item.Year</span>
-                                    <span><i class="fa fa-cogs"></i> @item.GearType</span>
-                                    <span><i class="fa fa-road"></i> @item.Kilometer km</span>
+                                <div class="card-footer bg-white">
+                                    <button type="submit" class="btn btn-primary w-100 rounded-pill">Hemen Kirala</button>
                                 </div>
                             </div>
-                            <div class="card-footer bg-white">
-                                <a href="/Default/Index" class="btn btn-primary w-100 rounded-pill">Hemen Kirala</a>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 }
             </div>
         </div>
     </div>
 </div>
-<!-- Car categories End -->
+
+<style>
+    .card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        flex-grow: 1;
+    }
+
+    .card-footer {
+        margin-top: auto;
+    }
+</style>

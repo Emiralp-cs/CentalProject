@@ -8,6 +8,7 @@ namespace Cental.WebUI.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.ActivePage = "Default";
             return View();
         }
     }

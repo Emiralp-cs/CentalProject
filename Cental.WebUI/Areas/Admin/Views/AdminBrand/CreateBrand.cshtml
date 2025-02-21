@@ -1,0 +1,22 @@
+﻿@using Cental.DTOLayer.BrandDtos
+@model CreateBrandDTO
+@{
+    ViewData["Title"] = "Yeni Marka Oluştur";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
+
+}
+
+<form method="post">
+    <label>Marka Adı</label>
+
+    <input type="text" minlength="3" asp-for="BrandName" class="form-control" />
+    <span asp-validation-for="BrandName" class="text-danger"></span>
+
+
+    <br />
+
+    <button class="btn btn-primary"> <i class="fa fa-save"></i></button>
+
+</form>
+
+

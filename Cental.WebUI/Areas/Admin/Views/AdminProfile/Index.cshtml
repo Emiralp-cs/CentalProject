@@ -1,0 +1,52 @@
+﻿@using Cental.DTOLayer.UserDtos
+@model ProfileEditDto
+@{
+    ViewData["Title"] = "Profil Bilgileri Güncelleme";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+
+    <div class="text-center">
+        <img src="@Model.ImageUrl" style="width:100px;height:100px" alt="Profil Resmi" />
+        <input type="file" asp-for="ImageFile" />
+    </div>
+
+    <input type="hidden" asp-for="ImageUrl" />
+    <div class="row">
+        <div class="col-lg-6">
+            <label>Ad</label>
+            <input type="text" asp-for="FirstName" class="form-control" required />
+            <br />
+
+            <label>Soyad</label>
+            <input type="text" asp-for="LastName" class="form-control" required />
+            <br />
+        </div>
+
+        <div class="col-lg-6">
+            <label>E-Posta</label>
+            <input type="email" asp-for="Email" class="form-control" required />
+            <br />
+
+            <label>Telefon Numarası</label>
+            <input type="tel" asp-for="PhoneNumber" class="form-control" />
+            <br />
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="text-center">
+                <label>Bilgilerinizi Güncellemek İçin Şifrenizi Girin</label>
+                <input type="password" asp-for="CurrentPassword" class="form-control" required />
+                <br />
+                <button type="submit" class="btn btn-info">Bilgileri Güncelle</button>
+            </div>
+        </div>
+    </div>
+
+    <p>
+        @Html.ValidationSummary()
+    </p>
+</form>

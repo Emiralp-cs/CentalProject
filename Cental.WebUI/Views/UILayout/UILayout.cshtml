@@ -78,10 +78,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto py-0">
-                        <a href="/Default/Index" class="nav-item nav-link active">Ana Sayfa</a>
-                        <a href="/About/Index" class="nav-item nav-link">Hakkımızda</a>
-                        <a href="/Service/Index" class="nav-item nav-link">>Hizmetler</a>
-                        <a href="/Contact/Index" class="nav-item nav-link">İletişim</a>
+                        <a href="/Default/Index" class="nav-item nav-link @(ViewBag.ActivePage == "Default"? "active": "")">Ana Sayfa</a>
+                        <a href="/Cars/Index" class="nav-item nav-link @(ViewBag.ActivePage == "Cars"? "active": "")">Arabalar</a>
+                        <a href="/About/Index" class="nav-item nav-link @(ViewBag.ActivePage == "About"? "active": "")">Hakkımızda</a>
+                        <a href="/Service/Index" class="nav-item nav-link @(ViewBag.ActivePage == "Service"? "active": "")">Hizmetler</a>
+                        <a href="/Contact/Index" class="nav-item nav-link @(ViewBag.ActivePage == "Contact"? "active": "")">İletişim</a>
                     </div>
                     <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Hadi Başlayalım</a>
                 </div>

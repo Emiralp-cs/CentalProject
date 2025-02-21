@@ -19,8 +19,12 @@ namespace Cental.EntityLayer.Entities
         public string Transmission { get; set; }
         public int Kilometer { get; set; }
         public int BrandId { get; set; }
-
+        public int RoleId { get; set; }
+        public int UserId { get; set; }
+        public virtual AppRole Role { get; set; }
+        public virtual AppUser User { get; set; }
         public virtual Brand Brand { get; set; } //navigation Property
+        public bool IsRented { get; set; }
         public virtual List<Review> Reviews { get; set; }
 
 

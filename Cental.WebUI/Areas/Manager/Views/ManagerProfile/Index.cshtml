@@ -1,0 +1,62 @@
+﻿@using Cental.DTOLayer.UserDtos
+@model ProfileEditDto
+@{
+    ViewData["Title"] = "Profil Bilgileri Güncelleme";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+}
+
+
+<form method="post" enctype="multipart/form-data">
+
+    <div class="text-center">
+        <img src="@Model.ImageUrl" style="width:100px;height:100px" alt="Profil Resmi" />
+        <input type="file" asp-for="ImageFile" />
+
+        <span class="text-danger">@ViewBag.WrongType</span>
+    </div>
+
+    <input type="hidden" asp-for="ImageUrl" />
+    <div class="row">
+        <div class="col-lg-6">
+            <label>Ad</label>
+            <input type="text" asp-for="FirstName" class="form-control" required />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+            <br />
+
+            <label>Soyad</label>
+            <input type="text" asp-for="LastName" class="form-control" required />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+            <br />
+        </div>
+
+        <div class="col-lg-6">
+            <label>E-Posta</label>
+            <input type="email" asp-for="Email" class="form-control" required />
+            <span asp-validation-for="Email" class="text-danger"></span>
+
+            <br />
+
+            <label>Telefon Numarası</label>
+            <input type="tel" asp-for="PhoneNumber" class="form-control" />
+            <br />
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="text-center">
+                <label>Bilgilerinizi Güncellemek İçin Şifrenizi Girin</label>
+                <input type="password" asp-for="CurrentPassword" class="form-control" required />
+                <br />
+                <span asp-validation-for="CurrentPassword" class="text-danger"></span>
+                <span class="text-danger">@ViewBag.WrongPassword</span>
+                <span class="text-success">@ViewBag.Success</span>
+                <br />
+                <button type="submit" class="btn btn-info">Bilgileri Güncelle</button>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+

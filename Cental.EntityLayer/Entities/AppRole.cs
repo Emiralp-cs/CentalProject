@@ -9,6 +9,6 @@ namespace Cental.EntityLayer.Entities
 {
     public class AppRole : IdentityRole<int>
     {
-
+        public virtual List<Car> Cars { get; set; }
     }
 }

@@ -267,6 +267,9 @@ namespace Cental.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsRented")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Kilometer")
                         .HasColumnType("int");
 
@@ -277,6 +280,9 @@ namespace Cental.DataAccessLayer.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
                     b.Property<int>("SeatCount")
                         .HasColumnType("int");
 
@@ -284,12 +290,19 @@ namespace Cental.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
                     b.HasKey("CarId");
 
                     b.HasIndex("BrandId");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Cars");
                 });
@@ -556,7 +569,23 @@ namespace Cental.DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Cental.EntityLayer.Entities.AppRole", "Role")
+                        .WithMany("Cars")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Cental.EntityLayer.Entities.AppUser", "User")
+                        .WithMany("Cars")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Brand");
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Cental.EntityLayer.Entities.Review", b =>
@@ -632,8 +661,15 @@ namespace Cental.DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Cental.EntityLayer.Entities.AppRole", b =>
+                {
+                    b.Navigation("Cars");
+                });
+
             modelBuilder.Entity("Cental.EntityLayer.Entities.AppUser", b =>
                 {
+                    b.Navigation("Cars");
+
                     b.Navigation("UserSocials");
                 });
 

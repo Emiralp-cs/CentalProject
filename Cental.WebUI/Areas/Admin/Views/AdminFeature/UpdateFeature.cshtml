@@ -1,0 +1,32 @@
+﻿@using Cental.DTOLayer.FeatureDtos
+@model UpdateFeatureDTO
+@{
+    ViewData["Title"] = "UpdateFeature";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
+}
+
+<h1>Öne Çıkan Alan Güncelleme Sayfası</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="FeatureId" />
+
+    <label>Başlık</label>
+    <input type="text" class="form-control" asp-for="Title" />
+
+    <br />
+
+    <label>Açıklama</label>
+    <input type="text" class="form-control" asp-for="Description" />
+
+    <br />
+
+    <label>İkon</label>
+    <input type="text" class="form-control" asp-for="Icon" />
+
+    <br />
+
+    <button class="btn btn-primary">Güncelle</button>
+
+
+</form>
+
