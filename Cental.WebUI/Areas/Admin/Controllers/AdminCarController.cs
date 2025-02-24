@@ -65,7 +65,7 @@ namespace Cental.WebUI.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost]  
         public async Task<IActionResult> CreateCar(CreateCarDto NewCar)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -137,7 +137,9 @@ namespace Cental.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateCar(UpdateCarDto UpdateCar)
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
+            var role = await _roleManager.FindByNameAsync("Admin");
             if (UpdateCar.ImageFile != null)
             {
                 try
@@ -170,6 +172,8 @@ namespace Cental.WebUI.Areas.Admin.Controllers
 
 
             }
+            UpdateCar.UserId = user.Id;
+            UpdateCar.RoleId = role.Id;
             _carService.T_Update_PostN(UpdateCar);
 
             return RedirectToAction("Index");

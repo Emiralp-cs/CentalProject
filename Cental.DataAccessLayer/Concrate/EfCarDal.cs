@@ -13,13 +13,11 @@ namespace Cental.DataAccessLayer.Concrate
 {
     public class EfCarDal : GenericRepository<Car>, ICarDal
     {   
-        
-
 
         public EfCarDal(CentalContext context) : base(context)
         {
         }
-
+        //Eager Loading
         public List<Car> GetCarsWithBrands()
         {
           return  _context.Cars.Include(x => x.Brand).ToList();

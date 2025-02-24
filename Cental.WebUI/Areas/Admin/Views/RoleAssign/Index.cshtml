@@ -28,20 +28,20 @@
             <td>
                 @foreach (var role in item.Roles)
                 {
-                    string badgeClass = ""; // Varsayılan renk sınıfı
+                    string badgeClass = ""; 
                     switch (role)
                     {
                         case "Admin":
-                            badgeClass = "bg-danger"; // Kırmızı
+                            badgeClass = "bg-danger"; 
                             break;
                         case "Manager":
-                            badgeClass = "bg-info"; // Mavi
+                            badgeClass = "bg-info"; 
                             break;
                         case "User":
-                            badgeClass = "bg-success"; // Yeşil
+                            badgeClass = "bg-success"; 
                             break;
                         default:
-                            badgeClass = "bg-secondary"; // Gri (bilinmeyen roller için)
+                            badgeClass = "bg-secondary"; 
                             break;
                     }
                     <span class="badge @badgeClass me-1">@role</span>

@@ -45,7 +45,7 @@ namespace Cental.WebUI.Areas.Manager.Controllers
 
             if (IsPassword)
             {
-                if (UpdateManager.ImageUrl != null)
+                if (UpdateManager.ImageFile != null)
                 {
                     try
                     {

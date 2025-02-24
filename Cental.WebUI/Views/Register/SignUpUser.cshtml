@@ -1,0 +1,214 @@
+﻿@model UserRegisterDto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>KiralaGit.com</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <link rel="icon" href="~/flat-able-admin/dist/assets/images/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background-image: url('/rs6v2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        
+
+
+
+        .auth-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .auth-content {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 400px;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .container {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        .options {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+            .options a {
+                display: inline-block;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                background-color: #007bff;
+                color: #fff;
+                text-decoration: none;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+                .options a:hover {
+                    background-color: #0056b3;
+                }
+
+        form {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            width: 100%;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+        .validation-summary-errors {
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        .field-validation-error {
+            color: red;
+            font-size: small;
+        }
+
+        .mb-2 a {
+            color: #007bff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-content text-center">
+            <div class="logo-container"> <img src="~/flat-able-admin/dist/assets/images/" alt="" class="img-fluid mb-4"> </div>
+            <div class="container">
+                <h1>KiralaGit.com</h1>
+               
+                <form method="post">
+                    <div class="card-body">
+                        <h4 class="f-w-400">Kayıt Formu</h4>
+                        <hr>
+                        <div class="form-group">
+                            <label asp-for="FirstName">Ad</label>
+                            @Html.ValidationMessageFor(x => x.FirstName, "", new { @class = "field-validation-error" })
+                            <input type="text" class="form-control" asp-for="FirstName" placeholder="Ad">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastName">Soyad</label>
+                            @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "field-validation-error" })
+                            <input type="text" class="form-control" asp-for="LastName" placeholder="Soyad">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UserName">Kullanıcı Adı</label>
+                            @Html.ValidationMessageFor(x => x.UserName, "", new { @class = "field-validation-error" })
+                            <input type="text" class="form-control" asp-for="UserName" placeholder="Kullanıcı Adı">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email">E-posta</label>
+                            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "field-validation-error" })
+                            <input type="email" class="form-control" asp-for="Email" placeholder="E-posta">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password">Şifre</label>
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "field-validation-error" })
+                            <input type="password" class="form-control" asp-for="Password" placeholder="Şifre">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword">Şifreyi Doğrulayın</label>
+                            @Html.ValidationMessageFor(x => x.ConfirmPassword, "", new { @class = "field-validation-error" })
+                            <input type="password" class="form-control" asp-for="ConfirmPassword" placeholder="Şifreyi Doğrulayın">
+                        </div>
+                        <div class="validation-summary-errors">
+                            @Html.ValidationSummary()
+                        </div>
+                        <button class="btn btn-primary btn-block mb-4" type="submit">Kayıt Ol</button>
+                        <hr>
+                        <p class="mb-2">Zaten bir hesabın var mı ? <a href="/Login/Index" class="f-w-400">Giriş Yap</a></p>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

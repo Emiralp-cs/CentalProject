@@ -14,7 +14,7 @@ namespace Cental.DTOLayer.CarDtos
 
         public string? ModelName { get; set; }
         public string? ImageUrl { get; set; }
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         public int SeatCount { get; set; }
         public string? GearType { get; set; }
         public string? GasType { get; set; }

@@ -20,15 +20,19 @@ namespace Cental.WebUI.Controllers
 
         }
 
-        [HttpGet]
+
         public IActionResult SignUp()
         {
             return View();
         }
-
+        [HttpGet]
+        public IActionResult SignUpUser()
+        {
+            return View();
+        }
 
         [HttpPost]
-        public async Task<IActionResult> SignUp(UserRegisterDto newUser)
+        public async Task<IActionResult> SignUpUser(UserRegisterDto newUser)
         {
             var user = _mapper.Map<AppUser>(newUser);
 
@@ -51,6 +55,40 @@ namespace Cental.WebUI.Controllers
 
             await _userManager.AddToRoleAsync(user, "User");
 
+            return RedirectToAction("SignIn", "Login");
+
+        }
+
+        [HttpGet]
+        public IActionResult SignUpManager()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> SignUpManager(UserRegisterDto newUser)
+        {
+            var user = _mapper.Map<AppUser>(newUser);
+
+            if (!ModelState.IsValid)
+            {
+                return View(newUser);
+
+            }
+            //küçük harf , büyük harf , rakam , özel karakter en az 6 karakter olmalı
+            var result = await _userManager.CreateAsync(user, newUser.Password);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                return View(newUser);
+            }
+
+            await _userManager.AddToRoleAsync(user, "Manager");
             return RedirectToAction("SignIn", "Login");
 
         }

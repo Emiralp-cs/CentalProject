@@ -12,15 +12,13 @@
                 Bütün araçlarımıza aşağıdan ulaşabilirsiniz.
             </p>
         </div>
-
-        @await Component.InvokeAsync("_CarFilterCars")
-
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 @foreach (var item in Model)
                 {
                     <div class="col">
                         <form method="post" action="/Cars/Tasiyici">
+                            <input type="hidden" name="CarId" value="@item.CarId"/>
                             <input type="hidden" name="ImageUrl" value="@item.ImageUrl" />
                             <input type="hidden" name="Price" value="@item.Price" />
                             <input type="hidden" name="SeatCount" value="@item.SeatCount" />

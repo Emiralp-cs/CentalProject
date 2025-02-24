@@ -8,90 +8,113 @@
 
 <head>
 
-    <title>Cental Kayıt Sayfası</title>
-    <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 11]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    <!-- Meta -->
+    <title>KiralaGit.com</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="" />
     <meta name="keywords" content="">
     <meta name="author" content="Phoenixcoded" />
-    <!-- Favicon icon -->
-    <link rel="icon" href="~/~/flat-able-admin/dist/assets/images/favicon.ico" type="image/x-icon">
-
-    <!-- vendor css -->
-    <link rel="stylesheet" href="~/flat-able-admin/dist/assets/css/style.css">
+    <link rel="icon" href="~/flat-able-admin/dist/assets/images/favicon.ico" type="image/x-icon">
 
 
 
+    <style>
+        body {
+            font-family: sans-serif;
+            background-image: url('/1359276.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .auth-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .auth-content {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            /* auth-content'in içeriğini dikey olarak ortalamak için eklendi */
+            display: flex;
+            flex-direction: column; /* İçeriği dikey olarak hizala */
+            align-items: center; /* Yatayda ortala */
+            justify-content: center; /* Dikeyde ortala */
+        }
+
+        .container {
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            /* container'ın içeriğini dikey olarak ortalamak için eklendi */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            margin-top: 0; /* H1'in üst boşluğunu kaldır */
+        }
+
+        .options {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+            .options a {
+                display: inline-block;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                background-color: #007bff;
+                color: #fff;
+                text-decoration: none;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+                .options a:hover {
+                    background-color: #0056b3;
+                }
+
+        .logo-container { /* Logo için bir container */
+            margin-bottom: 20px; /* Logo ile başlık arasına boşluk */
+        }
+    </style>
 
 </head>
+
 <body>
-    <!-- [ auth-signup ] start -->
     <div class="auth-wrapper">
         <div class="auth-content text-center">
-            <img src="~/flat-able-admin/dist/assets/images/logo.png" alt="" class="img-fluid mb-4">
-                <div class="row align-items-center text-center">
-                    <div class="col-md-12">
-                        <form method="post">
-                            <div class="card-body">
-                                <h4 class="f-w-400">Kayıt Formu</h4>
-                                <hr>
-                                <div class="form-group mb-3">
-                                    @Html.ValidationMessageFor(x => x.FirstName)
-                                    <input type="text" class="form-control" asp-for="FirstName" placeholder="Ad">
-                                </div>
-                                <div class="form-group mb-3">
-                                    @Html.ValidationMessageFor(x => x.LastName)
-                                    <input type="text" class="form-control" asp-for="LastName" placeholder="Soyad">
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    @Html.ValidationMessageFor(x => x.UserName)
-                                    <input type="text" class="form-control" asp-for="UserName" placeholder="Kullanıcı Adı">
-                                </div>
-                                <div class="form-group mb-3">
-                                    @Html.ValidationMessageFor(x => x.Email)
-                                    <input type="email" class="form-control" asp-for="Email" placeholder="E-posta">
-                                </div>
-                                <div class="form-group mb-4">
-                                    @Html.ValidationMessageFor(x => x.Password)
-                                    <input type="password" class="form-control" asp-for="Password" placeholder="Şifre">
-                                </div>
-                                <div class="form-group mb-4">
-                                    @Html.ValidationMessageFor(x => x.ConfirmPassword)
-                                    <input type="password" class="form-control" asp-for="ConfirmPassword" placeholder="Şifreyi Doğrulayın">
-                                </div>
-                                <p style="color:red">
-                                    @Html.ValidationSummary()
-                                </p>
-
-                                <button class="btn btn-primary btn-block mb-4" type="submit">Kayıt Ol</button>
-                                <hr>
-                                <p class="mb-2">Zaten bir hesabın var mı ? <a href="/Login/Index" class="f-w-400">Giriş Yap</a></p>
-                            </div>
-                        </form>
-
-                    </div>
+            <div class="logo-container"> <img src="~/flat-able-admin/dist/assets/images/" alt="" class="img-fluid mb-4"> </div>
+            <div class="container">
+                <h1>KiralaGit.com</h1>
+                <div class="options">
+                    <a href="/Register/SignUpUser">Araba Kiralamak İçin Tıkla!</a> <a href="/Register/SignUpManager">Aracını Kiralamak İçin Tıkla!</a>
                 </div>
-           
+                <br />
+            </div>
+
         </div>
     </div>
-    <!-- [ auth-signup ] end -->
-    <!-- Required Js -->
     <script src="~/flat-able-admin/dist/assets/js/vendor-all.min.js"></script>
     <script src="~/flat-able-admin/dist/assets/js/plugins/bootstrap.min.js"></script>
-
-    <script src="~/flat-able-admin/dist/assets/js/pcoded.min.js"></script>
-
-
-
 </body>
 
 </html>

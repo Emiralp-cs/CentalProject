@@ -1,0 +1,60 @@
+﻿@using Cental.EntityLayer.Entities
+@model Car
+@{
+    ViewData["Title"] = "Araç Detayları";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+}
+
+<style>
+    .araba-detaylari {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .araba-resmi {
+        max-width: 300px;
+        height: auto;
+        margin-right: 20px;
+        border-radius: 8px;
+    }
+
+    .araba-bilgileri h2 {
+        font-size: 28px; /* Başlık boyutunu artırdım */
+        margin-bottom: 15px;
+    }
+
+    .araba-bilgileri p, .araba-bilgileri ul {
+        margin-bottom: 12px;
+        font-size: 18px; /* Metin boyutunu artırdım */
+    }
+
+    .araba-bilgileri ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        .araba-bilgileri ul li {
+            margin-bottom: 6px;
+        }
+</style>
+
+<div class="araba-detaylari">
+    <img src="@Model.ImageUrl" alt="Araba Resmi" class="araba-resmi">
+    <div class="araba-bilgileri">
+        <p><strong>Marka:</strong> @Model.Brand.BrandName</p>
+        <p><strong>Model:</strong> @Model.ModelName</p>
+        <p><strong>Yıl:</strong> @Model.Year</p>
+        <ul>
+            <li><strong>Şanzıman Tipi:</strong> @Model.GearType</li>
+            <li><strong>Yakıt:</strong> @Model.GasType</li>
+            <li><strong>Şanzıman Türü:</strong> @Model.Transmission</li>
+            <li><strong>Araç Sahibi:</strong> @string.Join(" ",Model.User.FirstName,Model.User.LastName)</li>
+
+        </ul>
+    </div>
+</div>

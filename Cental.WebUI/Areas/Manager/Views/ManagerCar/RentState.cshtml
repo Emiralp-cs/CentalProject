@@ -1,0 +1,81 @@
+﻿@using Cental.EntityLayer.Entities
+@model Booking
+@{
+    ViewData["Title"] = "Kiralama Detayları";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+    int dayCount = 0;
+}
+
+<style>
+    .araba-detaylari {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .araba-resmi {
+        max-width: 300px;
+        height: auto;
+        margin-right: 20px;
+        border-radius: 8px;
+    }
+
+    .araba-bilgileri h2 {
+        font-size: 28px; /* Başlık boyutunu artırdım */
+        margin-bottom: 15px;
+    }
+
+    .araba-bilgileri p, .araba-bilgileri ul {
+        margin-bottom: 12px;
+        font-size: 18px; /* Metin boyutunu artırdım */
+    }
+
+    .araba-bilgileri ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        .araba-bilgileri ul li {
+            margin-bottom: 6px;
+        }
+</style>
+
+
+
+@if (TempData["BookingCarNullError"] != null)
+{
+    <h2>@TempData["BookingCarNullError"]</h2>
+}
+else
+{
+    <div class="araba-detaylari">
+        <img src="@Model.Car.ImageUrl" alt="Araba Resmi" class="araba-resmi">
+        <div class="araba-bilgileri">
+            <p><strong>Aracın Alınacağı Yer:</strong> @Model.PickUpLocation</p>
+            <p><strong>Aracın Teslim Edileceği Yer:</strong> @Model.DropOffLocation</p>
+            <p><strong>Kira Başlangıç Tarihi:</strong> @Model.PickUpDate.ToString("dd.MM.yyyy")</p>
+            <p><strong>Kira Bitiş Tarihi:</strong> @Model.DropOffDate.ToString("dd.MM.yyyy")</p>
+            <p><strong>Marka:</strong> @Model.Car.ModelName</p>
+            <p><strong>Model:</strong> @Model.Car.Brand.BrandName</p>
+            <p><strong>Aracı Kiralamak İsteyen Kişi:</strong> @string.Join(" ", Model.User.FirstName, Model.User.LastName)</p>
+            <p><strong>Kaç Gün Kiralanacak: </strong>@(dayCount = Model.PriceTimesBookingDays / Model.Price)</p>
+            <p><strong>Günlük Kiralama Fiyatı: </strong>@Model.Price₺</p>
+            <p><strong>Toplam Ödenecek Ücret: </strong>@Model.PriceTimesBookingDays₺</p>
+            <p><strong>Onay Durumu: </strong>@ViewBag.IsApproved</p>
+            <a class="btn btn-success" asp-action="RentStateApply" asp-route-id="@Model.CarId">Onayla</a>
+            <a class="btn btn-warning" asp-action="RentStateNull" asp-route-id="@Model.CarId">Beklet</a>
+            <a class="btn btn-danger" asp-action="RentStateDecline" asp-route-id="@Model.CarId">Reddet</a>
+
+
+
+
+
+        </div>
+    </div>
+}
+
+

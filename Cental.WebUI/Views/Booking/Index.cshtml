@@ -1,10 +1,9 @@
-﻿@model BookingCarDto
+﻿@model CreateBookingDto
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/UILayout.cshtml";
 }
-
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-lg-12">
@@ -14,23 +13,23 @@
                     <div class="row">
                         <div class="col-lg-6 d-flex flex-column">
                             <div class="form-container p-4">
-                                <form class="flex-grow-1">
+                                <form asp-action="Index" asp-controller="Booking" class="flex-grow-1">
                                     <div class="mb-3">
-                                        <label for="pickUpLocation" class="form-label">Pick Up Location</label>
-                                        <input type="text" class="form-control" id="pickUpLocation" placeholder="Enter a City or Airport">
+                                        <label for="pickUpLocation" class="form-label">Başlangıç Tarihi</label>
+                                        <input type="date" asp-for="PickUpDate" class="form-control" id="pickUpLocation" placeholder="">
+                                        <span class="text-danger">@ViewBag.PickUpDateError</span>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="dropOffLocation" class="form-label">Drop Off Location</label>
-                                        <input type="text" class="form-control" id="dropOffLocation" placeholder="Enter a City or Airport">
+                                        <label for="dropOffLocation" class="form-label">Bitiş Tarihi</label>
+                                        <input type="date" class="form-control" asp-for="DropOffDate" id="dropOffLocation">
+                                        <span class="text-danger">@ViewBag.DropOffDateError</span>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="pickUpDate" class="form-label">Pick Up Date</label>
-                                        <input type="date" class="form-control" id="pickUpDate">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="dropOffDate" class="form-label">Drop Off Date</label>
-                                        <input type="date" class="form-control" id="dropOffDate">
-                                    </div>
+                                    <input type="hidden" name="Price" value="@ViewBag.Price" />
+                                    <span class="text-danger">@ViewBag.DateError</span>
+                                   
+                                    <br />
+                                    <span class="text-danger">@ViewBag.userNullError</span>
+                                    <button class="btn btn-primary rounded-pill btn-lg fixed-width-button">Hemen Kirala</button>
                                 </form>
                             </div>
                         </div>
@@ -53,9 +52,7 @@
                             </div>
                         </div>
                     </div>
-                   
                     <div class="card-footer bg-white mt-auto d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary rounded-pill btn-lg fixed-width-button">Hemen Kirala</button>
                     </div>
                 </div>
             </div>
@@ -84,3 +81,26 @@
         margin: 0 auto; /* Butonu ortalayın */
     }
 </style>
+
+
+@* <script>
+
+    function calcPrice(){
+    Swal.fire({
+      title: "Silmek istediğinize emin misiniz ?",
+      text: "Bu işlemi geri alamazsınız!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Evet, Sil!",
+      cancelButtonText: "İptal Et"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        window.location.href = "/Default/Index";
+      }
+    });
+    }
+
+</script> *@

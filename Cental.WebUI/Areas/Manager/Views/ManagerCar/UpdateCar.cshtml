@@ -1,0 +1,95 @@
+﻿@using Cental.DTOLayer.CarDtos
+@model UpdateCarDto
+@{
+    ViewData["Title"] = "Araba Güncelleme Sayfası";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="ImageUrl" />
+    <input type="hidden" asp-for="Transmission" />
+    <input type="hidden" asp-for="GasType" />
+    <input type="hidden" asp-for="GearType" />
+    <input type="hidden" asp-for="BrandId" />
+    <div class="row">
+        <div class="col-lg-6">
+
+            <input type="hidden" asp-for="CarId" />
+
+
+            <label>Araba Modeli</label>
+            <input type="text" asp-for="ModelName" class="form-control" />
+            <span asp-validation-for="ModelName" class="text-danger"></span>
+            <br />
+
+            <label>Araba Görseli</label>
+            <input type="file" asp-for="ImageFile" class="form-control" />
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+            @if (ViewBag.WrongType != null)
+            {
+                <span class="text-danger">@ViewBag.WrongType</span>
+            }
+            <br />
+
+            <label>Model Yılı</label>
+            <input type="number" asp-for="Year" class="form-control" />
+            <span asp-validation-for="Year" class="text-danger"></span>
+
+            <br />
+
+            <label>Kiralama Bedeli</label>
+            <input type="number" asp-for=Price class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+
+
+            <br />
+
+            <label>Koltuk Sayısı</label>
+            <input type="number" asp-for="SeatCount" class="form-control" />
+            <span asp-validation-for="SeatCount" class="text-danger"></span>
+
+        </div>
+        <div class="col-lg-6">
+
+            <label>Kilometre Bilgisi</label>
+            <input type="number" asp-for="Kilometer" class="form-control" />
+            <span asp-validation-for="Kilometer" class="text-danger"></span>
+
+
+            <br />
+
+            <label>Marka</label>
+            <select asp-for="BrandId" asp-items="@ViewBag.brands" name="BrandId" class="form-control">
+            </select>
+            <span asp-validation-for="BrandId" class="text-danger"></span>
+
+
+            <br />
+
+            <label>Yakıt Türü</label>
+            <select asp-for="GasType" asp-items="@ViewBag.gasTypes" name="GasType" class="form-control">
+            </select>
+            <span asp-validation-for="GasType" class="text-danger"></span>
+
+            <br />
+
+            <label>Vites Türü</label>
+            <select asp-for="GearType" asp-items="@ViewBag.gearTypes" name="GearType" class="form-control">
+            </select>
+            <span asp-validation-for="GearType" class="text-danger"></span>
+
+            <br />
+            <label>Vites Özelliği</label>
+            <select asp-for="Transmission" asp-items="@ViewBag.transmissionTypes" name="Transmission" class="form-control">
+            </select>
+            <span asp-validation-for="Transmission" class="text-danger"></span>
+
+        </div>
+    </div>
+    <br />
+    <button class="btn btn-success"><i class="fa fa-save"></i></button>
+
+</form>
+
+
+

@@ -53,7 +53,8 @@ builder.Services.AddScoped<ICarService, CarManager>();
 builder.Services.AddScoped<IUserSocialDal, EfUserSocialDal>();
 builder.Services.AddScoped<IUserSocialService, UserSocialManager>();
 
-
+builder.Services.AddScoped<IBookingDal, EfBookingDal>();
+builder.Services.AddScoped<IBookingService, BookingManager>();
 
 builder.Services.AddScoped<IImageService, ImageService>();
 

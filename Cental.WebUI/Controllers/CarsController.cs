@@ -11,17 +11,12 @@ using System.Text.Json;
 using Cental.DTOLayer.CarDtos;
 
 namespace Cental.WebUI.Controllers
-{   //TODO:Filter cars metodu Solide uygun olabilmesi için Business Katmanından metod olarak getirilecek.
+{
     [AllowAnonymous]
-    public class CarsController(ICarService _carService, IBrandService _brandService, CentalContext _context) : Controller
+    public class CarsController(ICarService _carService, IBrandService _brandService, CentalContext _context, IBookingService _bookingService) : Controller
     {
-
-        [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.ActivePage = "Cars";
-
-
             if (TempData["FilterCars"] != null)
             {
                 var data = TempData["FilterCars"].ToString();
@@ -35,51 +30,25 @@ namespace Cental.WebUI.Controllers
 
                 }
             }
-            var values = _carService.TGetAll();
-            return View(values);
+            var bookingvalues = _bookingService.TGetAll().Select(x => x.CarId).ToList();
+            var values = _carService.TGetAll().Select(x => x.CarId).ToList();
+
+            var carvalues = _carService.TGetAll();
+
+            var result = values.Except(bookingvalues).ToList();
+
+
+            List<Car> result1 = carvalues.Where(car => result.Contains(car.CarId)).ToList();
+
+            return View(result1);
 
         }
-
-
-        [HttpPost]
-        public IActionResult Tasiyici(string ImageUrl, string Price, int SeatCount, string GearType, string GasType, int Year, int Kilometer, string BrandAndModel,string Review,string Transmission)
-        {
-
-            TempData["ImageUrl"] = ImageUrl;
-            TempData["Price"] = Price;
-            TempData["SeatCount"] = SeatCount;
-            TempData["GearType"] = GearType;
-            TempData["GasType"] = GasType;
-            TempData["Year"] = Year;
-            TempData["Kilometer"] = Kilometer;
-            TempData["BrandAndModel"] = BrandAndModel;
-            TempData["Review"] = Review;
-            TempData["Transmission"] = Transmission;
-
-
-
-
-
-
-            return RedirectToAction("Index", "Booking");
-        }
-
-
-        //[HttpPost]
-        //public IActionResult Deneme()
-        //{
-        //    TempData["Mesaj"] = "Ahmet";
-        //    return RedirectToAction("Index", "Booking");
-        //}
-
-
-
-
 
         [HttpPost]
         public IActionResult FilterCars(string brand, string gear, string gas, int year)
         {
-            IQueryable<Car> values = _context.Cars.AsQueryable();
+            IQueryable<Car> values = _context.Cars.AsQueryable(); //filtrelenebilir bir liste oluşturduk.
+            //asqueryable kullandık çünkü value içerisinde şartlı sorgulama yani where koşullarını kullanabilmek için.
 
             if (!string.IsNullOrEmpty(brand))
             {
@@ -105,13 +74,40 @@ namespace Cental.WebUI.Controllers
 
             }
 
-            var filterList = values.ToList();
+            var filterList = values.ToList(); //filtrelenebilir listeyi normal listeye çevirdik
+            //Iquaryable tipinde olduğu için listeye çeviriyoruz çünkü view'e liste tipinde veri taşıyacağız.
+            //farklı view'e taşıyacağımız için TempData kullanıyoruz.   
+            //tempdata tipini bilemeyeceğimiz için json formatına çevirip taşıyoruz.
+            //ilişkili tablo olduğu için döngüye girmemesi adına ReferenceHandler.IgnoreCycles kullanıyoruz.
             TempData["FilterCars"] = JsonSerializer.Serialize(filterList, new JsonSerializerOptions
             {
                 ReferenceHandler = ReferenceHandler.IgnoreCycles
             });
             return RedirectToAction("Index");
         }
+
+
+        [HttpPost]
+        public IActionResult Tasiyici(string ImageUrl, string Price, string SeatCount, string GearType, string GasType, string Year, string Kilometer, string BrandAndModel, string Review, string Transmission, string CarId)
+        {
+            TempData["CarId"] = CarId;
+            TempData["ImageUrl"] = ImageUrl;
+            TempData["Price"] = Price;
+            TempData["SeatCount"] = SeatCount;
+            TempData["GearType"] = GearType;
+            TempData["GasType"] = GasType;
+            TempData["Year"] = Year;
+            TempData["Kilometer"] = Kilometer;
+            TempData["BrandAndModel"] = BrandAndModel;
+            TempData["Review"] = Review;
+            TempData["Transmission"] = Transmission;
+
+
+            return RedirectToAction("Index", "Booking");
+        }
     }
+
+
 }
+
 
