@@ -266,8 +266,7 @@ namespace Cental.DataAccessLayer.Migrations
 
                     b.HasKey("BookingId");
 
-                    b.HasIndex("CarId")
-                        .IsUnique();
+                    b.HasIndex("CarId");
 
                     b.HasIndex("UserId");
 
@@ -406,6 +405,26 @@ namespace Cental.DataAccessLayer.Migrations
                     b.ToTable("Processes");
                 });
 
+            modelBuilder.Entity("Cental.EntityLayer.Entities.RatingStar", b =>
+                {
+                    b.Property<int>("RatingStarId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RatingStarId"));
+
+                    b.Property<string>("RatingStarSelectable")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RatingStarsCounter")
+                        .HasColumnType("int");
+
+                    b.HasKey("RatingStarId");
+
+                    b.ToTable("RatingStars");
+                });
+
             modelBuilder.Entity("Cental.EntityLayer.Entities.Review", b =>
                 {
                     b.Property<int>("ReviewId")
@@ -416,6 +435,10 @@ namespace Cental.DataAccessLayer.Migrations
 
                     b.Property<int>("CarId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
@@ -617,8 +640,8 @@ namespace Cental.DataAccessLayer.Migrations
             modelBuilder.Entity("Cental.EntityLayer.Entities.Booking", b =>
                 {
                     b.HasOne("Cental.EntityLayer.Entities.Car", "Car")
-                        .WithOne("Booking")
-                        .HasForeignKey("Cental.EntityLayer.Entities.Booking", "CarId")
+                        .WithMany("Bookings")
+                        .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -754,8 +777,7 @@ namespace Cental.DataAccessLayer.Migrations
 
             modelBuilder.Entity("Cental.EntityLayer.Entities.Car", b =>
                 {
-                    b.Navigation("Booking")
-                        .IsRequired();
+                    b.Navigation("Bookings");
 
                     b.Navigation("Reviews");
                 });

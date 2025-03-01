@@ -79,24 +79,33 @@ namespace Cental.WebUI.Areas.Manager.Controllers
         public IActionResult RentState(int Id)
         {
 
-            var BookingCar = _bookingService.TGetAll().Where(x => x.CarId == Id).FirstOrDefault();
+            var BookingCar = _bookingService.TGetAll().Where(x => x.CarId == Id).ToList();
 
-            if (BookingCar != null)
+            int count = 0;
+
+
+            if (BookingCar.Count != 0)
             {
-                if (BookingCar.IsApproved == null)
+                foreach (var car in BookingCar)
                 {
-                    ViewBag.IsApproved = "Onay Bekliyor";
+                    count++;
+                    if (car.IsApproved == null)
+                    {
+                        TempData[count.ToString()] = "Onay Bekliyor";
+                    }
+
+                    else if (car.IsApproved == true)
+                    {
+                        TempData[count.ToString()] = "Onaylandı";
+                    }
+
+                    else if (car.IsApproved == false)
+                    {
+                        TempData[count.ToString()] = "Reddedildi";
+                    }
                 }
 
-                else if (BookingCar.IsApproved == true)
-                {
-                    ViewBag.IsApproved = "Onaylandı";
-                }
 
-                else if (BookingCar.IsApproved == false)
-                {
-                    ViewBag.IsApproved = "Reddedildi";
-                }
 
 
                 return View(BookingCar);
@@ -113,11 +122,12 @@ namespace Cental.WebUI.Areas.Manager.Controllers
 
 
 
-        public IActionResult RentStateApply(int id)
+        public IActionResult RentStateApply(string id, string userId)
         {
-            var Bookcar = _bookingService.TGetAll().Where(x => x.CarId == id).FirstOrDefault();
 
-            var car = _carService.TGetAll().Where(x => x.CarId == id).FirstOrDefault();
+            var Bookcar = _bookingService.TGetAll().Where(x => x.CarId == int.Parse(id) && x.UserId == int.Parse(userId)).FirstOrDefault();
+
+            var car = _carService.TGetAll().Where(x => x.CarId == int.Parse(id)).FirstOrDefault();
 
             car.IsApproved = true;
             _carService.TUpdate(car);
@@ -125,18 +135,23 @@ namespace Cental.WebUI.Areas.Manager.Controllers
             _bookingService.TUpdate(Bookcar);
 
 
+            
+
+
             return RedirectToAction("Index");
         }
 
-        public IActionResult RentStateDecline(int id)
+        public IActionResult RentStateDecline(string id, string userId)
         {
 
-            var Bookcar = _bookingService.TGetAll().Where(x => x.CarId == id).FirstOrDefault();
+            var Bookcar = _bookingService.TGetAll().Where(x => x.CarId == int.Parse(id) && x.UserId == int.Parse(userId)).FirstOrDefault();
 
-            var car = _carService.TGetAll().Where(x => x.CarId == id).FirstOrDefault();
-            car.IsApproved = null;
+            var car = _carService.TGetAll().Where(x => x.CarId == int.Parse(id)).FirstOrDefault();
+
+            car.IsApproved = false;
             _carService.TUpdate(car);
-            _bookingService.TDelete(Bookcar.BookingId);
+            Bookcar.IsApproved = false;
+            _bookingService.TUpdate(Bookcar);
 
 
 
@@ -145,11 +160,11 @@ namespace Cental.WebUI.Areas.Manager.Controllers
         }
 
 
-        public IActionResult RentStateNull(int id)
+        public IActionResult RentStateNull(string id, string userId)
         {
-            var Bookcar = _bookingService.TGetAll().Where(x => x.CarId == id).FirstOrDefault();
+            var Bookcar = _bookingService.TGetAll().Where(x => x.CarId == int.Parse(id) && x.UserId == int.Parse(userId)).FirstOrDefault();
 
-            var car = _carService.TGetAll().Where(x => x.CarId == id).FirstOrDefault();
+            var car = _carService.TGetAll().Where(x => x.CarId == int.Parse(id)).FirstOrDefault();
 
             car.IsApproved = null;
             _carService.TUpdate(car);

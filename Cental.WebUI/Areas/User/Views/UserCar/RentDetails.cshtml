@@ -1,0 +1,64 @@
+﻿@model Booking
+@{
+    ViewData["Title"] = "RentDetails";
+    Layout = "~/Areas/User/Views/UserLayout/Layout.cshtml";
+
+
+}
+
+
+<h4 class="text-center"><img style="width:140px;height:120px;border-radius:15px" src="@Model.Car.ImageUrl" /></h4>
+
+
+<label><strong>Araç Adı: </strong>@(string.Join(" ", Model.Car.Brand.BrandName, Model.Car.ModelName))</label>
+
+<br />
+
+
+@if (Model.IsApproved == true)
+{
+    <label><strong>Onay Durumu: </strong>Onaylandı</label>
+}
+
+else if (Model.IsApproved == null)
+{
+    <label><strong>Onay Durumu: </strong>Onay Bekliyor</label>
+}
+else if (Model.IsApproved == false)
+{
+    <label><strong>Onay Durumu: </strong>Reddedildi</label>
+}
+
+
+<br />
+
+
+<label><strong>Kira Başlangıç Tarihi: </strong>@Model.PickUpDate.ToShortDateString()</label>
+
+<br />
+
+<label><strong>Kira Bitiş Tarihi: </strong>@Model.DropOffDate.ToShortDateString()</label>
+
+<br />
+
+<label><strong>Aracı Alacağınız Konum: </strong>@Model.PickUpLocation</label>
+
+<br />
+
+<label><strong>Aracı Teslim Edeceğiniz Konum: </strong>@Model.DropOffLocation</label>
+
+<br />
+
+<label><strong>Günlük Kira Ücreti: </strong>@Model.Price₺</label>
+
+<br />
+
+<label><strong>Toplam Ödeyeceğiniz Ücret: </strong>@Model.PriceTimesBookingDays₺</label>
+
+<br />
+
+<label><strong>Kiralanan Gün Sayısı: </strong>@(Model.PriceTimesBookingDays / Model.Price)</label>
+
+
+
+

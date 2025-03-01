@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,8 @@ namespace Cental.DataAccessLayer.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
+
             optionsBuilder.UseSqlServer("server=Fatih;database=CentalDb;integrated security=true;trustServerCertificate=true");
 
             optionsBuilder.UseLazyLoadingProxies();
@@ -32,9 +35,6 @@ namespace Cental.DataAccessLayer.Context
         public DbSet<UserSocial> UserSocials { get; set; }
         public DbSet<Booking> Bookings { get; set; }
 
-
-
-
-
+        public DbSet<RatingStar> RatingStars { get; set; }
     }
 }

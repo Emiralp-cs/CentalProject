@@ -1,81 +1,197 @@
 ﻿@using Cental.EntityLayer.Entities
-@model Booking
+@model List<Booking>
+
 @{
     ViewData["Title"] = "Kiralama Detayları";
     Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
     int dayCount = 0;
+    int count = 0;
 }
 
 <style>
-    .araba-detaylari {
-        display: flex;
-        align-items: center;
-        border: 1px solid #ddd;
-        padding: 20px;
-        margin: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .araba-resmi {
-        max-width: 300px;
-        height: auto;
-        margin-right: 20px;
-        border-radius: 8px;
-    }
-
-    .araba-bilgileri h2 {
-        font-size: 28px; /* Başlık boyutunu artırdım */
-        margin-bottom: 15px;
-    }
-
-    .araba-bilgileri p, .araba-bilgileri ul {
-        margin-bottom: 12px;
-        font-size: 18px; /* Metin boyutunu artırdım */
-    }
-
-    .araba-bilgileri ul {
-        list-style-type: none;
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
         padding: 0;
     }
 
-        .araba-bilgileri ul li {
-            margin-bottom: 6px;
+    .booking-container {
+        width: 95%;
+        max-width: 1200px;
+        margin: 40px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+    }
+
+    .booking-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+        .booking-header img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 20px;
         }
+
+    .booking-title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .booking-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .booking-item {
+        width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 20px;
+        margin: 0 20px 20px 0;
+    }
+
+        .booking-item h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .booking-item p {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .booking-item strong {
+            font-weight: 600;
+        }
+
+    .button-container {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: #212529;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+
+    .onaylandi {
+        color: green;
+    }
+
+    .beklemede {
+        color: orange;
+    }
+
+    .reddedildi {
+        color: red;
+    }
+
+    .onay-bekliyor {
+        color: orange; 
+    }
 </style>
 
-
-
-@if (TempData["BookingCarNullError"] != null)
-{
-    <h2>@TempData["BookingCarNullError"]</h2>
-}
-else
-{
-    <div class="araba-detaylari">
-        <img src="@Model.Car.ImageUrl" alt="Araba Resmi" class="araba-resmi">
-        <div class="araba-bilgileri">
-            <p><strong>Aracın Alınacağı Yer:</strong> @Model.PickUpLocation</p>
-            <p><strong>Aracın Teslim Edileceği Yer:</strong> @Model.DropOffLocation</p>
-            <p><strong>Kira Başlangıç Tarihi:</strong> @Model.PickUpDate.ToString("dd.MM.yyyy")</p>
-            <p><strong>Kira Bitiş Tarihi:</strong> @Model.DropOffDate.ToString("dd.MM.yyyy")</p>
-            <p><strong>Marka:</strong> @Model.Car.ModelName</p>
-            <p><strong>Model:</strong> @Model.Car.Brand.BrandName</p>
-            <p><strong>Aracı Kiralamak İsteyen Kişi:</strong> @string.Join(" ", Model.User.FirstName, Model.User.LastName)</p>
-            <p><strong>Kaç Gün Kiralanacak: </strong>@(dayCount = Model.PriceTimesBookingDays / Model.Price)</p>
-            <p><strong>Günlük Kiralama Fiyatı: </strong>@Model.Price₺</p>
-            <p><strong>Toplam Ödenecek Ücret: </strong>@Model.PriceTimesBookingDays₺</p>
-            <p><strong>Onay Durumu: </strong>@ViewBag.IsApproved</p>
-            <a class="btn btn-success" asp-action="RentStateApply" asp-route-id="@Model.CarId">Onayla</a>
-            <a class="btn btn-warning" asp-action="RentStateNull" asp-route-id="@Model.CarId">Beklet</a>
-            <a class="btn btn-danger" asp-action="RentStateDecline" asp-route-id="@Model.CarId">Reddet</a>
-
-
-
-
-
-        </div>
+<div class="booking-container">
+    <div class="booking-header">
+        @if (TempData["BookingCarNullError"] != null)
+        {
+            <h2>@TempData["BookingCarNullError"]</h2>
+        }
+        else
+        {
+            <img src="@Model.Select(x => x.Car.ImageUrl).FirstOrDefault()" alt="Araba Resmi" />
+        }
     </div>
-}
 
+    <h2 class="booking-title">Kiralama Talebinde Bulunan Kişiler</h2>
 
+    <div class="booking-list">
+        @foreach (var item in Model)
+        {
+            count++;
+            var routeParams = new Dictionary<string, string>
+        {
+        { "id", item.CarId.ToString() },
+        { "userId", item.UserId.ToString() }
+        };
+
+            <div class="booking-item">
+                <h2>Kiralama Detayları</h2>
+                <p><strong>Aracı Kiralamak İsteyen Kişi:</strong> @string.Join(" ", item.User.FirstName, item.User.LastName)</p>
+                <p><strong>Aracın Alınacağı Yer:</strong> @item.PickUpLocation</p>
+                <p><strong>Aracın Teslim Edileceği Yer:</strong> @item.DropOffLocation</p>
+                <p><strong>Kira Başlangıç Tarihi:</strong> @item.PickUpDate.ToString("dd.MM.yyyy")</p>
+                <p><strong>Kira Bitiş Tarihi:</strong> @item.DropOffDate.ToString("dd.MM.yyyy")</p>
+                <p><strong>Marka:</strong> @item.Car.ModelName</p>
+                <p><strong>Model:</strong> @item.Car.Brand.BrandName</p>
+                <p><strong>Kaç Gün Kiralanacak: </strong>@(dayCount = item.PriceTimesBookingDays / item.Price)</p>
+                <p><strong>Günlük Kiralama Fiyatı: </strong>@item.Price₺</p>
+                <p><strong>Toplam Ödenecek Ücret: </strong>@item.PriceTimesBookingDays₺</p>
+                @{
+                    var onayDurumu = TempData[count.ToString()].ToString();
+                    string onayDurumuClass = "";
+                    if (onayDurumu.ToLower().Contains("onaylandı"))
+                    {
+                        onayDurumuClass = "onaylandi";
+                    }
+                    else if (onayDurumu.ToLower().Contains("beklemede"))
+                    {
+                        onayDurumuClass = "beklemede";
+                    }
+                    else if (onayDurumu.ToLower().Contains("reddedildi"))
+                    {
+                        onayDurumuClass = "reddedildi";
+                    }
+                    else if (onayDurumu.ToLower().Contains("onay bekliyor"))
+                    {
+                        onayDurumuClass = "onay-bekliyor";
+                    }
+                }
+                <p><strong>Onay Durumu: </strong><span class="@onayDurumuClass">@TempData[count.ToString()]</span></p>
+                <div class="button-container">
+                    <a class="btn btn-success" asp-action="RentStateApply" asp-all-route-data="routeParams">Onayla</a>
+                    <a class="btn btn-warning" asp-action="RentStateNull" asp-all-route-data="routeParams">Beklet</a>
+                    <a class="btn btn-danger" asp-action="RentStateDecline" asp-all-route-data="routeParams">Reddet</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

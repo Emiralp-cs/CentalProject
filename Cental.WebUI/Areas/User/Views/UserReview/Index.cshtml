@@ -1,0 +1,93 @@
+﻿@model List<Booking>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/User/Views/UserLayout/Layout.cshtml";
+}
+
+<style>
+    .booking-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+        .booking-table th, .booking-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .booking-table th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+
+        .booking-table img {
+            max-width: 150px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-table .btn-warning {
+            background-color: #ffc107;
+            color: #212529;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+
+            .booking-table .btn-warning:hover {
+                background-color: #ffca2c;
+            }
+
+        .booking-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .booking-table tr:hover {
+            background-color: #f0f0f0;
+        }
+
+    .error-message {
+        color: #d9534f;
+        font-weight: bold;
+        padding: 10px;
+        background-color: #f2dede;
+        border: 1px solid #ebccd1;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+</style>
+
+@if (TempData["BookingListZeroError"] != null)
+{
+    <div class="error-message">
+        <h4>@TempData["BookingListZeroError"]</h4>
+    </div>
+}
+else
+{
+    <table class="booking-table">
+        <tr>
+            <th>Araç</th>
+            <th>Yorum Yap</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="@item.Car.ImageUrl" alt="Araç Resmi" /></td>
+                <td>
+                    <a asp-action="Deneme" asp-route-id="@item.CarId" asp-area="User">Yorum Yap</a>
+                </td>
+            </tr>
+        }
+    </table>
+}

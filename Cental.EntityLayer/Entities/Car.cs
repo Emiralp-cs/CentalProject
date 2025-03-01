@@ -27,8 +27,8 @@ namespace Cental.EntityLayer.Entities
         public virtual Brand Brand { get; set; } //navigation Property
         public bool IsRented { get; set; }
         public virtual List<Review> Reviews { get; set; }
-        public bool ? IsApproved { get; set; }
-        public virtual Booking Booking { get; set; }
+        public bool? IsApproved { get; set; }
+        public virtual List<Booking> Bookings { get; set; }
         // Bitiş Tarihinden Başlangıç Tarihi Çıkartılarak Aradaki gün sayısı x günlük kiralanma bedeli
         // 
 

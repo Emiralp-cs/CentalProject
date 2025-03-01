@@ -68,7 +68,7 @@ namespace Cental.WebUI.Controllers
 
                 else if (role == "User")
                 {
-                    return RedirectToAction("Index", "MyProfile", new { area = "User" });
+                    return RedirectToAction("Index", "UserProfile", new { area = "User" });
                 }
             }
             return RedirectToAction("Index", "Default");

@@ -11,13 +11,15 @@ using System.Text.Json;
 namespace Cental.WebUI.Controllers
 {
     [AllowAnonymous]
-    public class BookingController(UserManager<AppUser> userManager,IBookingService bookingService) : Controller
+    public class BookingController(UserManager<AppUser> userManager, IBookingService bookingService) : Controller
     {
         [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.ActivePage = "";
+
             if (TempData["userNullError"] != null)
-            {   
+            {
                 ViewBag.userNullError = TempData["userNullError"];
             }
 
@@ -39,13 +41,8 @@ namespace Cental.WebUI.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Index(CreateBookingDto BookCar)
-        {   
-            var startDate = BookCar.PickUpDate;
-            var endDate = BookCar.DropOffDate;
-            TimeSpan difference = endDate - startDate;
-            var user = await userManager.FindByNameAsync(User.Identity.Name);
-            BookCar.User = user;
-            if (user == null)
+        {
+            if (!User.Identity.IsAuthenticated)
             {
                 ViewBag.ImageUrl = TempData.Peek("ImageUrl") as string;
                 ViewBag.Price = TempData.Peek("Price") as string;
@@ -58,9 +55,19 @@ namespace Cental.WebUI.Controllers
                 ViewBag.Review = TempData.Peek("Review") as string;
                 ViewBag.Transmission = TempData.Peek("Transmission") as string;
                 ViewBag.CarId = TempData.Peek("CarId") as string;
-                ViewBag.UserNullError = "Araç Kiralamak İçin Siteye Kayıt Olmanız Gerekmektedir.";
-               
+                ViewBag.UserNullError = "Araç Kiralamak İçin Siteye Kayıt Olmanız Gerekmektedir!";
+
+                return View();
+
             }
+
+
+            var startDate = BookCar.PickUpDate;
+            var endDate = BookCar.DropOffDate;
+            TimeSpan difference = endDate - startDate;
+            var user = await userManager.FindByNameAsync(User.Identity.Name);
+            BookCar.User = user;
+            var bookingList = bookingService.TGetAll();
 
             if (BookCar.PickUpDate == null || BookCar.PickUpDate == default(DateTime))
             {
@@ -116,6 +123,26 @@ namespace Cental.WebUI.Controllers
                 return View();
             }
 
+
+            if (bookingList.Any(x => x.UserId == user.Id && x.CarId == int.Parse(TempData.Peek("CarId") as string)))
+            {
+                ViewBag.ImageUrl = TempData.Peek("ImageUrl") as string;
+                ViewBag.Price = TempData.Peek("Price") as string;
+                ViewBag.SeatCount = TempData.Peek("SeatCount") as string;
+                ViewBag.GearType = TempData.Peek("GearType") as string;
+                ViewBag.GasType = TempData.Peek("GasType") as string;
+                ViewBag.Year = TempData.Peek("Year") as string;
+                ViewBag.Kilometer = TempData.Peek("Kilometer") as string;
+                ViewBag.BrandAndModel = TempData.Peek("BrandAndModel") as string;
+                ViewBag.Review = TempData.Peek("Review") as string;
+                ViewBag.Transmission = TempData.Peek("Transmission") as string;
+                ViewBag.CarId = TempData.Peek("CarId") as string;
+                ViewBag.BookingError = "Bir Araca En Fazla Bir Kere Kiralama İsteğinde Bulunabilirsiniz!";
+                return View();
+
+            }
+
+
             bookingService.TCreate(new Booking
             {
                 User = user,
@@ -126,8 +153,8 @@ namespace Cental.WebUI.Controllers
                 PickUpDate = BookCar.PickUpDate,
                 DropOffDate = BookCar.DropOffDate,
                 Price = BookCar.Price,
-                DropOffLocation = "Londra",
-                PickUpLocation = "Manchester"
+                DropOffLocation = BookCar.DropOffLocation,
+                PickUpLocation = BookCar.PickUpLocation
             });
             return RedirectToAction("Index", "Cars");
 

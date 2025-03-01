@@ -1,0 +1,51 @@
+﻿@model List<Booking>
+@{
+    ViewData["Title"] = "Araç Kiralama Detayları";
+    Layout = "~/Areas/User/Views/UserLayout/Layout.cshtml";
+}
+
+@if (TempData["BookingCountError"] != null)
+{
+    <h3>@TempData["BookingCountError"]</h3>
+}
+else
+{
+    <h4>@Model.Select(x => string.Join(" ", x.User.FirstName, x.User.LastName)).First() Kullanıcısının Kira Talepleri</h4>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="text-center">Araç</th>
+                <th class="text-center">Marka - Model</th>
+                <th class="text-center">Toplam Ödenecek Ücret</th>
+                <th class="text-center">Onay Durumu</th>
+                <th class="text-center">Detaylar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center align-middle"><img src="@item.Car.ImageUrl" style="width:70px;height:50px;border-radius:15px" /></td>
+                    <td class="text-center align-middle">@(string.Join(" ", item.Car.Brand.BrandName, item.Car.ModelName))</td>
+                    <td class="text-center align-middle">@item.PriceTimesBookingDays₺</td>
+
+                    @if (item.IsApproved == true)
+                    {
+                        <td class="text-center text-success align-middle">Onaylandı</td>
+                    }
+                    else if (item.IsApproved == null)
+                    {
+                        <td class="text-center text-warning align-middle">Onay Bekliyor</td>
+                    }
+                    else if (item.IsApproved == false)
+                    {
+                        <td class="text-center text-danger align-middle">Reddedildi</td>
+                    }
+
+                    <td class="text-center align-middle"><a class="btn btn-warning" asp-action="RentDetails" asp-route-id="@item.BookingId"><i class="fa fa-search"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

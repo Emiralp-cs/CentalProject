@@ -1,4 +1,5 @@
-﻿using Cental.BusinessLayer.Abstract;
+﻿
+using Cental.BusinessLayer.Abstract;
 using Cental.BusinessLayer.Extensions.Enums;
 using Cental.DataAccessLayer.Context;
 using Cental.DTOLayer.Enums;
@@ -17,6 +18,7 @@ namespace Cental.WebUI.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.ActivePage = "Cars";
             if (TempData["FilterCars"] != null)
             {
                 var data = TempData["FilterCars"].ToString();
@@ -30,7 +32,10 @@ namespace Cental.WebUI.Controllers
 
                 }
             }
-            var bookingvalues = _bookingService.TGetAll().Select(x => x.CarId).ToList();
+
+
+
+            var bookingvalues = _bookingService.TGetAll().Where(x => x.IsApproved ==true).Select(x => x.CarId).ToList();
             var values = _carService.TGetAll().Select(x => x.CarId).ToList();
 
             var carvalues = _carService.TGetAll();
@@ -109,5 +114,3 @@ namespace Cental.WebUI.Controllers
 
 
 }
-
-

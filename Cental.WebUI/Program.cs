@@ -61,6 +61,9 @@ builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped(typeof(IGenericDal<>), typeof(GenericRepository<>));
 
 
+builder.Services.AddScoped<IReviewDal, EfReviewDal>();
+builder.Services.AddScoped<IReviewService,ReviewManager>();
+
 
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters().AddValidatorsFromAssemblyContaining<CreateBrandValidator>();
 
