@@ -15,6 +15,8 @@ namespace Cental.EntityLayer.Entities
         public virtual List<UserSocial> UserSocials { get; set; }
         public virtual List<Car> Cars { get; set; }
         public virtual List<Booking> Bookings { get; set; }
+        public virtual List<Review> Reviews { get; set; }
+
 
 
     }

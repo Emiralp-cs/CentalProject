@@ -1,0 +1,35 @@
+﻿@model List<Review>
+@{
+    ViewData["Title"] = "Aracınıza Gelen Yorumlar";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+    string stars = string.Empty;
+}
+
+<label>Gelen Yorumlar: </label>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Yorumu Yapan Kişi</th>
+        <th>Gelen Yıldız</th>
+        <th>Yorum</th>
+        <th>@ViewBag.CarId</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(string.Join(" ",item.User.FirstName,item.User.LastName))</td>
+            <td>
+                @for (int i = 1; i <= item.Rating; i++)
+                {
+                    stars += "★";
+                }
+                @stars
+            </td>
+            <td>@item.Comment</td>
+        </tr>
+    }
+
+</table>
+

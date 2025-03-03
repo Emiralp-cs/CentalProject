@@ -1,0 +1,78 @@
+﻿@model List<Review>
+
+@{
+    ViewData["Title"] = "CarReviews";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+    string stars = string.Empty;
+}
+
+<style>
+    .review-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+        .review-table th, .review-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .review-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .review-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .review-table tr:hover {
+            background-color: #e0e0e0;
+        }
+
+    .star-rating {
+        color: gold;
+        font-size: 1.2em;
+    }
+
+    .error-message {
+        color: red;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+</style>
+
+@if (TempData["ReviewsCountError"] != null)
+{
+    <h5 class="error-message">@TempData["ReviewsCountError"]</h5>
+}
+else
+{
+    <table class="review-table">
+        <tr>
+            <th>Yorumu Yapan Kişi</th>
+            <th>Yapılan Yorum</th>
+            <th>Verilen Yıldız</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(string.Join(" ", item.User.FirstName, item.User.LastName))</td>
+                <td>@item.Comment</td>
+                <td>
+                    @{
+                        stars = ""; // Reset stars for each item
+                        for (int i = 1; i <= item.Rating; i++)
+                        {
+                            stars += "★";
+                        }
+                    }
+                    <span class="star-rating">@stars</span>
+                </td>
+            </tr>
+        }
+    </table>
+}

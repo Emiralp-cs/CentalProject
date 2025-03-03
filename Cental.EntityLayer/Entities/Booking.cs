@@ -11,7 +11,7 @@ namespace Cental.EntityLayer.Entities
         public int BookingId { get; set; }
         public DateTime PickUpDate { get; set; }
         public DateTime DropOffDate { get; set; }
-        public bool ? IsApproved { get; set; }
+        public bool? IsApproved { get; set; }
         public int Price { get; set; }
         public int PriceTimesBookingDays { get; set; }
         public string PickUpLocation { get; set; }
@@ -20,6 +20,5 @@ namespace Cental.EntityLayer.Entities
         public int UserId { get; set; }
         public int CarId { get; set; }
         public virtual Car Car { get; set; }
-
     }
 }

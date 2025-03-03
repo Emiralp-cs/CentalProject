@@ -1,5 +1,4 @@
-﻿@using Cental.EntityLayer.Entities
-@model List<Car>
+﻿@model List<Car>
 @{
     ViewData["Title"] = "Manager Araba Ekleme Sayfası";
     Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
@@ -9,11 +8,10 @@
 @if (TempData["ZeroError"] != null)
 {
     <h2>@TempData["ZeroError"]</h2>
-
 }
 else
 {
-    <h4>@Model.Select(x => string.Join(" ", x.User.FirstName, x.User.LastName)).First()  Kullanıcısının Sahip Olduğu Arabalar</h4>
+    <h4>@Model.Select(x => string.Join(" ", x.User.FirstName, x.User.LastName)).First() Kullanıcısının Sahip Olduğu Arabalar</h4>
 
     <table class="table table-bordered">
         <tr>
@@ -31,11 +29,10 @@ else
             <th>Güncelle</th>
             <th>Araç Detayları</th>
             <th>Kira Detayları</th>
-
+            <th>Gelen Yorumlar</th>
         </tr>
 
         @foreach (var item in Model)
-
         {
             count++;
 
@@ -52,45 +49,16 @@ else
                 <td>@(item.IsApproved == true ? "Kiralandı" : "Kiralanmadı")</td>
                 <td><a asp-action="DeleteCar" asp-controller="ManagerCar" asp-area="Manager" asp-route-id="@item.CarId" class="btn btn-danger">Sil</a></td>
                 <td><a asp-action="UpdateCar" asp-route-id="@item.CarId" class="btn btn-info"><i class="fa fa-pen"></i></a></td>
-                <td><a asp-action="VehicleDetails" asp-route-id="@item.CarId" class="btn btn-warning"><i class="fa fa-search"></i></a></td>
+                <td style="text-align: center;"><a asp-action="VehicleDetails" asp-route-id="@item.CarId" class="btn btn-warning"><i class="fa fa-search"></i></a></td>
                 <td><a asp-action="RentState" asp-route-id="@item.CarId" class="btn btn-success">Detaylar</a></td>
+                <td><a asp-action="CarReviews" class="btn btn-secondary" asp-route-id="@item.CarId">Yorumlar</a></td>
             </tr>
         }
     </table>
 
-    <span class="text-danger" style="text-align:center">@TempData["RentedCarError"]</span>
-    <br />
+    <div>
+        <span class="text-danger">@TempData["RentedCarError"]</span>
+        <br />
+        <a asp-action="CreateCar" asp-controller="ManagerCar" asp-area="Manager" class="btn btn-primary"><i class="fa fa-plus-circle"></i></a>
+    </div>
 }
-
-
-
-
-
-
-<a asp-action="CreateCar" asp-controller="ManagerCar" asp-area="Manager" class="btn btn-primary"><i class="fa fa-plus-circle"></i></a>
-
-
-
-
-@* <script>
-
-    function deleteCar(id){
-    Swal.fire({
-      title: "Silmek istediğinize emin misiniz ?",
-      text: "Bu işlemi geri alamazsınız!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Evet, Sil!",
-      cancelButtonText: "İptal Et"
-    }).then((result) => {
-      if (result.isConfirmed) {
-
-        window.location.href = "/Admin/AdminCar/DeleteCar/" + id;
-      }
-    });
-    }
-
-</script> *@
-

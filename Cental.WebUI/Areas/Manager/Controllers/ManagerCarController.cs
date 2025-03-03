@@ -14,10 +14,11 @@ namespace Cental.WebUI.Areas.Manager.Controllers
 
     [Area("Manager")]
     [Authorize(Roles = "Manager")]
-    public class ManagerCarController(ICarService _carService, IBrandService _brandService, RoleManager<AppRole> _roleManager, UserManager<AppUser> _userManager, IImageService _imageService, IBookingService _bookingService) : Controller
+    public class ManagerCarController(ICarService _carService, IBrandService _brandService, RoleManager<AppRole> _roleManager, UserManager<AppUser> _userManager, IImageService _imageService, IBookingService _bookingService, IReviewService _reviewService) : Controller
     {
         public async Task<IActionResult> Index()
         {
+
             var result = _carService.TGetAll();
             var manager_User = await _userManager.FindByNameAsync(User.Identity.Name);
 
@@ -51,9 +52,6 @@ namespace Cental.WebUI.Areas.Manager.Controllers
 
             }
             return View(filterResult);
-
-
-
 
         }
 
@@ -135,7 +133,7 @@ namespace Cental.WebUI.Areas.Manager.Controllers
             _bookingService.TUpdate(Bookcar);
 
 
-            
+
 
 
             return RedirectToAction("Index");
@@ -321,5 +319,25 @@ namespace Cental.WebUI.Areas.Manager.Controllers
             return RedirectToAction("Index");
 
         }
+
+        public IActionResult CarReviews(int Id)
+        {
+            var Reviews = _reviewService.TGetAll().Where(x => x.CarId == Id).ToList();
+
+            //O arabaya ait gelen bütün yorumlar gelecek ancak kullanıcını id sine göre filtreme yapılacak
+
+            if (Reviews.Count == 0)
+            {
+                TempData["ReviewsCountError"] = "Henüz Bu Aracınıza Yorum Yapılmamıştır";
+                return View();
+            }
+
+
+
+
+            return View(Reviews);
+        }
+
+
     }
 }

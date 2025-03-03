@@ -1,6 +1,6 @@
 ﻿@model List<Booking>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Araç Yorum Sayfası";
     Layout = "~/Areas/User/Views/UserLayout/Layout.cshtml";
 }
 
@@ -21,6 +21,7 @@
         .booking-table th {
             background-color: #f2f2f2;
             font-weight: 600;
+            text-align: center;
         }
 
         .booking-table img {
@@ -65,7 +66,27 @@
         border-radius: 4px;
         margin-bottom: 20px;
     }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .info-message {
+        background-color: #ffebee; /* Açık kırmızı arka plan */
+        color: #d32f2f; /* Koyu kırmızı metin rengi */
+        padding: 15px;
+        border: 1px solid #ef9a9a;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 1.1em;
+        font-weight: 500;
+    }
 </style>
+
+<div class="info-message">
+    <h3>Sadece Kira Durumu Onaylanan Arabalara Yorum Yapılabilir</h3>
+</div>
 
 @if (TempData["BookingListZeroError"] != null)
 {
@@ -84,8 +105,8 @@ else
         {
             <tr>
                 <td><img src="@item.Car.ImageUrl" alt="Araç Resmi" /></td>
-                <td>
-                    <a asp-action="Deneme" asp-route-id="@item.CarId" asp-area="User">Yorum Yap</a>
+                <td class="text-center">
+                    <a asp-action="Deneme" asp-route-id="@item.CarId" class="btn btn-warning" asp-area="User">Yorum Yap</a>
                 </td>
             </tr>
         }
