@@ -1,0 +1,71 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Mesaj Detayları ve Okundu Durumu";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
+}
+
+<style>
+    .message-details {
+        width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: sans-serif;
+    }
+
+        .message-details label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+            .message-details label strong {
+                color: #333;
+            }
+
+        .message-details p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .message-details .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+
+        .message-details .btn-danger {
+            background-color: #d9534f;
+        }
+
+        .message-details .btn-success {
+            background-color: #5cb85c;
+        }
+</style>
+
+<div class="message-details">
+    <h3 class="text-center">Mesaj Detayları</h3>
+
+    <label><strong>Ad Soyad:</strong></label>
+    <p>@Model.NameSurname</p>
+
+    <label><strong>Mesajın Konusu:</strong></label>
+    <p>@Model.Subject</p>
+
+    <label><strong>Mesajın İçeriği:</strong></label>
+    <p>@Model.Message</p>
+
+    <label><strong>E-Posta Adresi:</strong></label>
+    <p>@Model.Email</p>
+
+    <label><strong>Okundu Durumu:</strong></label>
+    <p>@(Model.Isreaded == false ? "Okunmadı" : "Okundu")</p>
+
+    <a class="btn btn-@(Model.Isreaded == false ? "danger":"success")" asp-action="Isreaded" asp-route-id="@Model.ContactId">
+        @(Model.Isreaded == false ? "Okundu Olarak İşaretle" : "Okunmadı Olarak İşaretle")
+    </a>
+</div>

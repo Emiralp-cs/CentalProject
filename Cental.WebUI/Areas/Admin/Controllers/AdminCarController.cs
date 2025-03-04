@@ -10,19 +10,19 @@ namespace Cental.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
-    public class AdminCarController(IImageService _imageService,ICarService _carService,UserManager<AppUser> _userManager) : Controller
+    public class AdminCarController(IImageService _imageService, ICarService _carService, UserManager<AppUser> _userManager) : Controller
     {
-        public  async Task<IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             var managerUserList = new List<AppUser>();
 
             var userList = await _userManager.Users.ToListAsync();
 
-            foreach (var user in userList) 
+            foreach (var user in userList)
             {
                 var userRole = await _userManager.GetRolesAsync(user);
 
-                foreach (var role in userRole) 
+                foreach (var role in userRole)
                 {
                     if (role == "Manager")
                     {
@@ -33,9 +33,28 @@ namespace Cental.WebUI.Areas.Admin.Controllers
 
             }
 
-           
+
 
             return View(managerUserList);
         }
+
+        [HttpGet]
+        public IActionResult CarList(int id)
+        {
+
+            var currentManagerCarList = _carService.TGetAll().Where(x => x.User.Id == id).ToList();
+
+            if (currentManagerCarList.Count == 0)
+            {
+                TempData["CarCountError"] = "Henüz Araç Eklenmemiş.";
+            }
+
+
+            return View(currentManagerCarList);
+        }
+
+
+
+
     }
 }

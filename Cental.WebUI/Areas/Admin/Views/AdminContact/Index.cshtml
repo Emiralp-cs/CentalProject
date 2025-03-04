@@ -1,0 +1,60 @@
+﻿@model List<Contact>
+@{
+    ViewData["Title"] = "Gelen Mesajlar";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
+}
+
+@if (TempData["ReviewListCountError"] != null)
+{
+    <div class="alert alert-info" role="alert">
+        <h4>@TempData["ReviewListCountError"]</h4>
+    </div>
+}
+
+
+else
+{
+
+    <style>
+
+        .vertical-align-middle {
+            vertical-align: middle !important;
+        }
+    </style>
+
+    <div class="container">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" class="text-center vertical-align-middle">Adı Soyadı</th>
+                    <th scope="col" class="text-center vertical-align-middle">E-Posta Adresİ</th>
+                    <th scope="col" class="text-center vertical-align-middle">Mesajın Konusu</th>
+                    <th class="text-center vertical-align-middle">Okundu Durumu</th>
+                    <th scope="col" class="text-center vertical-align-middle">Mesajın İçeriği</th>
+                    <th scope="col" class="text-center vertical-align-middle">Mesajı Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center vertical-align-middle">@item.NameSurname</td>
+                        <td class="text-center vertical-align-middle">@item.Email</td>
+                        <td class="text-center vertical-align-middle">@item.Subject</td>
+                        @if (item.Isreaded == false)
+                        {
+                            <td class="text-center vertical-align-middle text-danger">Okunmadı</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vertical-align-middle text-success">Okundu</td>
+                        }
+                        <td class="text-center vertical-align-middle"><a class="btn btn-primary" asp-action="MessageDetail" asp-route-id="@item.ContactId">Mesaj İçeriği</a></td>
+                        <td class="text-center vertical-align-middle"><a class="btn btn-danger" asp-action="MessageDelete" asp-route-id="@item.ContactId">Mesajı Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+}
