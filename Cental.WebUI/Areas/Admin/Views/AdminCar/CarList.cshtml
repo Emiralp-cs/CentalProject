@@ -4,9 +4,45 @@
     Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
 }
 
+<style>
+    .container {
+        margin-top: 40px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-family: sans-serif;
+    }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+    .img-thumbnail {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .alert-danger {
+        margin-bottom: 20px;
+    }
+</style>
+
 <div class="container mt-4">
-
-
     @if (TempData["CarCountError"] != null)
     {
         <h4 class="alert alert-danger">@TempData["CarCountError"]</h4>
@@ -20,6 +56,7 @@
                     <th>Araç</th>
                     <th>Marka</th>
                     <th>Model</th>
+                    <th>Kiralanma Durumu</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +66,25 @@
                         <td><img src="@item.ImageUrl" alt="Araç Resmi" class="img-thumbnail" style="max-width: 100px; max-height: 100px;" /></td>
                         <td>@item.Brand.BrandName</td>
                         <td>@item.ModelName</td>
+                        @if (item.Bookings.Where(x => x.CarId == item.CarId).ToList().Count == 0)
+                        {
+                            <td>Kiralama İsteği Bulunmuyor</td>
+                        }
+                        else
+                        {
+                            @if (item.IsApproved == null)
+                            {
+                                <td class="text-warning">Onay Bekliyor</td>
+                            }
+                            else if (item.IsApproved == true)
+                            {
+                                <td class="text-success">Onaylandı</td>
+                            }
+                            else if (item.IsApproved == false)
+                            {
+                                <td class="text-danger">Reddedildi</td>
+                            }
+                        }
                     </tr>
                 }
             </tbody>

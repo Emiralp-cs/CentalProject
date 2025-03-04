@@ -34,7 +34,6 @@ namespace Cental.WebUI.Areas.Admin.Controllers
             }
 
 
-
             return View(managerUserList);
         }
 

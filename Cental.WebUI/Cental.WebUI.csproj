@@ -30,6 +30,7 @@
     <Folder Include="Areas\Manager\Models\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Models\" />
+    <Folder Include="Views\Subscribe\" />
     <Folder Include="wwwroot\adminImage\" />
     <Folder Include="wwwroot\CreateCarImage\" />
     <Folder Include="wwwroot\managerImage\" />

@@ -67,6 +67,8 @@ builder.Services.AddScoped<IReviewService,ReviewManager>();
 builder.Services.AddScoped<IContactDal, EfContactDal>();
 builder.Services.AddScoped<IContactService,ContactManager>();
 
+builder.Services.AddScoped<ISubscribeDal,EfSubscribeDal>();
+builder.Services.AddScoped<ISubscribeService,SubscribeManager>();
 
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters().AddValidatorsFromAssemblyContaining<CreateBrandValidator>();
 
