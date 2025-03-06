@@ -37,6 +37,7 @@ namespace Cental.DataAccessLayer.Context
         public DbSet<RatingStar> RatingStars { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
-
+        public DbSet<Footer> Footers { get; set; }
+        public DbSet<TopBar> TopBars { get; set; }
     }
 }

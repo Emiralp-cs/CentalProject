@@ -1,33 +1,39 @@
-﻿@using Cental.DTOLayer.FeatureDtos
-@model List<ToListFeatureDTO>
+﻿@model List<ToListFeatureDTO>
 @{
-    ViewData["Title"] = "Öne Çıkan Alan";
+    ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
 }
 
+<div class="alert alert-danger">
+    <h5>Site Bütünlüğü Bozulmaması İçin 4 Öğe İle Sınırlandırılmıştır.</h5>
+</div>
 
-<table class="table table-bordered">
-
-    <tr>
-        <th>Başlık</th>
-        <th>Açıklama</th>
-        <th>Icon</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table table-bordered table-striped">
+    <thead>
         <tr>
-            <td>@item.Title</td>
-            <td>@item.Description</td>
-            <td><img src="@item.Icon" style="width:75px;height:75px" /></td>
-            <td><a href="/AdminFeature/DeleteFeature/@item.FeatureId" class="btn btn-danger">Sil</a></td>
-            <td><a href="/AdminFeature/UpdateFeature/@item.FeatureId" class="btn btn-primary">Güncelle</a></td>
+            <th class="text-center">Başlık</th>
+            <th class="text-center">Açıklama</th>
+            <th class="text-center">İkon</th>
+            <th class="text-center">Düzenle</th>
         </tr>
-    }
-
-
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="align-middle text-center">@item.Title</td>
+                <td class="align-middle text-center">@item.Description</td>
+                <td class="align-middle text-center"><i class="@item.Icon"></i></td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-primary" asp-action="EditFeature" asp-route-id="@item.FeatureId">Düzenle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 
-<a href="/AdminFeature/CreateFeature" class="btn btn-success">Yeni Öne Çıkan Alan Ekle</a>
+<style>
+    .table td, .table th {
+        vertical-align: middle;
+    }
+</style>

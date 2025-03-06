@@ -1,0 +1,112 @@
+﻿@model List<Car>
+
+@{
+    string currentGearType = string.Empty;
+    string showValue = string.Empty;
+
+}
+<style>
+    .categories-img {
+        height: 200px;
+        overflow: hidden;
+    }
+
+        .categories-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+</style>
+
+<div class="container-fluid categories pb-5">
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize mb-3">Araba <span class="text-primary">Listesi</span></h1>
+            <p class="mb-0">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit.</p>
+        </div>
+        <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
+            @foreach (var item in Model)
+            {
+                currentGearType = item.Transmission.ToString();
+
+                switch (currentGearType)
+                {
+                    case "Beş_İleri":
+                        showValue = "5 İleri";
+                        break;
+                    case "Altı_İleri":
+                        showValue = "6 İleri";
+                        break;
+                    case "Yedi_İleri":
+                        showValue = "7 İleri";
+                        break;
+                    case "Sekiz_İleri":
+                        showValue = "8 İleri";
+                        break;
+
+                }
+
+                <div class="categories-item p-4">
+                    <div class="categories-item-inner">
+                        <div class="categories-img rounded-top">
+                            <img src="@item.ImageUrl" class="img-fluid w-100 rounded-top" alt="">
+                        </div>
+                        <div class="categories-content rounded-bottom p-4">
+                            <h4>@(string.Join(" ", item.Brand.BrandName, item.ModelName))</h4>
+                            <div class="categories-review mb-4">
+                                <div class="me-3">
+                                    @(item.Reviews == null || !item.Reviews.Any() ? "Henüz Değerlendirilmedi" : item.Reviews.Select(x => x.Rating).Average().ToString("0.##"))
+                                </div>
+                                <div class="d-flex justify-content-center text-secondary">
+                                    @if (item.Reviews == null || !item.Reviews.Any())
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        @for (int i = 1; i <= 5; i++)
+                                        {
+                                            if (i <= item.Reviews.Select(x => x.Rating).Average())
+                                            {
+                                                <i class="fas fa-star"></i>
+                                            }
+
+                                            else
+                                            {
+                                                <i class="fas fa-star text-body"></i>
+                                            }
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Günlük / @item.Price₺</h4>
+                            </div>
+                            <div class="row gy-2 gx-0 text-center mb-4">
+                                <div class="col-4 border-end border-white">
+                                    <i class="fa fa-users text-dark"></i> <span class="text-body ms-1">@item.SeatCount</span>
+                                </div>
+                                <div class="col-4 border-end border-white">
+                                    <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">@showValue</span>
+                                </div>
+                                <div class="col-4">
+                                    <i class="fa fa-gas-pump text-dark"></i> <span class="text-body ms-1">@item.GasType</span>
+                                </div>
+                                <div class="col-4 border-end border-white">
+                                    <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">@item.Year</span>
+                                </div>
+                                <div class="col-4 border-end border-white">
+                                    <i class="fa fa-cogs text-dark"></i> <span class="text-body ms-1">@item.GearType</span>
+                                </div>
+                                <div class="col-4">
+                                    <i class="fa fa-road text-dark"></i> <span class="text-body ms-1">30000 km</span>
+                                </div>
+                            </div>
+                            <a href="/Cars/Index" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">İncele</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

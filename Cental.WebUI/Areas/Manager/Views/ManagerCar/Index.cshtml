@@ -8,6 +8,7 @@
 @if (TempData["ZeroError"] != null)
 {
     <h2>@TempData["ZeroError"]</h2>
+    <a asp-action="CreateCar" asp-controller="ManagerCar" asp-area="Manager" class="btn btn-primary">Araba Ekle</a>
 }
 else
 {
@@ -23,7 +24,7 @@ else
             <th>Fiyat</th>
             <th>Rol</th>
             <th>Sahip</th>
-            <th>Kiralamak İsteyen Kişi</th>
+            <th>Kiralayan Kişi</th>
             <th>Durum</th>
             <th>Sil</th>
             <th>Güncelle</th>
@@ -45,7 +46,7 @@ else
                 <td>@item.Price</td>
                 <td>@item.Role.Name</td>
                 <td>@string.Join(" ", item.User.FirstName, item.User.LastName)</td>
-                <td>@TempData[count.ToString()]</td>
+                <td>@(item.IsApproved == true ? TempData[count.ToString()] : "Henüz Kiralanmadı")</td>
                 <td>@(item.IsApproved == true ? "Kiralandı" : "Kiralanmadı")</td>
                 <td><a asp-action="DeleteCar" asp-controller="ManagerCar" asp-area="Manager" asp-route-id="@item.CarId" class="btn btn-danger">Sil</a></td>
                 <td><a asp-action="UpdateCar" asp-route-id="@item.CarId" class="btn btn-info"><i class="fa fa-pen"></i></a></td>
@@ -55,10 +56,10 @@ else
             </tr>
         }
     </table>
-
     <div>
         <span class="text-danger">@TempData["RentedCarError"]</span>
         <br />
-        <a asp-action="CreateCar" asp-controller="ManagerCar" asp-area="Manager" class="btn btn-primary"><i class="fa fa-plus-circle"></i></a>
+        <a asp-action="CreateCar" asp-controller="ManagerCar" asp-area="Manager" class="btn btn-primary">Araba Ekle</a>
+
     </div>
 }

@@ -13,11 +13,9 @@ namespace Cental.WebUI.Areas.User.Controllers
     {
         public async Task<IActionResult> Index()
         {
-
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             var BookingList = _bookingService.TGetAll().Where(x => x.IsApproved == true && x.UserId == user.Id).ToList();
-
 
             if (BookingList.Count == 0)
             {
@@ -25,9 +23,7 @@ namespace Cental.WebUI.Areas.User.Controllers
                 return View();
             }
             return View(BookingList);
-
         }
-
 
         [HttpGet]
         public async Task<IActionResult> Deneme(int id)
@@ -53,13 +49,11 @@ namespace Cental.WebUI.Areas.User.Controllers
                 return View(Car);
             }
 
-
             ViewBag.RatingStars = _reviewService.TGetStarList();
 
             ViewBag.Denemee = id;
 
             ViewBag.Car = Car;
-
 
             return View(Car);
         }

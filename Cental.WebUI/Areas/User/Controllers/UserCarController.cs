@@ -21,7 +21,6 @@ namespace Cental.WebUI.Areas.User.Controllers
                 TempData["BookingCountError"] = "Henüz Bir Aracı Kiralama Talebiniz Bulunmuyor!";
                 return View();
             }
-
             return View(userBookings);
         }
 

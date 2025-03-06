@@ -416,6 +416,25 @@ namespace Cental.DataAccessLayer.Migrations
                     b.ToTable("Features");
                 });
 
+            modelBuilder.Entity("Cental.EntityLayer.Entities.Footer", b =>
+                {
+                    b.Property<int>("FooterId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FooterId"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FooterId");
+
+                    b.ToTable("Footers");
+                });
+
             modelBuilder.Entity("Cental.EntityLayer.Entities.Process", b =>
                 {
                     b.Property<int>("ProcessId")
@@ -496,15 +515,12 @@ namespace Cental.DataAccessLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceId"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Icon")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ServiceId");
@@ -556,6 +572,47 @@ namespace Cental.DataAccessLayer.Migrations
                     b.HasKey("TestimonialId");
 
                     b.ToTable("Testimonials");
+                });
+
+            modelBuilder.Entity("Cental.EntityLayer.Entities.TopBar", b =>
+                {
+                    b.Property<int>("TopBarId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TopBarId"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Facebook")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Instagram")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Linkedln")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Twitter")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TopBarId");
+
+                    b.ToTable("TopBars");
                 });
 
             modelBuilder.Entity("Cental.EntityLayer.Entities.UserSocial", b =>

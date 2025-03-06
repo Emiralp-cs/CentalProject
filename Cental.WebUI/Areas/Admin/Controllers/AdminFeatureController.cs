@@ -10,71 +10,39 @@ namespace Cental.WebUI.Areas.Admin.Controllers
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
 
-    public class AdminFeatureController : Controller
+    public class AdminFeatureController(IFeatureService _featureService) : Controller
     {
-        private readonly IFeatureService _featureService;
-
-        private readonly IMapper _mapper;
-
-        public AdminFeatureController(IFeatureService featureService, IMapper mapper)
-        {
-            _featureService = featureService;
-            _mapper = mapper;
-        }
-
+        
         public IActionResult Index()
         {
+            var featureList = _featureService.TListN();
 
-            var values = _featureService.TGetAll();
-
-            var result = _mapper.Map<List<ToListFeatureDTO>>(values);
-
-            return View();
+            return View(featureList);
         }
 
-        public IActionResult DeleteFeature(int id)
-        {
-            _featureService.TDelete(id);
-            return RedirectToAction("Index");
-
-        }
 
         [HttpGet]
-        public IActionResult UpdateFeature(int id)
+        public IActionResult EditFeature(int id)
         {
-            var value = _featureService.TGetById(id);
 
-            var DtoFeature = _mapper.Map<UpdateFeatureDTO>(value);
+            var currentFeature = _featureService.TUpdate_GetN(id);
 
-            return View(DtoFeature);
+            return View(currentFeature);
         }
+
 
         [HttpPost]
-        public IActionResult UpdateFeature(UpdateFeatureDTO dto)
+        public IActionResult EditFeature(UpdateFeatureDTO feature)
         {
 
-            var value = _mapper.Map<Feature>(dto);
+            if (!ModelState.IsValid) 
+            {
+                
+                return View(feature);
+            }
 
-            _featureService.TUpdate(value);
 
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        public IActionResult CreateFeature()
-        {
-
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreateFeature(CreateFeatureDTO newFeature)
-        {
-
-            var Mapping = _mapper.Map<Feature>(newFeature);
-
-            _featureService.TCreate(Mapping);
+            _featureService.T_Update_PostN(feature);
 
             return RedirectToAction("Index");
         }

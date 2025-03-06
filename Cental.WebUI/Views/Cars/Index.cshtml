@@ -2,20 +2,43 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/UILayout.cshtml";
+    string currentGearType = string.Empty;
+    string showValue = string.Empty;
 }
-
+    
 <div class="container-fluid categories py-5">
     <div class="container py-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
             <h1 class="display-5 text-capitalize mb-3">Tüm <span class="text-primary">Araçlarımız</span></h1>
             <p class="mb-0">
                 Bütün araçlarımıza aşağıdan ulaşabilirsiniz.
+
             </p>
         </div>
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 @foreach (var item in Model)
                 {
+                    currentGearType = item.Transmission.ToString();
+
+                    switch (currentGearType)
+                    {
+                        case "Beş_İleri":
+                            showValue = "5 İleri";
+                            break;
+                        case "Altı_İleri":
+                            showValue = "6 İleri";
+                            break;
+                        case "Yedi_İleri":
+                            showValue = "7 İleri";
+                            break;
+                        case "Sekiz_İleri":
+                            showValue = "8 İleri";
+                            break;
+
+                    }
+
+
                     <div class="col">
                         <form method="post" action="/Cars/Tasiyici">
                             <input type="hidden" name="CarId" value="@item.CarId" />
@@ -38,7 +61,7 @@
                                     <h4 class="text-primary">@item.Price ₺ / Günlük</h4>
                                     <div class="d-flex justify-content-between text-secondary my-3">
                                         <span><i class="fa fa-users"></i> @item.SeatCount Koltuk</span>
-                                        <span><i class="fa fa-car"></i> @item.Transmission</span>
+                                        <span><i class="fa fa-car"></i> @showValue</span>
                                         <span><i class="fa fa-gas-pump"></i> @item.GasType</span>
                                     </div>
                                     <div class="d-flex justify-content-between text-secondary">

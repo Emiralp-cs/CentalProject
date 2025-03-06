@@ -60,7 +60,6 @@ builder.Services.AddScoped<IImageService, ImageService>();
 
 builder.Services.AddScoped(typeof(IGenericDal<>), typeof(GenericRepository<>));
 
-
 builder.Services.AddScoped<IReviewDal, EfReviewDal>();
 builder.Services.AddScoped<IReviewService,ReviewManager>();
 
@@ -69,6 +68,15 @@ builder.Services.AddScoped<IContactService,ContactManager>();
 
 builder.Services.AddScoped<ISubscribeDal,EfSubscribeDal>();
 builder.Services.AddScoped<ISubscribeService,SubscribeManager>();
+
+builder.Services.AddScoped<IServicesDal, EfServicesDal>();
+builder.Services.AddScoped<IServicesService,ServicesManager>();
+
+builder.Services.AddScoped<IFooterDal,EfFooterDal>();
+builder.Services.AddScoped<IFooterService,FooterManager>();
+
+builder.Services.AddScoped<ITopBarDal,EfTopBarDal>();
+builder.Services.AddScoped<ITopBarService,TopBarManager>();
 
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters().AddValidatorsFromAssemblyContaining<CreateBrandValidator>();
 

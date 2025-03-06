@@ -2,24 +2,34 @@
 @{
     ViewData["Title"] = "RentDetails";
     Layout = "~/Areas/User/Views/UserLayout/Layout.cshtml";
-
-
 }
 
+<style>
+    .car-image {
+        max-width: 400px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
 
-<h4 class="text-center"><img style="width:140px;height:120px;border-radius:15px" src="@Model.Car.ImageUrl" /></h4>
+        .car-image:hover {
+            transform: scale(1.05);
+        }
+</style>
 
+<h4 class="text-center">
+    <img class="car-image" src="@Model.Car.ImageUrl" alt="Araba Resmi" />
+</h4>
 
 <label><strong>Araç Adı: </strong>@(string.Join(" ", Model.Car.Brand.BrandName, Model.Car.ModelName))</label>
 
 <br />
 
-
 @if (Model.IsApproved == true)
 {
     <label><strong>Onay Durumu: </strong>Onaylandı</label>
 }
-
 else if (Model.IsApproved == null)
 {
     <label><strong>Onay Durumu: </strong>Onay Bekliyor</label>
@@ -29,9 +39,7 @@ else if (Model.IsApproved == false)
     <label><strong>Onay Durumu: </strong>Reddedildi</label>
 }
 
-
 <br />
-
 
 <label><strong>Kira Başlangıç Tarihi: </strong>@Model.PickUpDate.ToShortDateString()</label>
 
@@ -58,7 +66,3 @@ else if (Model.IsApproved == false)
 <br />
 
 <label><strong>Kiralanan Gün Sayısı: </strong>@(Model.PriceTimesBookingDays / Model.Price)</label>
-
-
-
-
