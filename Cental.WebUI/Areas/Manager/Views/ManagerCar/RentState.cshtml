@@ -39,15 +39,15 @@ else
             margin-bottom: 30px;
         }
 
-            .booking-header img { /* Araba resmi için stil */
-                max-width: 500px; /* Maksimum genişlik ayarı */
+            .booking-header img {
+                max-width: 500px;
                 height: auto;
-                border-radius: 8px; /* Köşeleri yuvarlatma */
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Gölge efekti */
-                transition: transform 0.3s ease-in-out; /* Geçiş efekti */
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s ease-in-out;
             }
 
-                .booking-header img:hover { /* Fare üzerine gelince büyütme efekti */
+                .booking-header img:hover {
                     transform: scale(1.05);
                 }
 
@@ -198,5 +198,7 @@ else
                 </div>
             }
         </div>
+        <span class="text-danger">@TempData["ApplyError"]</span>
+        <span class="text-danger">@TempData["RentStateNullError1"]</span>
     </div>
 }

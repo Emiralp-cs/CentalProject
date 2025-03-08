@@ -24,5 +24,6 @@ namespace Cental.DTOLayer.AboutDtos
         public string NameSurname { get; set; }
         public string JobTitle { get; set; }
         public string ProfilePicture { get; set; }
+        public bool IsShow { get; set; }
     }
 }

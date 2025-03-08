@@ -1,84 +1,83 @@
-﻿@using Cental.DTOLayer.AboutDtos
-@model CreateAboutDto
+﻿@model CreateAboutDto
 @{
     ViewData["Title"] = "CreateAbout";
     Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
-
 }
 
-<h3>Yeni Hakkımızda Oluşturma Sayfası</h3>
-
-<form method="post">
-
-    <label>Vizyonumuz</label>
-    <input type="text" asp-for="Vision" class="form-control" />
-
-    <br />
-
-    <label>Misyonumuz</label>
-    <input type="text" asp-for="Mission" class="form-control" />
-    <br />
-
-    <label>Üst Açıklama</label>
-    <input type="text" asp-for="Description1" class="form-control" />
-
-    <br />
-
-    <label>Alt Açıklama</label>
-    <input type="text" asp-for="Description2" class="form-control" />
-
-    <br />
-
-    <label>Kuruluş Yılı</label>
-    <input type="number" asp-for="StartYear" class="form-control" />
-
-    <br />
-
-    <label>Resim1</label>
-    <input type="text" asp-for="ImageUrl1" class="form-control" />
-
-    <br />
-
-    <label>Resim2</label>
-    <input type="text" asp-for="ImageUrl2" class="form-control" />
-
-    <br />
-
-    <label>Madde1</label>
-    <input type="text" asp-for="Item1" class="form-control" />
-
-    <br />
-
-    <label>Madde2</label>
-    <input type="text" asp-for="Item2" class="form-control" />
-
-    <br />
-
-    <label>Madde3</label>
-    <input type="text" asp-for="Item3" class="form-control" />
-
-    <br />
-
-    <label>Madde4</label>
-    <input type="text" asp-for="Item4" class="form-control" />
-
-    <br />
-
-    <label>Ad Soyad</label>
-    <input type="text" asp-for="NameSurname" class="form-control" />
-
-    <br />
-
-    <label>Unvan</label>
-    <input type="text" asp-for="JobTitle" class="form-control" />
-
-    <br />
-
-    <label>Profil Fotoğrafı</label>
-    <input type="text" asp-for="ProfilePicture" class="form-control" />
-
-    <br />
-
-    <button class="btn btn-primary">Kaydet</button>
-</form>
-
+<div class="container-fluid overflow-hidden about py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+                <div class="about-item">
+                    <div class="pb-5">
+                        <h1 class="display-5 text-capitalize"><span class="text-primary">Hakkımızda</span></h1>
+                        <p class="mb-0">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut amet nemo expedita asperiores commodi accusantium at cum harum, excepturi, quia tempora cupiditate! Adipisci facilis modi quisquam quia distinctio,
+                        </p>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="about-item-inner border p-4">
+                                <div class="about-icon mb-4">
+                                    <img src="~/Cental-1.0.0/img/about-icon-1.png" class="img-fluid w-50 h-50" alt="Icon">
+                                </div>
+                                <h5 class="mb-3">Mizyonumuz</h5>
+                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="about-item-inner border p-4">
+                                <div class="about-icon mb-4">
+                                    <img src="~/Cental-1.0.0/img/about-icon-2.png" class="img-fluid h-50 w-50" alt="Icon">
+                                </div>
+                                <h5 class="mb-3">Misyonumuz</h5>
+                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-item my-4">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, aliquam ipsum. Sed suscipit dolorem libero sequi aut natus debitis reprehenderit facilis quaerat similique, est at in eum. Quo, obcaecati in!
+                    </p>
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="text-center rounded bg-secondary p-4">
+                                <h1 class="display-6 text-white">17</h1>
+                                <h5 class="text-light mb-0">Yıllık Deneyim</h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="rounded">
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Morbi tristique senectus</p>
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> A scelerisque purus</p>
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Dictumst vestibulum</p>
+                                <p class="mb-0"><i class="fa fa-check-circle text-primary me-1"></i> dio aenean sed adipiscing</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 d-flex align-items-center">
+                            <a href="#" class="btn btn-primary rounded py-3 px-5">Daha Fazlası</a>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="d-flex align-items-center">
+                                <img src="~/Cental-1.0.0/img/attachment-img.jpg" class="img-fluid rounded-circle border border-4 border-secondary" style="width: 100px; height: 100px;" alt="Image">
+                                <div class="ms-4">
+                                    <h4>Bruce Vayne</h4>
+                                    <p class="mb-0">KiralaGit.com Kurucu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+                <div class="about-img">
+                    <div class="img-1">
+                        <img src="~/Cental-1.0.0/img/about-img.jpg" class="img-fluid rounded h-100 w-100" alt="">
+                    </div>
+                    <div class="img-2">
+                        <img src="~/Cental-1.0.0/img/banner-1.jpg" class="img-fluid rounded w-100" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

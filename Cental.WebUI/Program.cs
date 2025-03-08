@@ -78,6 +78,9 @@ builder.Services.AddScoped<IFooterService,FooterManager>();
 builder.Services.AddScoped<ITopBarDal,EfTopBarDal>();
 builder.Services.AddScoped<ITopBarService,TopBarManager>();
 
+builder.Services.AddScoped<IDashboardDal,EfDashboardDal>();
+builder.Services.AddScoped<IDashboardService,DashboardManager>();
+
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters().AddValidatorsFromAssemblyContaining<CreateBrandValidator>();
 
 

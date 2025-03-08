@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Cental.WebUI.ViewComponents.UILayout
 {
-    public class _UIAboutComponent(IAboutService _aboutService) : ViewComponent
+    public class _UITestimonialComponent(IReviewService _reviewService) : ViewComponent
     {
-
         public IViewComponentResult Invoke()
         {
-            var aboutList = _aboutService.TListN();
-            return View(aboutList);
+            var reviewList = _reviewService.TListN();
+            return View(reviewList);
         }
+
     }
 }

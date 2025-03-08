@@ -1,34 +1,59 @@
-﻿@using Cental.DTOLayer.AboutDtos
-@model List<ToListAboutDto>
-
+﻿@model List<ToListAboutDto>
 @{
-    ViewData["Title"] = "Hakkımızda";
+    ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
 }
 
 
-<table class="table table-bordered">
+<table>
+
     <tr>
-        <th>#</th>
-        <th>Vizyon</th>
-        <th>Misyon</th>
+        <th>1.Açıklama</th>
+        <th>2.Açıklama</th>
+        <th>Başlangıç Tarihi</th>
+        <th>1.Öğe</th>
+        <th>2.Öğe</th>
+        <th>3.Öğe</th>
+        <th>4.Öğe</th>
+        <th>Ad Soyad</th>
+        <th>İş Başlığı</th>
+        <th>Vizyonumuz</th>
+        <th>Misyonumuz</th>
+        <th>1.Resim</th>
+        <th>2.Resim</th>
+        <th>Düzenle</th>
         <th>Sil</th>
-        <th>Güncelle</th>
+
+
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.AboutId</td>
+            <td>@item.Description1</td>
+            <td>@item.Description2</td>
+            <td>@item.StartYear</td>
+            <td>@item.Item1</td>
+            <td>@item.Item2</td>
+            <td>@item.Item3</td>
+            <td>@item.Item4</td>
+            <td>@item.NameSurname</td>
+            <td>@item.JobTitle</td>
             <td>@item.Vision</td>
             <td>@item.Mission</td>
-            <td><a asp-action="DeleteAbout" asp-route-id="@item.AboutId" class="btn btn-danger">Sil</a></td>
-            <td><a asp-action="UpdateAbout" asp-route-id="@item.AboutId" asp-controller="AdminAbout" class="btn btn-info">Güncelle</a></td>
+            <td><img src="@item.ImageUrl1" /></td>
+            <td><img src="@item.ImageUrl2" /></td>
+            <td><img src="@item.ProfilePicture" /></td>
+            <td>@(item.IsShow == true ? "Gösteriliyor" : "Gösterilmiyor")</td>
+            <td><a asp-action="UpdateAbout" class="btn btn-primary" asp-route="@item.AboutId">Düzenle</a></td>
+            <td><a asp-action="DeleteAbout" class="btn btn-danger" asp-route="@item.AboutId">Sil</a></td>
         </tr>
+
     }
+
+
 </table>
 
+<a class="btn btn-success" asp-action="CreateAbout">Yeni Hakkımda Oluştur</a>
 
-<div class="text-danger">@TempData["CountError"]</div>
-    
-<a asp-action="CreateAbout" asp-controller="AdminAbout" class="btn btn-primary">Yeni Hakkımızda Ekle</a>
+

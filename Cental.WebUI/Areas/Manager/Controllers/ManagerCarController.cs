@@ -122,19 +122,32 @@ namespace Cental.WebUI.Areas.Manager.Controllers
 
         public IActionResult RentStateApply(string id, string userId)
         {
+            var car = _carService.TGetAll().Where(x => x.CarId == int.Parse(id)).FirstOrDefault();
 
             var Bookcar = _bookingService.TGetAll().Where(x => x.CarId == int.Parse(id) && x.UserId == int.Parse(userId)).FirstOrDefault();
 
-            var car = _carService.TGetAll().Where(x => x.CarId == int.Parse(id)).FirstOrDefault();
+            if (car.IsApproved == true)
+            {
+                TempData["ApplyError"] = "Bu Aracı Zaten Kiralaması İçin Onayladınız";
+                return RedirectToAction("RentState", new { id = id });
+            }
+
+
+
+
 
             car.IsApproved = true;
+
+            var DeclineBookingList = _bookingService.TGetAll().Where(x => x.CarId == int.Parse(id) && x.IsApproved != true).ToList();
+
+            foreach (var item in DeclineBookingList)
+            {
+                item.IsApproved = false;
+                _bookingService.TUpdate(item);
+            }
             _carService.TUpdate(car);
             Bookcar.IsApproved = true;
             _bookingService.TUpdate(Bookcar);
-
-
-
-
 
             return RedirectToAction("Index");
         }
@@ -146,11 +159,20 @@ namespace Cental.WebUI.Areas.Manager.Controllers
 
             var car = _carService.TGetAll().Where(x => x.CarId == int.Parse(id)).FirstOrDefault();
 
-            car.IsApproved = false;
-            _carService.TUpdate(car);
-            Bookcar.IsApproved = false;
-            _bookingService.TUpdate(Bookcar);
+            if (car.IsApproved == true && Bookcar.IsApproved == true)
+            {
 
+                car.IsApproved = false;
+                Bookcar.IsApproved = false;
+                _bookingService.TUpdate(Bookcar);
+                _carService.TUpdate(car);
+                return RedirectToAction("Index");
+
+            }
+
+            Bookcar.IsApproved = false;
+
+            _bookingService.TUpdate(Bookcar);
 
 
             return RedirectToAction("Index");
@@ -164,13 +186,29 @@ namespace Cental.WebUI.Areas.Manager.Controllers
 
             var car = _carService.TGetAll().Where(x => x.CarId == int.Parse(id)).FirstOrDefault();
 
-            car.IsApproved = null;
-            _carService.TUpdate(car);
+
+            if (car.IsApproved == true && Bookcar.IsApproved == true)
+            {
+
+                car.IsApproved = null;
+                Bookcar.IsApproved = null;
+                _bookingService.TUpdate(Bookcar);
+                _carService.TUpdate(car);
+                return RedirectToAction("Index");
+
+
+            }
+
+            if (car.IsApproved == true)
+            {
+                TempData["RentStateNullError1"] = "Araç Kiralandığı İçin Sadece Reddedildi Olarak Kalabilir!";
+                return RedirectToAction("RentState", new { id = id });
+            }
+
             Bookcar.IsApproved = null;
             _bookingService.TUpdate(Bookcar);
-
-
             return RedirectToAction("Index");
+
 
         }
 

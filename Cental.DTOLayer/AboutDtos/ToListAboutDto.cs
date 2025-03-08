@@ -10,7 +10,6 @@ namespace Cental.DTOLayer.AboutDtos
     public class ToListAboutDto : BaseDto
     {
         public int AboutId { get; set; }
-
         public string Vision { get; set; }
         public string Mission { get; set; }
         public string Description1 { get; set; }
@@ -25,5 +24,6 @@ namespace Cental.DTOLayer.AboutDtos
         public string NameSurname { get; set; }
         public string JobTitle { get; set; }
         public string ProfilePicture { get; set; }
+        public bool IsShow { get; set; }
     }
 }

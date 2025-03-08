@@ -53,7 +53,7 @@ namespace Cental.WebUI.Controllers
             }
 
             else
-            {   
+            {
 
                 newContact.Isreaded = false;
 

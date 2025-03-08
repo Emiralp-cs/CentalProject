@@ -19,7 +19,6 @@ namespace Cental.DTOLayer.CarDtos
         public string? GearType { get; set; }
         public string? GasType { get; set; }
         public int Year { get; set; }
-
         public string? Transmission { get; set; }
         public int Kilometer { get; set; }
         [Required(ErrorMessage = "Marka boş bırakılamaz!")]

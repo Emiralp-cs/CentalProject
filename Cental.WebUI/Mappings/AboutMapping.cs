@@ -10,8 +10,11 @@ namespace Cental.WebUI.Mappings
         {   
             var thisYear = DateTime.Now.Year;
 
-            CreateMap<About,UIAboutDTO>().ForMember(destination => destination.ExperienceYear,
+            CreateMap<About,ToListAboutDto>().ForMember(destination => destination.StartYear,
                                         o => o.MapFrom(source => thisYear - source.StartYear));
+            CreateMap<About,ToListAboutDto>().ReverseMap();
+            CreateMap<About,CreateAboutDto>().ReverseMap();
+            CreateMap<About,UpdateAboutDto>().ReverseMap();
 
 
         }
