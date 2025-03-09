@@ -1,0 +1,35 @@
+﻿@model UpdateUserSocialDto
+@{
+    ViewData["Title"] = "Sosyal Medya Düzenleme Sayfası";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+}
+
+
+<form asp-action="UpdateSocial" method="post">
+
+    <input type="hidden" asp-for="UserSocialId"/>
+    <label><strong>Başlık: </strong></label>
+
+    <br />
+
+    <input asp-for="Title" class="form-control" />
+
+    <label><strong>Url: </strong></label>
+
+    <br />
+
+    <input asp-for="Url" class="form-control" />
+
+    <br />
+
+    <label><strong>İkon: </strong></label>
+
+    <br />
+
+    <input asp-for="Icon" class="form-control" />
+
+    <button class="btn btn-primary">Güncelle</button>
+
+
+    @Html.ValidationSummary();
+</form>

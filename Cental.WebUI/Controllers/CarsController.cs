@@ -10,86 +10,61 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using Cental.DTOLayer.CarDtos;
+using AutoMapper;
 
 namespace Cental.WebUI.Controllers
 {
     [AllowAnonymous]
-    public class CarsController(ICarService _carService, IBrandService _brandService, CentalContext _context, IBookingService _bookingService) : Controller
+    public class CarsController(ICarService _carService, IBrandService _brandService, IBookingService _bookingService) : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(string? modelName, string? brand, string? gasType, string? gearType, int? year, int? price, int? kilometer)
         {
             ViewBag.ActivePage = "Cars";
-            if (TempData["FilterCars"] != null)
-            {
-                var data = TempData["FilterCars"].ToString();
-                if (data != null)
-                {
-                    var filterCars = JsonSerializer.Deserialize<List<Car>>(data, new JsonSerializerOptions
-                    {
-                        ReferenceHandler = ReferenceHandler.IgnoreCycles
-                    });
-                    return View(filterCars);
-
-                }
-            }
-
-
-
-            var bookingvalues = _bookingService.TGetAll().Where(x => x.IsApproved ==true).Select(x => x.CarId).ToList();
+            var bookingvalues = _bookingService.TGetAll().Where(x => x.IsApproved == true).Select(x => x.CarId).ToList();
             var values = _carService.TGetAll().Select(x => x.CarId).ToList();
 
             var carvalues = _carService.TGetAll();
 
             var result = values.Except(bookingvalues).ToList();
-
-
             List<Car> result1 = carvalues.Where(car => result.Contains(car.CarId)).ToList();
+
+            if (!string.IsNullOrEmpty(modelName))
+            {
+                result1 = result1.Where(x => x.ModelName.ToLower() == modelName.ToLower()).ToList();
+            }
+            if (!string.IsNullOrEmpty(brand))
+            {
+                result1 = result1.Where(x => x.Brand.BrandName == brand.ToString()).ToList();
+            }
+            if (!string.IsNullOrEmpty(gasType))
+            {
+                result1 = result1.Where(x => x.GasType == gasType.ToString()).ToList();
+            }
+            if (!string.IsNullOrEmpty(gearType))
+            {
+                result1 = result1.Where(x => x.GearType == gearType.ToString()).ToList();
+            }
+            if (year > 0)
+            {
+                result1 = result1.Where(x => x.Year >= year).ToList();
+            }
+            if (kilometer > 0)
+            {
+                result1 = result1.Where(x => x.Kilometer >= kilometer).ToList();
+            }
+            if (price > 0)
+            {
+                result1 = result1.Where(x => x.Price >= price).ToList();
+            }
+
+
+
 
             return View(result1);
 
         }
 
-        [HttpPost]
-        public IActionResult FilterCars(string brand, string gear, string gas, int year)
-        {
-            IQueryable<Car> values = _context.Cars.AsQueryable(); //filtrelenebilir bir liste oluşturduk.
-            //asqueryable kullandık çünkü value içerisinde şartlı sorgulama yani where koşullarını kullanabilmek için.
 
-            if (!string.IsNullOrEmpty(brand))
-            {
-                values = values.Where(x => x.Brand.BrandName == brand);
-
-            }
-
-            if (!string.IsNullOrEmpty(gear))
-            {
-                values = values.Where(x => x.GearType == gear);
-
-            }
-
-            if (!string.IsNullOrEmpty(gas))
-            {
-                values = values.Where(x => x.GasType == gas);
-
-            }
-
-            if (year > 0)
-            {
-                values = values.Where(x => x.Year >= year);
-
-            }
-
-            var filterList = values.ToList(); //filtrelenebilir listeyi normal listeye çevirdik
-            //Iquaryable tipinde olduğu için listeye çeviriyoruz çünkü view'e liste tipinde veri taşıyacağız.
-            //farklı view'e taşıyacağımız için TempData kullanıyoruz.   
-            //tempdata tipini bilemeyeceğimiz için json formatına çevirip taşıyoruz.
-            //ilişkili tablo olduğu için döngüye girmemesi adına ReferenceHandler.IgnoreCycles kullanıyoruz.
-            TempData["FilterCars"] = JsonSerializer.Serialize(filterList, new JsonSerializerOptions
-            {
-                ReferenceHandler = ReferenceHandler.IgnoreCycles
-            });
-            return RedirectToAction("Index");
-        }
 
 
         [HttpPost]

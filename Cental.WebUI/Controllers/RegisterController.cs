@@ -39,9 +39,7 @@ namespace Cental.WebUI.Controllers
             if (!ModelState.IsValid)
             {
                 return View(newUser);
-
             }
-            //küçük harf , büyük harf , rakam , özel karakter en az 6 karakter olmalı
             var result = await _userManager.CreateAsync(user, newUser.Password);
 
             if (!result.Succeeded)
@@ -76,7 +74,6 @@ namespace Cental.WebUI.Controllers
                 return View(newUser);
 
             }
-            //küçük harf , büyük harf , rakam , özel karakter en az 6 karakter olmalı
             var result = await _userManager.CreateAsync(user, newUser.Password);
 
             if (!result.Succeeded)

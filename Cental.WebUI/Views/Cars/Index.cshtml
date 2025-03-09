@@ -5,16 +5,19 @@
     string currentGearType = string.Empty;
     string showValue = string.Empty;
 }
-    
+
 <div class="container-fluid categories py-5">
     <div class="container py-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
             <h1 class="display-5 text-capitalize mb-3">Tüm <span class="text-primary">Araçlarımız</span></h1>
             <p class="mb-0">
                 Bütün araçlarımıza aşağıdan ulaşabilirsiniz.
-
             </p>
         </div>
+
+
+        @await Component.InvokeAsync("_CarFilterCars")
+
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 @foreach (var item in Model)
@@ -35,7 +38,9 @@
                         case "Sekiz_İleri":
                             showValue = "8 İleri";
                             break;
-
+                        default:
+                            showValue = currentGearType;
+                            break;
                     }
 
 
@@ -57,26 +62,27 @@
                                 <img src="@item.ImageUrl" class="card-img-top" alt="@item.Brand.BrandName @item.ModelName">
                                 <div class="card-body">
                                     <h5 class="card-title">@item.Brand.BrandName @item.ModelName</h5>
-                                    
+
                                     @if (item.Reviews == null || !item.Reviews.Any())
                                     {
                                         <p class="text-muted">Puanı: "Değerlendirilmedi"</p>
                                     }
                                     else
                                     {
-                                        <p class="text-muted">Puanı:
-                                        @for (int i = 1; i <= 3; i++)
-                                        {
-                                            if (i <= item.Reviews.Select(x => x.Rating).Average())
+                                        <p class="text-muted">
+                                            Puanı:
+                                            @for (int i = 1; i <= 3; i++)
                                             {
+                                                if (i <= item.Reviews.Select(x => x.Rating).Average())
+                                                {
                                                     <i class="fas fa-star text-body"></i>
-                                            }
+                                                }
 
-                                            else
-                                            {
-                                                <i class="fas fa-star text-body"></i>
+                                                else
+                                                {
+                                                    <i class="fas fa-star text-body"></i>
+                                                }
                                             }
-                                        }
                                         </p>
                                     }
                                     <h4 class="text-primary">@item.Price ₺ / Günlük</h4>

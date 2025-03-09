@@ -40,7 +40,8 @@ namespace Cental.WebUI.Areas.Admin.Controllers
                     Id = user.Id,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
-                    Email = user.Email
+                    Email = user.Email,
+                    UserName = user.UserName,
 
                 };
 

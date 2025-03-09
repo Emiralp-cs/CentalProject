@@ -26,6 +26,6 @@ namespace Cental.DTOLayer.CarDtos
         public int BrandId { get; set; }
         public int RoleId { get; set; }
         public int UserId { get; set; }
-        public IFormFile ImageFile { get; set; }
+        public IFormFile? ImageFile { get; set; }
     }
 }

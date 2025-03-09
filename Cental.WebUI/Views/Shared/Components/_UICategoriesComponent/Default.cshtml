@@ -3,8 +3,8 @@
 @{
     string currentGearType = string.Empty;
     string showValue = string.Empty;
-
 }
+
 <style>
     .categories-img {
         height: 200px;
@@ -16,6 +16,10 @@
             height: 100%;
             object-fit: cover;
         }
+
+    .categories-content {
+        /* min-height kaldırıldı, JavaScript ile ayarlanacak */
+    }
 </style>
 
 <div class="container-fluid categories pb-5">
@@ -43,6 +47,9 @@
                     case "Sekiz_İleri":
                         showValue = "8 İleri";
                         break;
+                    default:
+                        showValue = currentGearType;
+                        break;
 
                 }
 
@@ -60,7 +67,6 @@
                                 <div class="d-flex justify-content-center text-secondary">
                                     @if (item.Reviews == null || !item.Reviews.Any())
                                     {
-
                                     }
                                     else
                                     {
@@ -70,7 +76,6 @@
                                             {
                                                 <i class="fas fa-star"></i>
                                             }
-
                                             else
                                             {
                                                 <i class="fas fa-star text-body"></i>
@@ -110,3 +115,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    window.onload = function() {
+        const contentDivs = document.querySelectorAll('.categories-content');
+        let maxHeight = 0;
+
+        contentDivs.forEach(div => {
+            maxHeight = Math.max(maxHeight, div.offsetHeight);
+        });
+
+        contentDivs.forEach(div => {
+            div.style.height = maxHeight + 'px';
+        });
+    };
+</script>

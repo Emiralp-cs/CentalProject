@@ -45,5 +45,36 @@ namespace Cental.WebUI.Areas.Manager.Controllers
 
 
         }
+
+        [HttpGet]
+        public IActionResult UpdateSocial(int id)
+        {
+
+            var currentSocial = _userSocialService.TUpdate_GetN(id);
+
+            return View(currentSocial);
+        }
+
+        [HttpPost]
+        public  async Task<IActionResult> UpdateSocial(UpdateUserSocialDto model)
+        {   
+
+            var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            model.User = currentUser;
+
+
+            if (!ModelState.IsValid)
+            {
+                
+                return View(model);
+            }
+
+
+
+
+            _userSocialService.T_Update_PostN(model);
+            return RedirectToAction("Index");
+        }
     }
 }
