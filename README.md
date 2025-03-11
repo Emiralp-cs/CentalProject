@@ -24,3 +24,6 @@ In this project, users are divided into 3 areas: Admin, User, and Manager. Admin
   * __Subscribers__: Viewing and deleting subscribers.
   * __Services__: Services adding, editing, and deleting.
   * __TopBar__: TopBar adding, editing, and deleting.
+
+# Manager Panel Features
+* __Car rental requests__:
