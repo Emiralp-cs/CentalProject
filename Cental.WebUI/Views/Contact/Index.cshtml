@@ -114,3 +114,23 @@
     </div>
 </div>
 <!-- Contact End -->
+<script>
+    document.getElementById('sendMessageButton').addEventListener('click', function (event) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: 'Emin misiniz?',
+            text: "Mesajınızı göndermek istediğinizden emin misiniz?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Evet, Gönder!',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('contactForm').submit();
+            }
+        });
+    });
+</script>

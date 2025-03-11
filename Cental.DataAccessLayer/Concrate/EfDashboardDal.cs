@@ -67,6 +67,12 @@ namespace Cental.DataAccessLayer.Concrate
 
         public double UserReviewAverage()
         {
+            if (_context.Reviews == null || !_context.Reviews.Any())
+            {
+                return 0;
+            }
+
+
             return _context.Reviews.Average(x => x.Rating);
         }
 

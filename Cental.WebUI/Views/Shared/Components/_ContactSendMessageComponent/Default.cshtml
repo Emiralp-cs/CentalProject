@@ -5,7 +5,7 @@
 <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.1s">
     <div class="bg-secondary p-5 rounded">
         <h4 class="text-primary mb-4">Bizimle İletişime Geçin</h4>
-        <form asp-action="SendMessage" asp-controller="Contact" method="post">
+        <form asp-action="SendMessage" id="contactForm" asp-controller="Contact" method="post">
             <div class="row g-4">
                 <div class="col-lg-12 col-xl-6">
                     <div class="form-floating">
@@ -37,7 +37,7 @@
 
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-light w-100 py-3" type="submit">Mesajı Gönder</button>
+                    <button class="btn btn-light w-100 py-3" id="sendMessageButton" type="submit">Mesajı Gönder</button>
                 </div>
             </div>
         </form>

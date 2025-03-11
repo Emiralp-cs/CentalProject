@@ -4,6 +4,17 @@
     Layout = "~/Areas/User/Views/UserLayout/Layout.cshtml";
 }
 
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        Swal.fire(
+            'Başarılı!',
+            '@TempData["SuccessMessage"]',
+            'success'
+        )
+    </script>
+}
+
 @if (TempData["BookingCountError"] != null)
 {
     <h3>@TempData["BookingCountError"]</h3>

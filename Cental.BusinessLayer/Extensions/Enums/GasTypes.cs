@@ -12,6 +12,7 @@ namespace Cental.DTOLayer.Enums
         Dizel,
         LPG,
         Hibrit,
-        Elektrik
+        Elektrik,
+        BenzinLpg
     }
 }

@@ -71,7 +71,7 @@
                                     {
                                         <p class="text-muted">
                                             Puanı:
-                                            @for (int i = 1; i <= 3; i++)
+                                            @for (int i = 1; i <= 5; i++)
                                             {
                                                 if (i <= item.Reviews.Select(x => x.Rating).Average())
                                                 {
@@ -80,7 +80,6 @@
 
                                                 else
                                                 {
-                                                    <i class="fas fa-star text-body"></i>
                                                 }
                                             }
                                         </p>

@@ -18,19 +18,23 @@
                                         <label class="form-label">Başlangıç Tarihi</label>
                                         <input type="date" asp-for="PickUpDate" class="form-control" placeholder="">
                                         <span class="text-danger">@ViewBag.PickUpDateError</span>
+                                        <span asp-validation-for="PickUpDate" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Bitiş Tarihi</label>
                                         <input type="date" class="form-control" asp-for="DropOffDate">
                                         <span class="text-danger">@ViewBag.DropOffDateError</span>
+                                        <span asp-validation-for="DropOffDate" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Araç Nereye Gelsin</label>
                                         <input type="text" class="form-control" asp-for="PickUpLocation">
+                                        <span asp-validation-for="PickUpLocation" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Araç Bırakma Noktası</label>
                                         <input type="text" class="form-control" asp-for="DropOffLocation">
+                                        <span asp-validation-for="DropOffLocation" class="text-danger"></span>
                                     </div>
                                     <input type="hidden" name="Price" value="@ViewBag.Price" />
                                     <span class="text-danger">@ViewBag.DateError</span>

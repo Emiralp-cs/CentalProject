@@ -66,3 +66,11 @@ else if (Model.IsApproved == false)
 <br />
 
 <label><strong>Kiralanan Gün Sayısı: </strong>@(Model.PriceTimesBookingDays / Model.Price)</label>
+<br />
+<a asp-action="DeleteBooking" onclick="confirmDelete(@Model.BookingId)" asp-route-id="@Model.BookingId" class="btn btn-danger">Sil</a>
+<br />
+<span class="text-danger">@TempData["ApprovedDeleteError"]</span>
+
+
+
+   

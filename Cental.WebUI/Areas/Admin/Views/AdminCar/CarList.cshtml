@@ -1,6 +1,6 @@
 ﻿@model List<Car>
 @{
-    ViewData["Title"] = "CarList";
+    ViewData["Title"] = "Arabalar";
     Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
 }
 
@@ -57,6 +57,7 @@
                     <th>Marka</th>
                     <th>Model</th>
                     <th>Kiralanma Durumu</th>
+                    <th>Detaylar</th>
                 </tr>
             </thead>
             <tbody>
@@ -85,6 +86,7 @@
                                 <td class="text-danger">Reddedildi</td>
                             }
                         }
+                        <td><a class="btn btn-primary" asp-action="Details" asp-route-id="@item.CarId">Tıkla</a></td>
                     </tr>
                 }
             </tbody>

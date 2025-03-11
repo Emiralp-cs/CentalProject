@@ -18,7 +18,6 @@
         }
 
     .categories-content {
-        /* min-height kaldırıldı, JavaScript ile ayarlanacak */
     }
 </style>
 
@@ -62,7 +61,7 @@
                             <h4>@(string.Join(" ", item.Brand.BrandName, item.ModelName))</h4>
                             <div class="categories-review mb-4">
                                 <div class="me-3">
-                                    @(item.Reviews == null || !item.Reviews.Any() ? "Henüz Değerlendirilmedi" : item.Reviews.Select(x => x.Rating).Average().ToString("0.##"))
+                                    @(item.Reviews == null || !item.Reviews.Any() ? "Henüz Değerlendirilmedi" : "")
                                 </div>
                                 <div class="d-flex justify-content-center text-secondary">
                                     @if (item.Reviews == null || !item.Reviews.Any())
@@ -74,11 +73,11 @@
                                         {
                                             if (i <= item.Reviews.Select(x => x.Rating).Average())
                                             {
-                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star text-body"></i>
                                             }
                                             else
                                             {
-                                                <i class="fas fa-star text-body"></i>
+                                               
                                             }
                                         }
                                     }

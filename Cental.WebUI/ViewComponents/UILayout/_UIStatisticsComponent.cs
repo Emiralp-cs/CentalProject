@@ -13,10 +13,8 @@ namespace Cental.WebUI.ViewComponents.UILayout
             //Kaç Tane Araba Olduğu Getirilecek
             var totalCarCount = _carService.TGetAll().Count;
             ViewBag.TotalCarCount = totalCarCount;
-            //Kaç Tane Kayıtlı Kullanıcı Olduğu Getirilecek
             var totalUserCount = await _userManager.Users.ToListAsync();
             ViewBag.TotalUserCount = totalUserCount.Count;
-            //Kullanıcı Değerlendirme Ortalaması Getirilecek
 
             if (_reviewService.TGetAll().Count != 0)
             {
@@ -35,7 +33,6 @@ namespace Cental.WebUI.ViewComponents.UILayout
             ViewBag.BrandCount = totalBrandCount;
 
 
-            ViewBag.UserReviewAvg = 0;
 
 
 

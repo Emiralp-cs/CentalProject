@@ -25,14 +25,29 @@ namespace Cental.WebUI.Areas.User.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> RentDetails(int id)
+        public IActionResult RentDetails(int id)
+        {
+            var currentBooking = _bookingService.TGetById(id);
+
+            return View(currentBooking);
+        }
+
+        public IActionResult DeleteBooking(int id)
         {
 
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var currentBooking = _bookingService.TGetById(id);
 
-            var booking = _bookingService.TGetAll().Where(x => x.UserId == user.Id).FirstOrDefault();
+            if (currentBooking.IsApproved == true)
+            {
+                TempData["ApprovedDeleteError"] = "Aracın Kira Durumu Onaylandığı İçin İptal Edemesiniz Detaylı Bilgi İçin Araç Sahibi İle İletişime Geçiniz";
+                return RedirectToAction("RentDetails", new { id });
+            }
+            TempData["SuccessMessage"] = "Kiralama kaydı başarıyla silindi.";
 
-            return View(booking);
+            _bookingService.TDelete(id);
+
+
+            return RedirectToAction("Index");
         }
 
 

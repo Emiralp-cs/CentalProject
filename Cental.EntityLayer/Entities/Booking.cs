@@ -16,9 +16,9 @@ namespace Cental.EntityLayer.Entities
         public int PriceTimesBookingDays { get; set; }
         public string PickUpLocation { get; set; }
         public string DropOffLocation { get; set; }
-        public virtual AppUser User { get; set; }
+        public virtual AppUser? User { get; set; }
         public int UserId { get; set; }
         public int CarId { get; set; }
-        public virtual Car Car { get; set; }
+        public virtual Car? Car { get; set; }
     }
 }
