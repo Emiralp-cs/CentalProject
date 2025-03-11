@@ -11,5 +11,8 @@ In this project, users are divided into 3 areas: Admin, User, and Manager. Admin
  * AutoMapper
  * Entity Framework Core
  * Paging
- * Sweet Alert 
-
+ * Sweet Alert
+   
+# Administrator Panel Features
+  * __Statistics__: All the changes and updates on the site can be followed.
+  * 
