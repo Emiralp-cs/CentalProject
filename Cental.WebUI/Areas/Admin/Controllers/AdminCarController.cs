@@ -23,7 +23,9 @@ namespace Cental.WebUI.Areas.Admin.Controllers
         {
             var currentManagerCarList = _carService.TGetAll().Where(x => x.User.Id == id).ToList();
 
-            if (currentManagerCarList.Count == 0)
+            var currentCar = _carService.TGetById(id);
+
+            if (currentManagerCarList.Count == 0 )
             {
                 TempData["CarCountError"] = "Henüz Araç Eklenmemiş.";
             }

@@ -40,10 +40,14 @@ namespace Cental.WebUI.Areas.Manager.Controllers
 
                 foreach (var rented in rented_cars)
                 {
-                    count1++;
-                    var rentedUser = await _userManager.FindByIdAsync(rented.UserId.ToString());
-                    var rentedUserName = string.Join(" ", rentedUser.FirstName, rentedUser.LastName);
-                    TempData[count1.ToString()] = rentedUserName;
+                    if (rented.IsApproved == true)
+                    {
+                        count1++;
+                        var rentedUser = await _userManager.FindByIdAsync(rented.UserId.ToString());
+                        var rentedUserName = string.Join(" ", rentedUser.FirstName, rentedUser.LastName);
+                        TempData[count1.ToString()] = rentedUserName;
+                    }
+
                 }
                 count = count1;
                 count++;
@@ -51,6 +55,7 @@ namespace Cental.WebUI.Areas.Manager.Controllers
                 TempData[count.ToString()] = "Henüz Kiralanmadı";
 
             }
+
             return View(filterResult);
 
         }
@@ -170,7 +175,14 @@ namespace Cental.WebUI.Areas.Manager.Controllers
 
             }
 
+            if (car.IsApproved == true)
+            {
+                TempData["DeclineError"] = "Bu Araç Otomatik Olarak Reddedildi Olarak İşaretlendi";
+                return RedirectToAction("RentState", new { id = id });
+            }
+
             Bookcar.IsApproved = false;
+            car.IsApproved = false;
 
             _bookingService.TUpdate(Bookcar);
 

@@ -35,7 +35,10 @@ else
 
         @foreach (var item in Model)
         {
-            count++;
+            if (item.IsApproved == true)
+            {
+                count++;
+            }
 
             <tr>
                 <td>@count</td>

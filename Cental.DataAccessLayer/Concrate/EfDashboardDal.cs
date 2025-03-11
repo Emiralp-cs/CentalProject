@@ -83,7 +83,7 @@ namespace Cental.DataAccessLayer.Concrate
 
         public List<Booking> WaitingBookingsList()
         {
-            return _context.Bookings.Where(x => x.IsApproved == null).ToList();
+            return _context.Bookings.Where(x => x.IsApproved == null).Take(4).ToList();
         }
 
 

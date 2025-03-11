@@ -107,13 +107,18 @@
                     @(string.Join(" ", rentedUser.User.FirstName, rentedUser.User.LastName))
                 </div>
             }
+            else if(Model.Bookings.Any(x => x.IsApproved == false || x.IsApproved == null))
+            {
+                <div class="alert alert-danger">
+                    Henüz bu araç kiralanmadı.
+                </div>
+            }
         }
         else
         {
             <div class="alert alert-danger">
                 Henüz bu araç kiralanmadı.
             </div>
-            <p></p>
         }
     </div>
 

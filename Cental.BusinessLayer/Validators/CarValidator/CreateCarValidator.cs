@@ -14,7 +14,7 @@ namespace Cental.BusinessLayer.Validators.CarValidator
         {
             RuleFor(x => x.ModelName).NotEmpty()
                 .WithMessage("Araba modeli boş bırakılamaz!")
-                .MinimumLength(3).WithMessage("Araba modeli en az 3 karakterden oluşmalıdır!");
+                .MinimumLength(2).WithMessage("Araba modeli en az 2 karakterden oluşmalıdır!");
 
 
             RuleFor(x => x.Transmission).NotEmpty().WithMessage("Vites Özelliği Boş Bırakılamaz!");
