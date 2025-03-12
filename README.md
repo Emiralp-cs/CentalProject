@@ -36,4 +36,13 @@ In this project, users are divided into 3 areas: Admin, User, and Manager. Admin
 
 
 # WEB UI Screenshots
+
+__HomePage__
 ![screencapture-localhost-7140-Default-Index-2025-03-12-10_23_24](https://github.com/user-attachments/assets/c922757b-9d83-4cb4-a699-6fa47a5628ce)
+__Cars__
+![screencapture-localhost-7140-Default-Index-2025-03-12-10_23_24](https://github.com/user-attachments/assets/995176b4-258e-4765-8ca1-9ebcd78ea1a2)
+__Contact__
+![screencapture-localhost-7140-Contact-Index-2025-03-12-10_30_38](https://github.com/user-attachments/assets/dd482072-24e1-43d6-8015-45dc63669743)
+
+
+
