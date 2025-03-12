@@ -55,7 +55,7 @@ This project lets people rent cars. Admins run the site, managers add cars and c
 # Detailed project video
 
 <a href="https://youtu.be/E7Cstci29s8?si=1K8tktb1IkbfFBWu" target="_blank">
-  <img src="https://github.com/user-attachments/assets/f79ebb3a-225b-4875-9909-2b5761731dba" width="300">
+  <img src="https://github.com/user-attachments/assets/6621b648-ca18-4ec1-8106-1d01e23ab191" width="300">
 </a>
 
 # WEB UI Screenshots
