@@ -8,7 +8,7 @@ This project lets people rent cars. Admins run the site, managers add cars and c
 
 ## ✨ Key Features
 
-### 🛡️Admin Panel
+### 🛡️ Admin Panel
 
 * Stats: See all changes on the site.
 * Roles: Make, change, and give out user jobs.
