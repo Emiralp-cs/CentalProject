@@ -12,6 +12,9 @@ In this project, users are divided into 3 areas: Admin, User, and Manager. Admin
  * Entity Framework Core
  * Paging
  * Sweet Alert
+ * Html
+ * Css
+ * Bootstrap
 # Technology Stack
  * N-Tier Architecture(Entity, Data Access Business, DTO Layers)
  * MVC Design Pattern
