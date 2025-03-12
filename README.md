@@ -33,3 +33,6 @@ In this project, users are divided into 3 areas: Admin, User, and Manager. Admin
 # User Panel Features
 * __Car rental requests__: Viewing rental requests, viewing details, and deleting rental requests.
 * __Comments__: Commenting on approved rental cars and editing comments.
+
+# WEB UI Screenshots
+![screencapture-localhost-7140-Default-Index-2025-03-12-10_23_24](https://github.com/user-attachments/assets/c922757b-9d83-4cb4-a699-6fa47a5628ce)
