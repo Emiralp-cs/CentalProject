@@ -13,7 +13,7 @@ In this project, users are divided into 3 areas: Admin, User, and Manager. Admin
  * Paging
  * Sweet Alert
 # Technology Stack
- * N-Tier Architecture(Entity, Data Access Business, DTO)
+ * N-Tier Architecture(Entity, Data Access Business, DTO Layers)
  * MVC Design Pattern
 # Administrator Panel Features
   * __Statistics__: All the changes and updates on the site can be followed.
