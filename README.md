@@ -58,6 +58,10 @@ This project lets people rent cars. Admins run the site, managers add cars and c
   <img src="https://github.com/user-attachments/assets/6621b648-ca18-4ec1-8106-1d01e23ab191" width="300">
 </a>
 
+# Database Diagram
+
+![image](https://github.com/user-attachments/assets/554c5016-1d80-4ae3-a8f3-9599c5b2c334)
+
 # WEB UI Screenshots
 
 __HomePage__
