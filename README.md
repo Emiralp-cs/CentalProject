@@ -1,27 +1,8 @@
 # Cental Rent a Car Project
 In this project, users are divided into 3 areas: Admin, User, and Manager. Admins control and organize the site, Users can request to rent cars, and Managers can add cars to the site, check rental status, and do many other things.
 
-# Technologies used
+# Project Overview
 
-__Backend__
- * ASP.NET Core 8.0
- * MsSQL
- * FluentValidation
- * Authorization
- * Identity
- * AutoMapper
- * Entity Framework Core Code First
-   
-__Frontend__
-
- * Paging
- * Sweet Alert
- * Html
- * Css
- * Bootstrap
-# Technology Stack
- * N-Tier Architecture(Entity, Data Access Business, DTO Layers)
- * MVC Design Pattern
 # Administrator Panel Features
   * __Statistics__: All the changes and updates on the site can be followed.
   * __Role assignment__: Role assigning and editing.
@@ -43,6 +24,27 @@ __Frontend__
 * __Car rental requests__: Viewing rental requests, viewing details, and deleting rental requests.
 * __Comments__: Commenting on approved rental cars and editing comments.
 
+# Technologies used
+
+__Backend__
+ * ASP.NET Core 8.0
+ * MsSQL
+ * FluentValidation
+ * Authorization
+ * Identity
+ * AutoMapper
+ * Entity Framework Core Code First
+   
+__Frontend__
+
+ * Paging
+ * Sweet Alert
+ * Html
+ * Css
+ * Bootstrap
+# Technology Stack
+ * N-Tier Architecture(Entity, Data Access Business, DTO Layers)
+ * MVC Design Pattern
 
 # WEB UI Screenshots
 
