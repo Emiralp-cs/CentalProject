@@ -51,6 +51,10 @@ This project lets people rent cars. Admins run the site, managers add cars and c
 
 * N-Tier Architecture (Entity, Data Access, Business, DTO Layers)
 * MVC Design Pattern
+
+# Detailed project video
+[![Proje Tanıtım Videosu](https://i.hizliresim.com/jql9swb.jpeg)](https://youtu.be/E7Cstci29s8?si=1K8tktb1IkbfFBWu)
+
 # WEB UI Screenshots
 
 __HomePage__
