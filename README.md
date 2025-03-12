@@ -74,6 +74,43 @@ __Cars__
 
 ![ManagerCars2](https://github.com/user-attachments/assets/58afaf3e-119b-43ef-91f1-6153fb41aa06)
 
+__Brands__
+
+![Brands](https://github.com/user-attachments/assets/209474b7-723b-4cba-874e-2bd872dae522)
+
+![Brands1](https://github.com/user-attachments/assets/01469331-e5f6-4316-a41c-f7a007bc4582)
+
+__Features__
+
+![Features](https://github.com/user-attachments/assets/12246788-5f19-4092-b687-7d2790309964)
+
+__Messages__
+
+![image](https://github.com/user-attachments/assets/aa921b7d-84d0-4088-b8a1-4d93e30e5bf3)
+
+![Messages1](https://github.com/user-attachments/assets/9348b0f1-5a2a-495f-ad44-fb2c696a51f3)
+
+__Subscribers__
+
+![Subscribers](https://github.com/user-attachments/assets/749ef01a-6929-4f8e-a6b9-76ae5d9b436d)
+
+__Services__
+
+![Services](https://github.com/user-attachments/assets/1d6f4812-03dc-4d78-90cf-55e802ec31b9)
+
+__TopBar__
+
+![TopBar](https://github.com/user-attachments/assets/8483777b-958d-4522-9fe1-6fe5ce043962)
+
+__Manager Panel Screenshots__
+
+
+
+
+
+
+
+
 
 
 
