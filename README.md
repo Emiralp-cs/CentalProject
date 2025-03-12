@@ -1,50 +1,67 @@
 # Cental Rent a Car Project
-In this project, users are divided into 3 areas: Admin, User, and Manager. Admins control and organize the site, Users can request to rent cars, and Managers can add cars to the site, check rental status, and do many other things.
 
-# Project Overview
+A comprehensive car rental management system with distinct roles for administrators, managers, and users.
 
-# Administrator Panel Features
-  * __Statistics__: All the changes and updates on the site can be followed.
-  * __Role assignment__: Role assigning and editing.
-  * __Roles__: Creating, updating, and deleting roles.
-  * __Cars__: You can manage managers, their cars, people who rent those cars, and their comments.
-  * __Brands__: Brand adding, editing, and deleting.
-  * __Feature__: Featured adding, editing, and deleting.
-  * __Messages__: Read, mark as read, and delete incoming messages.
-  * __Subscribers__: Viewing and deleting subscribers.
-  * __Services__: Services adding, editing, and deleting.
-  * __TopBar__: TopBar adding, editing, and deleting.
+## Project Overview
 
-# Manager Panel Features
-* __Car rental requests__: Update profile information.
-* __Cars__: Car details and car CRUD operations, rental requests from users and editing requests, viewing comments on the car.
-* __Social Medias__: Creating and editing social media accounts.
-  
-# User Panel Features
-* __Car rental requests__: Viewing rental requests, viewing details, and deleting rental requests.
-* __Comments__: Commenting on approved rental cars and editing comments.
+This project implements a multi-role car rental platform. Administrators manage the site's core functionality, managers handle car inventory and rentals, and users can browse and rent available vehicles.
 
-# Technologies used
+## Key Features
 
-__Backend__
- * ASP.NET Core 8.0
- * MsSQL
- * FluentValidation
- * Authorization
- * Identity
- * AutoMapper
- * Entity Framework Core Code First
-   
-__Frontend__
+### Administrator Panel
 
- * Paging
- * Sweet Alert
- * Html
- * Css
- * Bootstrap
-# Technology Stack
- * N-Tier Architecture(Entity, Data Access Business, DTO Layers)
- * MVC Design Pattern
+* **Statistics:** Real-time monitoring of site changes and updates.
+* **Role Management:** Creation, editing, and assignment of user roles.
+* **User Management:** Comprehensive control over managers, their cars, rental users, and comments.
+* **Catalog Management:** Management of car brands and features (add, edit, delete).
+* **Communication:** Message management (read, mark as read, delete) and subscriber overview.
+* **Service Management:** Adding, editing, and deleting site services.
+* **Top Bar Customization:** Management of the site's top navigation bar.
+
+### Manager Panel
+
+* **Rental Request Management:** Review and process car rental requests, including profile updates.
+* **Car Management:** Full CRUD operations on cars, including rental request handling and comment management.
+* **Social Media Management:** Creation and editing of social media accounts.
+
+### User Panel
+
+* **Rental Request Management:** View, detail, and delete rental requests.
+* **Comment Management:** Comment on approved rentals and edit existing comments.
+
+## Technologies Used
+
+### Backend
+
+* **ASP.NET Core 8.0:** Robust web application framework.
+* **MsSQL:** Relational database management system.
+* **FluentValidation:** Validation library for data consistency.
+* **Authorization & Identity:** Secure user authentication and authorization.
+* **AutoMapper:** Object-object mapping library.
+* **Entity Framework Core (Code First):** ORM for database interactions.
+
+### Frontend
+
+* **HTML, CSS, Bootstrap:** Core web technologies for UI development.
+* **Paging:** Efficient data pagination for large datasets.
+* **SweetAlert:** Enhanced user alerts and notifications.
+
+## Architecture
+
+* **N-Tier Architecture:** (Entity, Data Access, Business, DTO Layers) for modular and scalable design.
+* **MVC Design Pattern:** Separation of concerns for maintainable code.
+
+## Getting Started
+
+(Buraya projenin nasıl kurulacağı ve çalıştırılacağı hakkında bilgi ekleyin. Örneğin, kurulum adımları, veritabanı bağlantısı, vb.)
+
+## Contributing
+
+(Buraya projenize katkıda bulunmak isteyenler için yönergeler ekleyin.)
+
+## License
+
+(Buraya projenizin lisans bilgilerini ekleyin.)
 
 # WEB UI Screenshots
 
