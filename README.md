@@ -67,6 +67,14 @@ __Contact__
 
 ![screencapture-localhost-7140-Contact-Index-2025-03-12-10_30_38](https://github.com/user-attachments/assets/dd482072-24e1-43d6-8015-45dc63669743)
 
+__Register__
+
+![Register](https://github.com/user-attachments/assets/4358d380-185f-49ec-be61-2d6ba18dc445)
+
+__Login__
+
+![Login](https://github.com/user-attachments/assets/c4a40253-7097-4eeb-a1ba-d77b40e1698a)
+
 # Admin - Manager - User Panels Screenshots
 
 __Admin Panel Screenshots__
