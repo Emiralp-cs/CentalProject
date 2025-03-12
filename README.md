@@ -50,6 +50,36 @@ __Contact__
 
 ![screencapture-localhost-7140-Contact-Index-2025-03-12-10_30_38](https://github.com/user-attachments/assets/dd482072-24e1-43d6-8015-45dc63669743)
 
+# Admin - Manager - User Panels Screenshots
+
+__Admin Panel Screenshots__
+
+__Statistics__
+
+![Statistics](https://github.com/user-attachments/assets/24ac642c-5803-4789-b29f-cae890690c0d)
+
+__Role Assign__
+
+![Role Assign](https://github.com/user-attachments/assets/c255b8bf-fa94-41e7-b753-8bcc8b541999)
+
+__Roles__
+
+![Roles](https://github.com/user-attachments/assets/b2fa0ce5-596f-4b68-8197-e88b922db165)
+
+__Cars__
+
+![image](https://github.com/user-attachments/assets/0aae63af-3570-4792-87de-1ec34cc6df3e)
+
+![image](https://github.com/user-attachments/assets/4eda00e9-9e23-4f07-a622-3e4f80dd6031)
+
+![ManagerCars2](https://github.com/user-attachments/assets/58afaf3e-119b-43ef-91f1-6153fb41aa06)
+
+
+
+
+
+
+
 
 
 
