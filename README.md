@@ -11,7 +11,9 @@ __Backend__
  * Identity
  * AutoMapper
  * Entity Framework Core Code First
+ * 
 __Frontend__
+
  * Paging
  * Sweet Alert
  * Html
