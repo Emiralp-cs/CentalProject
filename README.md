@@ -121,6 +121,40 @@ __TopBar__
 
 __Manager Panel Screenshots__
 
+__Edit Profile__
+
+![Profile](https://github.com/user-attachments/assets/3ced4d61-0480-4625-95d6-8b855e69a22c)
+
+__Cars__
+
+![image](https://github.com/user-attachments/assets/6a6aa734-812d-4827-8298-44889df0e629)
+
+![image](https://github.com/user-attachments/assets/21b6d870-581c-4a3b-9241-403762c3a751)
+
+![image](https://github.com/user-attachments/assets/527713df-9afa-4630-a02d-fa7de9d53433)
+
+![image](https://github.com/user-attachments/assets/ce07ea55-ebb7-440f-9ada-6cd1997145f9)
+
+![Cars4](https://github.com/user-attachments/assets/2936b8c7-dbc8-409c-aac5-a10a755a0ac8)
+
+![image](https://github.com/user-attachments/assets/8272d236-321e-434a-993a-ee156c077895)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
