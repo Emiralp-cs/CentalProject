@@ -179,6 +179,8 @@ __User Panel Screenshots__
 
 ![image](https://github.com/user-attachments/assets/9c8f6991-e764-4791-86fc-4b4f64c9ec14)
 
+![image](https://github.com/user-attachments/assets/4d083472-5652-4d54-96ce-da447c53fbf5)
+
 
 
 
