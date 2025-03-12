@@ -12,7 +12,9 @@ In this project, users are divided into 3 areas: Admin, User, and Manager. Admin
  * Entity Framework Core
  * Paging
  * Sweet Alert
-   
+# Technology Stack
+ * N-Tier Architecture(Entity, Data Access Business, DTO)
+ * MVC Design Pattern
 # Administrator Panel Features
   * __Statistics__: All the changes and updates on the site can be followed.
   * __Role assignment__: Role assigning and editing.
