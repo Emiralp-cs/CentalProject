@@ -1,56 +1,56 @@
-# Cental Rent a Car Project
+#  Cental Rent a Car Project
 
 This is a car rental system with different jobs for admins, managers, and users.
 
-## Project Overview
+##  Project Overview
 
 This project lets people rent cars. Admins run the site, managers add cars and check rentals, and users can rent cars.
 
-## Key Features
+## ✨ Key Features
 
-### Admin Panel
+### 🛡️Admin Panel
 
-* **Stats:** See all changes on the site.
-* **Roles:** Make, change, and give out user jobs.
-* **Users:** Control managers, cars, renters, and comments.
-* **Car Info:** Add, change, and delete car brands and features.
-* **Messages:** Read, mark, and delete messages.
-* **Subscribers:** See and delete people who signed up.
-* **Services:** Add, change, and delete site services.
-* **Top Bar:** Change the top menu of the site.
+* Stats: See all changes on the site.
+* Roles: Make, change, and give out user jobs.
+* Users: Control managers, cars, renters, and comments.
+* Car Info: Add, change, and delete car brands and features.
+* Messages: Read, mark, and delete messages.
+* Subscribers: See and delete people who signed up.
+* Services: Add, change, and delete site services.
+* Top Bar: Change the top menu of the site.
 
-### Manager Panel
+### 💼 Manager Panel
 
-* **Rental Requests:** Check and change car rental requests, and update profiles.
-* **Cars:** Add, change, delete cars, check rentals, and see comments.
-* **Social Media:** Make and change social media accounts.
+* Rental Requests: Check and change car rental requests, and update profiles.
+* Cars: Add, change, delete cars, check rentals, and see comments.
+* Social Media: Make and change social media accounts.
 
-### User Panel
+### ‍‍🧑‍🤝‍🧑 User Panel
 
-* **Rental Requests:** See, check, and delete rental requests.
-* **Comments:** Comment on rented cars and change comments.
+* Rental Requests: See, check, and delete rental requests.
+* Comments: Comment on rented cars and change comments.
 
-## Technologies Used
+## 💻 Technologies Used
 
-### Backend
+### ⚙️ Backend
 
-* **ASP.NET Core 8.0**
-* **MsSQL** 
-* **FluentValidation** 
-* **Authorization & Identity**
-* **AutoMapper** Helps move data.
-* **Entity Framework Core (Code First)**
+* ASP.NET Core 8.0
+* MsSQL
+* FluentValidation
+* Authorization & Identity
+* ️ AutoMapper
+* Entity Framework Core (Code First)
 
-### Frontend
+### 🎨 Frontend
 
-* **HTML, CSS, Bootstrap** 
-* **Paging** 
-* **SweetAlert** 
+* HTML, CSS, Bootstrap
+* Paging
+* SweetAlert
 
-## Architecture
+## ️🏗️ Architecture
 
-* **N-Tier Architecture** (Entity, Data Access, Business, DTO Layers)
-* **MVC Design Pattern** 
+* N-Tier Architecture (Entity, Data Access, Business, DTO Layers)
+* MVC Design Pattern
 # WEB UI Screenshots
 
 __HomePage__
