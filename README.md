@@ -71,6 +71,10 @@ __Contact__
 
 __Admin Panel Screenshots__
 
+__Profile__
+
+![Profile edit](https://github.com/user-attachments/assets/318ee21f-6d4d-4ebe-a7f4-ebfa6d13ab6d)
+
 __Statistics__
 
 ![Statistics](https://github.com/user-attachments/assets/24ac642c-5803-4789-b29f-cae890690c0d)
