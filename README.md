@@ -153,7 +153,8 @@ __Cars__
 
 __Social Medias__
 
-![Cars8](https://github.com/user-attachments/assets/0d856a26-cbe4-4a0b-811f-e5eca80cdf68)
+![Social Medias](https://github.com/user-attachments/assets/ed673a41-4895-48e0-a730-2746c62eaa84)
+
 
 
 
