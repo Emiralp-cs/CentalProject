@@ -1,56 +1,56 @@
 # Cental Rent a Car Project
 
-A comprehensive car rental management system with distinct roles for administrators, managers, and users.
+This is a car rental system with different jobs for admins, managers, and users.
 
 ## Project Overview
 
-This project implements a multi-role car rental platform. Administrators manage the site's core functionality, managers handle car inventory and rentals, and users can browse and rent available vehicles.
+This project lets people rent cars. Admins run the site, managers add cars and check rentals, and users can rent cars.
 
 ## Key Features
 
-### Administrator Panel
+### Admin Panel
 
-* **Statistics:** Real-time monitoring of site changes and updates.
-* **Role Management:** Creation, editing, and assignment of user roles.
-* **User Management:** Comprehensive control over managers, their cars, rental users, and comments.
-* **Catalog Management:** Management of car brands and features (add, edit, delete).
-* **Communication:** Message management (read, mark as read, delete) and subscriber overview.
-* **Service Management:** Adding, editing, and deleting site services.
-* **Top Bar Customization:** Management of the site's top navigation bar.
+* **Stats:** See all changes on the site.
+* **Roles:** Make, change, and give out user jobs.
+* **Users:** Control managers, cars, renters, and comments.
+* **Car Info:** Add, change, and delete car brands and features.
+* **Messages:** Read, mark, and delete messages.
+* **Subscribers:** See and delete people who signed up.
+* **Services:** Add, change, and delete site services.
+* **Top Bar:** Change the top menu of the site.
 
 ### Manager Panel
 
-* **Rental Request Management:** Review and process car rental requests, including profile updates.
-* **Car Management:** Full CRUD operations on cars, including rental request handling and comment management.
-* **Social Media Management:** Creation and editing of social media accounts.
+* **Rental Requests:** Check and change car rental requests, and update profiles.
+* **Cars:** Add, change, delete cars, check rentals, and see comments.
+* **Social Media:** Make and change social media accounts.
 
 ### User Panel
 
-* **Rental Request Management:** View, detail, and delete rental requests.
-* **Comment Management:** Comment on approved rentals and edit existing comments.
+* **Rental Requests:** See, check, and delete rental requests.
+* **Comments:** Comment on rented cars and change comments.
 
 ## Technologies Used
 
 ### Backend
 
-* **ASP.NET Core 8.0** 
-* **MsSQL** 
-* **FluentValidatio** 
-* **Authorization & Identity** 
-* **AutoMapper** 
-* **Entity Framework Core (Code First)** 
+* **ASP.NET Core 8.0:** Web program tools.
+* **MsSQL:** Database.
+* **FluentValidation:** Checks data.
+* **Authorization & Identity:** Keeps the site safe.
+* **AutoMapper:** Helps move data.
+* **Entity Framework Core (Code First):** Helps use the database.
 
 ### Frontend
 
-* **HTML, CSS, Bootstrap** 
-* **Paging** 
-* **SweetAlert** 
+* **HTML, CSS, Bootstrap:** Makes the website look good.
+* **Paging:** Helps see many items.
+* **SweetAlert:** Makes alerts look nice.
 
 ## Architecture
 
-* **N-Tier Architecture** (Entity, Data Access, Business, DTO Layers)
-* **MVC Design Pattern** 
-
+* **N-Tier Architecture:** (Entity, Data Access, Business, DTO Layers) - Keeps parts separate.
+* **MVC Design Pattern:** Organizes the code.
 # WEB UI Screenshots
 
 __HomePage__
