@@ -60,7 +60,7 @@ This project lets people rent cars. Admins run the site, managers add cars and c
 
 # Database Diagram
 
-![image](https://github.com/user-attachments/assets/554c5016-1d80-4ae3-a8f3-9599c5b2c334)
+![image](https://github.com/user-attachments/assets/caade031-926b-4409-9a11-6999dc0fc6b7)
 
 # WEB UI Screenshots
 
