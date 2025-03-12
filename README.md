@@ -26,4 +26,7 @@ In this project, users are divided into 3 areas: Admin, User, and Manager. Admin
   * __TopBar__: TopBar adding, editing, and deleting.
 
 # Manager Panel Features
-* __Car rental requests__:
+* __Car rental requests__: Update profile information.
+* __Cars__: Car details and car CRUD operations, rental requests from users and editing requests, viewing comments on the car.
+* __Social Medias__: Creating and editing social media accounts.
+  
