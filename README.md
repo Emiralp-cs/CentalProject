@@ -159,7 +159,7 @@ __Social Medias__
 
 ![Social Medias](https://github.com/user-attachments/assets/ed673a41-4895-48e0-a730-2746c62eaa84)
 
-
+__User Panel Screenshots__
 
 
 
