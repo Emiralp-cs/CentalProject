@@ -25,7 +25,7 @@ This project lets people rent cars. Admins run the site, managers add cars and c
 * Cars: Add, change, delete cars, check rentals, and see comments.
 * Social Media: Make and change social media accounts.
 
-### ‍‍🧑‍🤝‍🧑 User Panel
+### 👤 User Panel
 
 * Rental Requests: See, check, and delete rental requests.
 * Comments: Comment on rented cars and change comments.
