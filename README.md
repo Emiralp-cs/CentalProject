@@ -59,8 +59,9 @@ __HomePage__
 
 __Cars__
 
-![screencapture-localhost-7140-Cars-Index-2025-03-12-10_29_43](https://github.com/user-attachments/assets/c9baa586-e552-48e2-a809-feeeaf727606)
+![image](https://github.com/user-attachments/assets/428083d8-a810-4dda-b546-1e5e38b55db8)
 
+![Ekran görüntüsü 2025-03-12 122030](https://github.com/user-attachments/assets/cf6ed1ae-ef49-4af9-91ab-d415e2a10161)
 
 __Contact__
 
