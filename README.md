@@ -43,7 +43,8 @@ __HomePage__
 
 __Cars__
 
-![screencapture-localhost-7140-Default-Index-2025-03-12-10_23_24](https://github.com/user-attachments/assets/995176b4-258e-4765-8ca1-9ebcd78ea1a2)
+![screencapture-localhost-7140-Cars-Index-2025-03-12-10_29_43](https://github.com/user-attachments/assets/c9baa586-e552-48e2-a809-feeeaf727606)
+
 
 __Contact__
 
