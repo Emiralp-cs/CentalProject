@@ -33,35 +33,23 @@ This project implements a multi-role car rental platform. Administrators manage 
 
 ### Backend
 
-* **ASP.NET Core 8.0:** Robust web application framework.
-* **MsSQL:** Relational database management system.
-* **FluentValidation:** Validation library for data consistency.
-* **Authorization & Identity:** Secure user authentication and authorization.
-* **AutoMapper:** Object-object mapping library.
-* **Entity Framework Core (Code First):** ORM for database interactions.
+* **ASP.NET Core 8.0** 
+* **MsSQL** 
+* **FluentValidatio** 
+* **Authorization & Identity** 
+* **AutoMapper** 
+* **Entity Framework Core (Code First)** 
 
 ### Frontend
 
-* **HTML, CSS, Bootstrap:** Core web technologies for UI development.
-* **Paging:** Efficient data pagination for large datasets.
-* **SweetAlert:** Enhanced user alerts and notifications.
+* **HTML, CSS, Bootstrap** 
+* **Paging** 
+* **SweetAlert** 
 
 ## Architecture
 
-* **N-Tier Architecture:** (Entity, Data Access, Business, DTO Layers) for modular and scalable design.
-* **MVC Design Pattern:** Separation of concerns for maintainable code.
-
-## Getting Started
-
-(Buraya projenin nasıl kurulacağı ve çalıştırılacağı hakkında bilgi ekleyin. Örneğin, kurulum adımları, veritabanı bağlantısı, vb.)
-
-## Contributing
-
-(Buraya projenize katkıda bulunmak isteyenler için yönergeler ekleyin.)
-
-## License
-
-(Buraya projenizin lisans bilgilerini ekleyin.)
+* **N-Tier Architecture** (Entity, Data Access, Business, DTO Layers)
+* **MVC Design Pattern** 
 
 # WEB UI Screenshots
 
