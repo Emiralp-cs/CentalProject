@@ -34,23 +34,23 @@ This project lets people rent cars. Admins run the site, managers add cars and c
 
 ### Backend
 
-* **ASP.NET Core 8.0:** Web program tools.
-* **MsSQL:** Database.
-* **FluentValidation:** Checks data.
-* **Authorization & Identity:** Keeps the site safe.
-* **AutoMapper:** Helps move data.
-* **Entity Framework Core (Code First):** Helps use the database.
+* **ASP.NET Core 8.0**
+* **MsSQL** 
+* **FluentValidation** 
+* **Authorization & Identity**
+* **AutoMapper** Helps move data.
+* **Entity Framework Core (Code First)**
 
 ### Frontend
 
-* **HTML, CSS, Bootstrap:** Makes the website look good.
-* **Paging:** Helps see many items.
-* **SweetAlert:** Makes alerts look nice.
+* **HTML, CSS, Bootstrap** 
+* **Paging** 
+* **SweetAlert** 
 
 ## Architecture
 
-* **N-Tier Architecture:** (Entity, Data Access, Business, DTO Layers) - Keeps parts separate.
-* **MVC Design Pattern:** Organizes the code.
+* **N-Tier Architecture** (Entity, Data Access, Business, DTO Layers)
+* **MVC Design Pattern** 
 # WEB UI Screenshots
 
 __HomePage__
