@@ -51,6 +51,7 @@ This project lets people rent cars. Admins run the site, managers add cars and c
 
 * N-Tier Architecture (Entity, Data Access, Business, DTO Layers)
 * MVC Design Pattern
+* Repository Design Pattern
 
 # Detailed project video
 
